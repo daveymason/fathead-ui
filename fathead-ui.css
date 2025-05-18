@@ -2092,5 +2092,4 @@ textarea:focus-visible {
     transform: translateY(0);
     box-shadow: 0 2px 12px var(--fh-shadow);
   }
-  }
 }
