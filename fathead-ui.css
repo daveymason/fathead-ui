@@ -1,7 +1,7 @@
 /*!
  * Fathead UI Design Kit
  * Minimalist Futuristic 2030 – Golden Ratio, Glassmorphism, Microfeedbacks
- * https://fatheadsolutions.com/fathead-ui
+ * https://github.com/daveymason/fathead-ui
  */
 
 /* =========================
@@ -565,6 +565,13 @@ label.fh-ui-button {
   transition: box-shadow 0.2s;
   animation: float-animation 6s ease-in-out infinite;
 }
+.code-snippet h4 {
+  color: var(--fh-primary);
+  margin-top: 0;
+  margin-bottom: var(--fh-sm);
+  font-size: var(--fh-md);
+  text-align: left;
+}
 .code-snippet pre {
   margin: 0;
   white-space: pre-wrap;
@@ -609,10 +616,16 @@ label.fh-ui-button {
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
 }
 .code-snippet .copy-btn:active::after,
-.code-snippet .copy-btn:focus::after {
+.code-snippet .copy-btn:focus::after,
+.code-snippet .copy-btn.copied::after {
   opacity: 1;
   transform: translateX(-50%) translateY(-5px);
   animation: hologram-fade 1.5s forwards;
+}
+
+.code-snippet .copy-btn.copied {
+  background: var(--fh-accent);
+  animation: copy-btn-success 2s forwards;
 }
 
 @keyframes hologram-fade {
@@ -627,6 +640,19 @@ label.fh-ui-button {
   100% {
     opacity: 0;
     transform: translateX(-50%) translateY(-25px) scale(0.9);
+  }
+}
+
+@keyframes copy-btn-success {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 138, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 138, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 138, 0, 0);
+    background: var(--fh-primary);
   }
 }
 
@@ -842,6 +868,36 @@ label.fh-ui-button {
   background: var(--fh-accent);
 }
 
+.fh-ui-component-code .copy-btn.copied {
+  background: var(--fh-accent);
+  animation: copy-btn-success 2s forwards;
+}
+
+.fh-ui-component-code .copy-btn::after {
+  content: "✓ Copied";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(33, 150, 243, 0.8);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: var(--fh-radius);
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.4);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+.fh-ui-component-code .copy-btn.copied::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+  animation: hologram-fade 1.5s forwards;
+}
+
 /* Section entry animation on scroll */
 .fh-ui-component-section {
   opacity: 1;
@@ -910,6 +966,222 @@ label.fh-ui-button {
   padding: var(--fh-lg);
   margin: var(--fh-md);
   position: relative;
+}
+
+/* =========================
+   16. Full-height Sections with Scroll Snap
+   ========================= */
+.fh-ui-snap-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.fh-ui-snap-section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--fh-xl) var(--fh-lg);
+  position: relative;
+}
+
+.fh-ui-snap-section + .fh-ui-snap-section {
+  border-top: 1px solid var(--fh-glass-border);
+}
+
+/* Animation for scroll-snap sections */
+@media (prefers-reduced-motion: no-preference) {
+  .fh-ui-snap-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease-out, transform 0.8s ease-out;
+  }
+  
+  .fh-ui-snap-section.active-section {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Entry animations for elements within active sections */
+  .fh-ui-snap-section.active-section h1,
+  .fh-ui-snap-section.active-section h2 {
+    animation: slide-in-left 0.7s ease-out forwards;
+  }
+  
+  .fh-ui-snap-section.active-section p,
+  .fh-ui-snap-section.active-section .fh-ui-button {
+    animation: slide-in-right 0.7s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+  
+  .fh-ui-snap-section.active-section .features-grid > *,
+  .fh-ui-snap-section.active-section .demo-controls > * {
+    animation: fade-in-up 0.6s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .fh-ui-snap-section.active-section .features-grid > *:nth-child(2),
+  .fh-ui-snap-section.active-section .demo-controls > *:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  
+  .fh-ui-snap-section.active-section .features-grid > *:nth-child(3),
+  .fh-ui-snap-section.active-section .demo-controls > *:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* =========================
+   17. Copy Button Tooltip
+   ========================= */
+.fh-ui-tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--fh-accent);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: var(--fh-radius);
+  font-size: var(--fh-xs);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 4px 12px var(--fh-shadow);
+  animation: tooltip-fade 2s forwards;
+}
+
+@keyframes tooltip-fade {
+  0%, 10% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+/* =========================
+   18. Scroll Snap Navigation
+   ========================= */
+.fh-ui-snap-dots {
+  position: fixed;
+  right: var(--fh-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--fh-md);
+  z-index: 50;
+}
+
+.fh-ui-snap-dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--fh-glass-border);
+  transition: var(--fh-transition);
+  cursor: pointer;
+  position: relative;
+}
+
+.fh-ui-snap-dots .dot:hover {
+  background: var(--fh-primary);
+  transform: scale(1.2);
+}
+
+.fh-ui-snap-dots .dot.active {
+  background: var(--fh-accent);
+  transform: scale(1.3);
+}
+
+.fh-ui-snap-dots .dot::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: var(--fh-transition);
+}
+
+.fh-ui-snap-dots .dot.active::after {
+  border-color: var(--fh-accent);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
 }
 
 /* =========================
@@ -2092,4 +2364,64 @@ textarea:focus-visible {
     transform: translateY(0);
     box-shadow: 0 2px 12px var(--fh-shadow);
   }
+}
+
+/* =========================
+   23. Divider Component
+   ========================= */
+.fh-ui-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, var(--fh-glass-border), transparent);
+  margin: var(--fh-lg) 0;
+  position: relative;
+}
+
+.fh-ui-divider.with-text {
+  border: none;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height: auto;
+  background: none;
+}
+
+.fh-ui-divider.with-text::before,
+.fh-ui-divider.with-text::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--fh-glass-border));
+}
+
+.fh-ui-divider.with-text::after {
+  background: linear-gradient(to right, var(--fh-glass-border), transparent);
+}
+
+.fh-ui-divider-text {
+  padding: 0 var(--fh-md);
+  font-size: var(--fh-sm);
+  color: var(--fh-text-secondary);
+}
+
+.fh-ui-divider.vertical {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--fh-glass-border), transparent);
+  margin: 0 var(--fh-lg);
+  display: inline-block;
+}
+
+.fh-ui-divider.primary {
+  background: linear-gradient(to right, transparent, var(--fh-primary), transparent);
+}
+
+.fh-ui-divider.accent {
+  background: linear-gradient(to right, transparent, var(--fh-accent), transparent);
+}
+
+.fh-ui-divider.glowing {
+  height: 2px;
+  box-shadow: 0 0 8px var(--fh-primary);
+  background: var(--fh-primary);
 }

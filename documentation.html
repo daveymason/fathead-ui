@@ -17,11 +17,10 @@
       <a href="components.html" class="nav-link">Components</a>
       <a href="documentation.html" class="nav-link active">Docs</a>
     </div>
-  </div>
-  <div style="display:flex;gap:var(--fh-xl);max-width:1200px;margin:0 auto;">
-    <aside class="fh-ui-sidebar" style="min-width:220px;max-width:260px;">
-      <h3>Docs</h3>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--fh-sm)">
+  </div>  <div class="fh-ui-components-layout">
+    <aside class="fh-ui-components-sidebar">
+      <h3>Documentation</h3>
+      <ul>
         <li><a href="#getting-started">Getting Started</a></li>
         <li><a href="#components">Components</a></li>
         <li><a href="#utilities">Utility Classes</a></li>
@@ -30,28 +29,19 @@
         <li><a href="#customization">Customization</a></li>
       </ul>
     </aside>
-    <main class="fh-ui-container" style="flex:1;min-width:0;">
+    <main>
       <section id="getting-started">
         <h2>Getting Started</h2>
-        <p>To use Fathead UI, include the CDN link in your <code>&lt;head&gt;</code>:</p>        <div class="code-snippet">
-          <pre>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/daveymason/fathead-ui@latest/fathead-ui.css" /&gt;</pre>
+        <p>To use Fathead UI, add this stylesheet link to your project:</p>
+        <div class="code-snippet">
+          <h4>Add to your project:</h4>
+          <pre>&lt;link rel="stylesheet" href="https://daveymason.github.io/fathead-ui/fathead-ui.css" /&gt;</pre>
           <button class="copy-btn">Copy</button>
         </div>
         
-        <h3>CDN Options</h3>
-        <div class="fh-ui-info-card primary" style="margin-bottom:var(--fh-lg)">
-          <h4><i class="fas fa-server fa-fade"></i> Multiple CDN Options Available</h4>
-          <div class="code-snippet" style="margin-top:var(--fh-sm)">
-            <pre>&lt;!-- jsDelivr CDN (recommended) --&gt;
-&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/daveymason/fathead-ui@latest/fathead-ui.css" /&gt;
-
-&lt;!-- Unpkg CDN (alternative) --&gt;
-&lt;link rel="stylesheet" href="https://unpkg.com/fathead-ui@latest/fathead-ui.css" /&gt;
-
-&lt;!-- GitHub Pages (direct) --&gt;
-&lt;link rel="stylesheet" href="https://daveymason.github.io/fathead-ui/fathead-ui.css" /&gt;</pre>
-            <button class="copy-btn">Copy</button>
-          </div>
+        <div class="fh-ui-info-card primary" style="margin-bottom:var(--fh-lg); margin-top:var(--fh-lg);">
+          <h4><i class="fas fa-server fa-fade"></i> Simple Installation</h4>
+          <p>Just add the stylesheet link to the head of your HTML document and you're ready to start using Fathead UI components.</p>
         </div>
         
         <p>Wrap your app in <code>&lt;body class=&quot;fh-ui&quot; data-theme=&quot;light&quot;&gt;</code> for theme support.</p>
@@ -157,8 +147,7 @@
           <button class="copy-btn">Copy</button>
         </div>
       </section>
-    </main>
-  </div>  <a href="components.html" class="floating-link">Component Library <i class="fa-solid fa-arrow-right"></i></a>
+    </main>  </div>
   
   <footer class="fh-ui-footer" id="footer">
     <div class="footer-content">
@@ -178,10 +167,74 @@
         <a href="https://fatheadsolutions.com" target="_blank"><i class="fas fa-globe fa-spin-pulse"></i> Website</a>
         <a href="documentation.html"><i class="fas fa-book fa-flip"></i> Docs</a>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Fathead UI. Built with pure CSS. No JavaScript used.</p>
+    </div>    <div class="footer-bottom">
+      <p>&copy; 2025 Fathead UI. Built with pure CSS. Minimal JavaScript for copy functionality.</p>
     </div>
   </footer>
+
+  <!-- Required minimal JS for copy functionality -->  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+      
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async function() {
+          // Handle different container types for copy buttons
+          let textToCopy;
+          
+          // Find the parent component code container
+          const container = this.closest('.fh-ui-component-code') || this.closest('.code-snippet');
+          
+          if (container) {
+            const preElement = container.querySelector('pre');
+            if (preElement) {
+              textToCopy = preElement.textContent;
+            }
+          }
+          
+          if (!textToCopy) {
+            console.error('No content found to copy');
+            return;
+          }
+          
+          try {
+            // Use modern Clipboard API if available
+            if (navigator.clipboard) {
+              await navigator.clipboard.writeText(textToCopy);
+            } else {
+              // Fallback to older method
+              const textarea = document.createElement('textarea');
+              textarea.value = textToCopy;
+              textarea.setAttribute('readonly', '');
+              textarea.style.position = 'absolute';
+              textarea.style.left = '-9999px';
+              document.body.appendChild(textarea);
+              textarea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textarea);
+            }
+            
+            // Visual feedback through CSS
+            button.classList.add('copied');
+            
+            // Show a tooltip
+            const tooltip = document.createElement('div');
+            tooltip.className = 'fh-ui-tooltip';
+            tooltip.textContent = 'Copied!';
+            button.appendChild(tooltip);
+            
+            // Remove the tooltip after animation
+            setTimeout(() => {
+              button.classList.remove('copied');
+              if (tooltip.parentNode) {
+                tooltip.parentNode.removeChild(tooltip);
+              }
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy: ', err);
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

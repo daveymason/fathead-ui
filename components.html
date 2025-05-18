@@ -230,7 +230,114 @@
           </div>
         </div>
       </section>
-        <section id="loader" class="fh-ui-component-section">
+      
+      <section id="alerts" class="fh-ui-component-section">
+        <h2>Alerts</h2>
+        <p class="description">Informational alerts with color-coded importance levels. Use for system feedback and notifications.</p>
+        
+        <div class="fh-ui-component-row">
+          <div class="fh-ui-component-demo">
+            <div class="fh-ui-alert fh-ui-alert-info">
+              <div class="fh-ui-alert-icon">
+                <i class="fa-solid fa-circle-info"></i>
+              </div>
+              <div class="fh-ui-alert-content">
+                <h4 class="fh-ui-alert-title">Information</h4>
+                <p class="fh-ui-alert-text">This is an informational alert for the user.</p>
+              </div>
+            </div>
+            
+            <div class="fh-ui-alert fh-ui-alert-success">
+              <div class="fh-ui-alert-icon">
+                <i class="fa-solid fa-check-circle"></i>
+              </div>
+              <div class="fh-ui-alert-content">
+                <h4 class="fh-ui-alert-title">Success</h4>
+                <p class="fh-ui-alert-text">The operation was completed successfully.</p>
+              </div>
+            </div>
+            
+            <div class="fh-ui-alert fh-ui-alert-warning">
+              <div class="fh-ui-alert-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <div class="fh-ui-alert-content">
+                <h4 class="fh-ui-alert-title">Warning</h4>
+                <p class="fh-ui-alert-text">Please be cautious with this action.</p>
+              </div>
+            </div>
+            
+            <div class="fh-ui-alert fh-ui-alert-error">
+              <div class="fh-ui-alert-icon">
+                <i class="fa-solid fa-circle-xmark"></i>
+              </div>
+              <div class="fh-ui-alert-content">
+                <h4 class="fh-ui-alert-title">Error</h4>
+                <p class="fh-ui-alert-text">An error occurred during the operation.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="fh-ui-component-code">
+            <pre>&lt;div class="fh-ui-alert fh-ui-alert-info"&gt;
+  &lt;div class="fh-ui-alert-icon"&gt;
+    &lt;i class="fa-solid fa-circle-info"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;div class="fh-ui-alert-content"&gt;
+    &lt;h4 class="fh-ui-alert-title"&gt;Information&lt;/h4&gt;
+    &lt;p class="fh-ui-alert-text"&gt;This is an informational alert for the user.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Other alert types: fh-ui-alert-success, fh-ui-alert-warning, fh-ui-alert-error --&gt;</pre>
+            <button class="copy-btn" data-code-ref="alerts">Copy</button>
+          </div>
+        </div>      </section>
+      
+      <section id="navigation" class="fh-ui-component-section">
+        <h2>Navigation</h2>
+        <p class="description">Vertical navigation menu with hover and active states. Perfect for sidebars and application menus.</p>
+        
+        <div class="fh-ui-component-row">
+          <div class="fh-ui-component-demo">
+            <div class="fh-ui-navigation" style="width: 250px;">
+              <a href="#" class="fh-ui-navigation-item">
+                <span class="fh-ui-navigation-icon"><i class="fa-solid fa-house"></i></span>
+                Dashboard
+              </a>
+              <a href="#" class="fh-ui-navigation-item active">
+                <span class="fh-ui-navigation-icon"><i class="fa-solid fa-chart-line"></i></span>
+                Analytics
+              </a>
+              <a href="#" class="fh-ui-navigation-item">
+                <span class="fh-ui-navigation-icon"><i class="fa-solid fa-user"></i></span>
+                Profile
+              </a>
+              <a href="#" class="fh-ui-navigation-item">
+                <span class="fh-ui-navigation-icon"><i class="fa-solid fa-gear"></i></span>
+                Settings
+              </a>
+            </div>
+          </div>
+          
+          <div class="fh-ui-component-code">
+            <pre>&lt;div class="fh-ui-navigation"&gt;
+  &lt;a href="#" class="fh-ui-navigation-item"&gt;
+    &lt;span class="fh-ui-navigation-icon"&gt;&lt;i class="fa-solid fa-house"&gt;&lt;/i&gt;&lt;/span&gt;
+    Dashboard
+  &lt;/a&gt;
+  &lt;a href="#" class="fh-ui-navigation-item active"&gt;
+    &lt;span class="fh-ui-navigation-icon"&gt;&lt;i class="fa-solid fa-chart-line"&gt;&lt;/i&gt;&lt;/span&gt;
+    Analytics
+  &lt;/a&gt;
+  &lt;!-- Additional navigation items --&gt;
+&lt;/div&gt;</pre>
+            <button class="copy-btn" data-code-ref="navigation">Copy</button>
+          </div>
+        </div>
+      </section>
+      
+      <section id="loader" class="fh-ui-component-section">
         <h2>Loader</h2>
         <p class="description">CSS-only loading indicators for async operations. Includes spinners in various sizes and a full-screen overlay option.</p>
         
@@ -258,9 +365,62 @@
             <button class="copy-btn" data-code-ref="loader">Copy</button>
           </div>
         </div>
-          <input type="checkbox" id="loader-overlay-checkbox" class="fh-ui-loader-checkbox">
-        <div id="fh-ui-loader-overlay">
+          <input type="checkbox" id="loader-overlay-checkbox" class="fh-ui-loader-checkbox">        <div id="fh-ui-loader-overlay">
           <div class="fh-ui-spinner xl"></div>
+        </div>
+      </section>
+      
+      <section id="divider" class="fh-ui-component-section">
+        <h2>Divider</h2>
+        <p class="description">Elegant dividers to separate content sections. Available in multiple styles and orientations.</p>
+        
+        <div class="fh-ui-component-row">
+          <div class="fh-ui-component-demo">
+            <h4>Standard Divider</h4>
+            <div class="fh-ui-divider"></div>
+            
+            <h4>Text Divider</h4>
+            <div class="fh-ui-divider with-text">
+              <span class="fh-ui-divider-text">Section Divider</span>
+            </div>
+            
+            <h4>Colored Dividers</h4>
+            <div style="display: flex; flex-direction: column; gap: var(--fh-md);">
+              <div class="fh-ui-divider primary"></div>
+              <div class="fh-ui-divider accent"></div>
+              <div class="fh-ui-divider glowing"></div>
+            </div>
+            
+            <h4>Vertical Divider</h4>
+            <div style="height: 100px; display: flex; align-items: center;">
+              <div>Left Content</div>
+              <div class="fh-ui-divider vertical"></div>
+              <div>Right Content</div>
+            </div>
+          </div>
+          
+          <div class="fh-ui-component-code">
+            <pre>&lt;!-- Standard Divider --&gt;
+&lt;div class="fh-ui-divider"&gt;&lt;/div&gt;
+
+&lt;!-- Text Divider --&gt;
+&lt;div class="fh-ui-divider with-text"&gt;
+  &lt;span class="fh-ui-divider-text"&gt;Section Divider&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Colored Dividers --&gt;
+&lt;div class="fh-ui-divider primary"&gt;&lt;/div&gt;
+&lt;div class="fh-ui-divider accent"&gt;&lt;/div&gt;
+&lt;div class="fh-ui-divider glowing"&gt;&lt;/div&gt;
+
+&lt;!-- Vertical Divider --&gt;
+&lt;div style="height: 100px; display: flex; align-items: center;"&gt;
+  &lt;div&gt;Left Content&lt;/div&gt;
+  &lt;div class="fh-ui-divider vertical"&gt;&lt;/div&gt;
+  &lt;div&gt;Right Content&lt;/div&gt;
+&lt;/div&gt;</pre>
+            <button class="copy-btn" data-code-ref="divider">Copy</button>
+          </div>
         </div>
       </section>
       
@@ -360,12 +520,76 @@
         <a href="https://fatheadsolutions.com" target="_blank"><i class="fas fa-globe fa-spin-pulse"></i> Website</a>
         <a href="documentation.html"><i class="fas fa-book fa-flip"></i> Docs</a>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Fathead UI. Built with pure CSS. No JavaScript used.</p>
+    </div>    <div class="footer-bottom">
+      <p>&copy; 2025 Fathead UI. Built with pure CSS. Minimal JavaScript for copy functionality.</p>
     </div>
   </footer>
-    <!-- All JavaScript functionality has been replaced with pure CSS solutions -->
-  <!-- See the CSS file for details on how each component works -->
+  <!-- All component functionality implemented with pure CSS solutions -->
+  <!-- Only minimal JS used for copy buttons -->
+  
+  <!-- Required minimal JS for copy functionality -->  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const copyButtons = document.querySelectorAll('.copy-btn');
+      
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async function() {
+          // Handle different container types for copy buttons
+          let textToCopy;
+          
+          // Find the parent component code container
+          const container = this.closest('.fh-ui-component-code') || this.closest('.code-snippet');
+          
+          if (container) {
+            const preElement = container.querySelector('pre');
+            if (preElement) {
+              textToCopy = preElement.textContent;
+            }
+          }
+          
+          if (!textToCopy) {
+            console.error('No content found to copy');
+            return;
+          }
+          
+          try {
+            // Use modern Clipboard API if available
+            if (navigator.clipboard) {
+              await navigator.clipboard.writeText(textToCopy);
+            } else {
+              // Fallback to older method
+              const textarea = document.createElement('textarea');
+              textarea.value = textToCopy;
+              textarea.setAttribute('readonly', '');
+              textarea.style.position = 'absolute';
+              textarea.style.left = '-9999px';
+              document.body.appendChild(textarea);
+              textarea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textarea);
+            }
+            
+            // Visual feedback through CSS
+            button.classList.add('copied');
+            
+            // Show a tooltip
+            const tooltip = document.createElement('div');
+            tooltip.className = 'fh-ui-tooltip';
+            tooltip.textContent = 'Copied!';
+            button.appendChild(tooltip);
+            
+            // Remove the tooltip after animation
+            setTimeout(() => {
+              button.classList.remove('copied');
+              if (tooltip.parentNode) {
+                tooltip.parentNode.removeChild(tooltip);
+              }
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy: ', err);
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

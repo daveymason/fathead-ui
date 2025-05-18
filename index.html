@@ -10,8 +10,7 @@
 </head>
 <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
 <body class="fh-ui" data-theme="light">
-  <label for="theme-toggle" class="theme-toggle-label" title="Toggle light/dark mode"></label>
-  <div class="fh-ui-navbar">
+  <label for="theme-toggle" class="theme-toggle-label" title="Toggle light/dark mode"></label>  <div class="fh-ui-navbar">
     <a href="/" class="logo">Fathead UI</a>
     <div class="nav-links">
       <a href="/" class="nav-link active">Home</a>
@@ -20,156 +19,281 @@
     </div>
   </div>
 
-  <section class="hero-section">
-    <h1>Fathead-UI</h1> 
-    <h4>A futuristic, zero-JavaScript CSS framework. </h4>
-    <p>For building modern web interfaces with data-based design & cognitive psychology principles.</p>
-  <div class="code-snippet">
-      <pre>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/daveymason/fathead-ui@latest/fathead-ui.css" /&gt;</pre>
-      <button class="copy-btn" id="copy-cdn-btn">Copy</button>
+  <div class="fh-ui-snap-container">
+    <div class="fh-ui-snap-dots">
+      <a href="#hero" class="dot active" data-section="hero"></a>
+      <a href="#features" class="dot" data-section="features"></a>
+      <a href="#demo" class="dot" data-section="demo"></a>
+      <a href="#colors" class="dot" data-section="colors"></a>
+      <a href="#footer" class="dot" data-section="footer"></a>
     </div>
-    <a href="components.html" class="fh-ui-button cta-button">Explore Components <i class="fa-solid fa-arrow-right-long"></i></a>
-  </section>
-
-  <section class="features-section">
-    <h2>Designed for Modern Web</h2>
-    
-    <div class="features-grid">
-      <div class="fh-ui-info-card primary">
-        <i class="fa-solid fa-wand-magic-sparkles fa-beat-fade"></i>
+    <section id="hero" class="hero-section fh-ui-snap-section">
+      <h1>Fathead-UI</h1> 
+      <h4>A futuristic, zero-JavaScript CSS framework. </h4>
+      <p>For building modern web interfaces with data-based design & cognitive psychology principles.</p>  <div class="code-snippet">
+        <h4>Add to your project:</h4>
+        <pre>&lt;link rel="stylesheet" href="https://daveymason.github.io/fathead-ui/fathead-ui.css" /&gt;</pre>
+        <button class="copy-btn" id="copy-cdn-btn">Copy</button>
+      </div>
+      <a href="components.html" class="fh-ui-button cta-button">Explore Components <i class="fa-solid fa-arrow-right-long"></i></a>
+    </section>
+    <section id="features" class="features-section fh-ui-snap-section">
+      <h2>Designed for Modern Web</h2>
+      
+      <div class="features-grid">      <div class="fh-ui-info-card primary">
+        <i class="fa-solid fa-code fa-fade"></i>
         <h3>Pure CSS Magic</h3>
         <p>All interactive components built with CSS-only techniques. No JavaScript dependencies means faster loading and better reliability.</p>
       </div>
 
       <div class="fh-ui-info-card accent">
-        <i class="fa-solid fa-brain fa-bounce"></i>
+        <i class="fa-solid fa-lightbulb fa-pulse"></i>
         <h3>Human-Centered Design</h3>
         <p>Based on cognitive psychology principles and human-computer interaction research for optimal user experience.</p>
       </div>
 
       <div class="fh-ui-info-card secondary">
-        <i class="fa-solid fa-ruler-combined fa-flip"></i>
+        <i class="fa-solid fa-layer-group fa-bounce"></i>
         <h3>Golden Ratio Harmony</h3>
         <p>Layout system based on the Fibonacci sequence (1.618 ratio) creates naturally pleasing visual proportions.</p>
       </div>
-    </div>
+      </div>
 
-    <div class="fh-ui-navigation tabs">
-      <a href="#css" class="fh-ui-navigation-item active">CSS-Only</a>
-      <a href="#accessibility" class="fh-ui-navigation-item">Accessibility</a>
-      <a href="#components" class="fh-ui-navigation-item">Components</a>
-    </div>
-
-    <div class="tab-content" id="css">
-      <h3>No JavaScript Required</h3>
-      <p>All interactivity implemented with pure CSS techniques including:</p>
+      <div class="tab-content" id="css">
+        <h3>No JavaScript Required</h3>
+        <p>All interactivity implemented with pure CSS techniques including:</p>
+        
+        <div class="demo-area">
+          <div class="fh-ui-alert info">
+            <div class="fh-ui-alert-content">
+              <h4>Hidden checkbox pattern</h4>
+              <p>For toggles, dialogs, and popups</p>
+            </div>
+          </div>
+          
+          <div class="fh-ui-alert success">
+            <div class="fh-ui-alert-content">
+              <h4>CSS animations</h4>
+              <p>For micro-interactions and feedback</p>
+            </div>
+          </div>
+          
+          <div class="fh-ui-alert warning">
+            <div class="fh-ui-alert-content">
+              <h4>:target selector</h4>
+              <p>For navigation and content targeting</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="demo" class="demo-section fh-ui-snap-section">
+      <h2>See It In Action</h2>
       
-      <div class="demo-area">
-        <div class="fh-ui-alert info">
-          <div class="fh-ui-alert-content">
-            <h4>Hidden checkbox pattern</h4>
-            <p>For toggles, dialogs, and popups</p>
-          </div>
+      <div class="demo-controls">
+        <label for="demo-toast-checkbox" class="fh-ui-button">Show Toast <i class="fa-solid fa-bell fa-shake"></i></label>
+        <label for="demo-dialog-checkbox" class="fh-ui-button">Open Dialog <i class="fa-solid fa-message fa-beat"></i></label>
+        <label for="loader-overlay-checkbox" class="fh-ui-button">Show Loader <i class="fa-solid fa-spinner fa-spin"></i></label>
+      </div>
+      
+      <div class="spinner-showcase">
+        <div class="fh-ui-spinner sm"></div>
+        <div class="fh-ui-spinner"></div>
+        <div class="fh-ui-spinner lg"></div>
+        <div class="fh-ui-spinner xl"></div>
+      </div>
+      
+      <input type="checkbox" id="demo-toast-checkbox" class="fh-ui-toast-checkbox">
+      <div class="fh-ui-toast" id="demo-toast">CSS-only toast notification with auto-hide animation!</div>
+      
+      <input type="checkbox" id="demo-dialog-checkbox" class="fh-ui-dialog-checkbox">
+      <div class="fh-ui-dialog" id="demo-dialog">
+        <div class="fh-ui-dialog-content">
+          <h3><i class="fa-solid fa-circle-info fa-beat-fade" style="color: #219EFF"></i> Pure CSS Dialog</h3>
+          <p>This modal dialog requires no JavaScript and works with the hidden checkbox technique.</p>
+          <label for="demo-dialog-checkbox" class="fh-ui-button">Return to Demo <i class="fa-solid fa-reply"></i></label>
         </div>
-        
-        <div class="fh-ui-alert success">
-          <div class="fh-ui-alert-content">
-            <h4>CSS animations</h4>
-            <p>For micro-interactions and feedback</p>
-          </div>
+        <label for="demo-dialog-checkbox" class="fh-ui-close-overlay"></label>
+      </div>
+      
+      <input type="checkbox" id="loader-overlay-checkbox" class="fh-ui-loader-checkbox">
+      <div id="fh-ui-loader-overlay">
+        <div class="fh-ui-spinner xl"></div>
+      </div>
+    </section>
+    <section id="colors" class="color-theory-section fh-ui-snap-section">
+      <h2>Color Theory & Mathematics</h2>
+      <p>Our color system is based on precise mathematical relationships:</p>
+      
+      <div class="color-showcase">
+        <div class="color-box primary">
+          <span>Primary Blue</span>
+          <code>#219EFF</code>
         </div>
-        
-        <div class="fh-ui-alert warning">
-          <div class="fh-ui-alert-content">
-            <h4>:target selector</h4>
-            <p>For navigation and content targeting</p>
-          </div>
+        <div class="color-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        <div class="color-box accent">
+          <span>Complementary Orange</span>
+          <code>#FF8A00</code>
         </div>
       </div>
-    </div>
-  </section>
+      
+      <p class="color-explanation">
+        Colors are mathematically derived using complementary color theory and the golden ratio for harmonic relationships between different UI elements.
+      </p>  </section>
 
-  <section class="demo-section">
-    <h2>See It In Action</h2>
-    
-    <div class="demo-controls">
-      <label for="demo-toast-checkbox" class="fh-ui-button">Show Toast <i class="fa-solid fa-bell fa-shake"></i></label>
-      <label for="demo-dialog-checkbox" class="fh-ui-button">Open Dialog <i class="fa-solid fa-message fa-beat"></i></label>
-      <label for="loader-overlay-checkbox" class="fh-ui-button">Show Loader <i class="fa-solid fa-spinner fa-spin"></i></label>
-    </div>
-    
-    <div class="spinner-showcase">
-      <div class="fh-ui-spinner sm"></div>
-      <div class="fh-ui-spinner"></div>
-      <div class="fh-ui-spinner lg"></div>
-      <div class="fh-ui-spinner xl"></div>
-    </div>
-    
-    <input type="checkbox" id="demo-toast-checkbox" class="fh-ui-toast-checkbox">
-    <div class="fh-ui-toast" id="demo-toast">CSS-only toast notification with auto-hide animation!</div>
-    
-    <input type="checkbox" id="demo-dialog-checkbox" class="fh-ui-dialog-checkbox">
-    <div class="fh-ui-dialog" id="demo-dialog">
-      <div class="fh-ui-dialog-content">
-        <h3><i class="fa-solid fa-circle-info fa-beat-fade" style="color: #219EFF"></i> Pure CSS Dialog</h3>
-        <p>This modal dialog requires no JavaScript and works with the hidden checkbox technique.</p>
-        <label for="demo-dialog-checkbox" class="fh-ui-button">Return to Demo <i class="fa-solid fa-reply"></i></label>
+    <footer id="footer" class="fh-ui-footer fh-ui-snap-section">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>Fathead UI</h3>
+          <p>Pure CSS Framework</p>
+        </div>
+        <div class="footer-links">
+          <h4>Explore</h4>
+          <a href="/">Home</a>
+          <a href="components.html">Components</a>
+          <a href="documentation.html">Documentation</a>
+        </div>      <div class="footer-links">
+          <h4>Follow</h4>
+          <a href="https://github.com/daveymason/fathead-ui" target="_blank"><i class="fab fa-github fa-bounce"></i> GitHub</a>
+          <a href="https://fatheadsolutions.com" target="_blank"><i class="fas fa-globe fa-spin-pulse"></i> Website</a>
+          <a href="documentation.html"><i class="fas fa-book fa-flip"></i> Docs</a>
+        </div>
       </div>
-      <label for="demo-dialog-checkbox" class="fh-ui-close-overlay"></label>
-    </div>
-    
-    <input type="checkbox" id="loader-overlay-checkbox" class="fh-ui-loader-checkbox">
-    <div id="fh-ui-loader-overlay">
-      <div class="fh-ui-spinner xl"></div>
-    </div>
-  </section>
-  
-  <section class="color-theory-section">
-    <h2>Color Theory & Mathematics</h2>
-    <p>Our color system is based on precise mathematical relationships:</p>
-    
-    <div class="color-showcase">
-      <div class="color-box primary">
-        <span>Primary Blue</span>
-        <code>#219EFF</code>
-      </div>
-      <div class="color-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-      <div class="color-box accent">
-        <span>Complementary Orange</span>
-        <code>#FF8A00</code>
-      </div>
-    </div>
-    
-    <p class="color-explanation">
-      Colors are mathematically derived using complementary color theory and the golden ratio for harmonic relationships between different UI elements.
-    </p>
-  </section>
-
-  <footer class="fh-ui-footer">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <h3>Fathead UI</h3>
-        <p>Pure CSS Framework</p>
-      </div>
-      <div class="footer-links">
-        <h4>Explore</h4>
-        <a href="/">Home</a>
-        <a href="components.html">Components</a>
-        <a href="documentation.html">Documentation</a>
-      </div>      <div class="footer-links">
-        <h4>Follow</h4>
-        <a href="https://github.com/daveymason/fathead-ui" target="_blank"><i class="fab fa-github fa-bounce"></i> GitHub</a>
-        <a href="https://fatheadsolutions.com" target="_blank"><i class="fas fa-globe fa-spin-pulse"></i> Website</a>
-        <a href="documentation.html"><i class="fas fa-book fa-flip"></i> Docs</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Fathead UI. Built with pure CSS. No JavaScript used.</p>
-    </div>
-  </footer>
-
+      <div class="footer-bottom">
+        <p>&copy; 2025 Fathead UI. Built with pure CSS. No JavaScript used.</p>
+      </div>  </footer>
+  </div><!-- End of snap container -->
   <a href="components.html" class="floating-link">Library <i class="fa-solid fa-arrow-right"></i></a>
 
-  <!-- All functionality implemented with pure CSS -->
+  <!-- Required minimal JS for copy functionality -->  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Copy button functionality
+      const copyButtons = document.querySelectorAll('.copy-btn');
+      
+      copyButtons.forEach(button => {
+        button.addEventListener('click', async function() {
+          // Find the closest pre element to copy from
+          // Find the pre element to copy from - handle both component page and regular code snippets
+          let preElement;
+          let container = this.closest('.code-snippet') || this.closest('.fh-ui-component-code');
+          
+          if (container) {
+            preElement = container.querySelector('pre');
+          }
+          
+          if (!preElement) {
+            console.error('No pre element found to copy from');
+            return;
+          }
+          
+          const textToCopy = preElement.textContent;
+          
+          try {
+            // Use modern Clipboard API if available
+            if (navigator.clipboard) {
+              await navigator.clipboard.writeText(textToCopy);
+            } else {
+              // Fallback to older method
+              const textarea = document.createElement('textarea');
+              textarea.value = textToCopy;
+              textarea.setAttribute('readonly', '');
+              textarea.style.position = 'absolute';
+              textarea.style.left = '-9999px';
+              document.body.appendChild(textarea);
+              textarea.select();
+              document.execCommand('copy');
+              document.body.removeChild(textarea);
+            }
+              // Visual feedback through CSS
+            button.classList.add('copied');
+            
+            // Show a tooltip
+            const tooltip = document.createElement('div');
+            tooltip.className = 'fh-ui-tooltip';
+            tooltip.textContent = 'Copied!';
+            button.appendChild(tooltip);
+            
+            // Remove the tooltip after animation
+            setTimeout(() => {
+              button.classList.remove('copied');
+              if (tooltip.parentNode) {
+                tooltip.parentNode.removeChild(tooltip);
+              }
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy: ', err);
+          }
+        });
+      });
+
+      // Scroll snap navigation dots functionality
+      const sections = document.querySelectorAll('.fh-ui-snap-section');
+      const dots = document.querySelectorAll('.fh-ui-snap-dots .dot');
+      const snapContainer = document.querySelector('.fh-ui-snap-container');
+      
+      // Add click events to dots
+      dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = dot.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+      
+      // Update active dot on scroll
+      const observerOptions = {
+        root: snapContainer,
+        rootMargin: '-50% 0px',
+        threshold: 0
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            // Update active dot
+            dots.forEach(dot => {
+              const dotSection = dot.getAttribute('href').substring(1);
+              if (dotSection === sectionId) {
+                dot.classList.add('active');
+              } else {
+                dot.classList.remove('active');
+              }
+            });
+            
+            // Add animations to section
+            entry.target.classList.add('active-section');
+          }
+        });
+      }, observerOptions);
+      
+      // Observe all sections
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+      
+      // Theme switcher persistence
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.querySelector('body');
+      
+      // Load saved theme preference
+      const savedTheme = localStorage.getItem('fathead-theme');
+      if (savedTheme) {
+        body.setAttribute('data-theme', savedTheme);
+        themeToggle.checked = (savedTheme === 'dark');
+      }
+      
+      // Toggle theme and save preference
+      themeToggle.addEventListener('change', () => {
+        const newTheme = themeToggle.checked ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('fathead-theme', newTheme);
+      });
+    });
+  </script>
 </body>
 </html>

@@ -12,10 +12,10 @@ A futuristic, zero-JavaScript CSS framework for building modern web interfaces w
 - Font Awesome 6 integration with animated icons
 - Easy CDN or local install
 
-**Quickstart**
+**Quickstart - Add to your project:**
 ```html
 <!-- Add Fathead UI CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/daveymason/fathead-ui@latest/fathead-ui.css" />
+<link rel="stylesheet" href="https://daveymason.github.io/fathead-ui/fathead-ui.css" />
 <!-- Optional: Font Awesome 6 for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 ```
@@ -42,15 +42,9 @@ Wrap your app in the root class and set theme:
 - Primary Blue: #219EFF
 - Complementary Orange: #FF8A00 (mathematically derived)
 
-**CDN Options**
+**Stylesheet Link**
 ```html
-<!-- jsDelivr CDN (recommended) -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/daveymason/fathead-ui@latest/fathead-ui.css" />
-
-<!-- Unpkg CDN (alternative) -->
-<link rel="stylesheet" href="https://unpkg.com/fathead-ui@latest/fathead-ui.css" />
-
-<!-- GitHub Pages (direct) -->
+<!-- Add to your project -->
 <link rel="stylesheet" href="https://daveymason.github.io/fathead-ui/fathead-ui.css" />
 ```
 
