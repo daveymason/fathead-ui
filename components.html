@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fathead UI – Components Library</title>
+    <link rel="stylesheet" href="./fathead-ui.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
+<body class="fh-ui" data-theme="light">
+  <label for="theme-toggle" class="theme-toggle-label" title="Toggle light/dark mode"></label>
+  <div class="fh-ui-navbar">
+    <a href="/" class="logo">Fathead UI</a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="components.html" class="nav-link active">Components</a>
+      <a href="documentation.html" class="nav-link">Docs</a>
+    </div>
+  </div>
+  <div class="fh-ui-components-layout">
+    <aside class="fh-ui-components-sidebar">
+      <h3>Components</h3>
+      <ul>
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#cards">Cards</a></li>
+        <li><a href="#grid">Grid</a></li>
+        <li><a href="#table">Table</a></li>
+        <li><a href="#info">Info Card</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#alerts">Alerts</a></li>
+        <li><a href="#navigation">Navigation</a></li>
+        <li><a href="#loader">Loader</a></li>
+        <li><a href="#divider">Divider</a></li>
+        <li><a href="#popup">Popup</a></li>
+        <li><a href="#toast">Toast</a></li>
+        <li><a href="#dialog">Dialog</a></li>
+      </ul>
+    </aside>
+    <main>
+      <section id="buttons" class="fh-ui-component-section">
+        <h2>Buttons</h2>
+        <p class="description">Versatile button styles with hover effects, gradient background, and accessibility built-in. Use for primary and secondary actions.</p>
+        
+        <div class="fh-ui-component-row">
+          <div class="fh-ui-component-demo">
+            <button class="fh-ui-button">Primary</button>
+            <button class="fh-ui-button" style="background: var(--fh-accent)">Accent</button>
+            <button class="fh-ui-button" style="background: var(--fh-secondary)">Secondary</button>
+          </div>
+          <div class="fh-ui-component-code">
+            <pre>&lt;button class="fh-ui-button"&gt;Primary&lt;/button&gt;
+&lt;button class="fh-ui-button" style="background: var(--fh-accent)"&gt;Accent&lt;/button&gt;
+&lt;button class="fh-ui-button" style="background: var(--fh-secondary)"&gt;Secondary&lt;/button&gt;</pre>
+            <button class="copy-btn" data-code-ref="buttons-1">Copy</button>
+          </div>
+        </div>
+        
+        <div class="fh-ui-component-row">
+          <div class="fh-ui-component-demo">
+            <button class="fh-ui-button" style="background:transparent;color:var(--fh-text-secondary);border:1px solid var(--fh-text-secondary)">Ghost</button>
+          </div>
+          <div class="fh-ui-component-code">
+            <pre>&lt;button class="fh-ui-button" style="background:transparent;color:var(--fh-text-secondary);border:1px solid var(--fh-text-secondary)"&gt;Ghost&lt;/button&gt;</pre>
+            <button class="copy-btn" data-code-ref="buttons-2">Copy</button>
+          </div>
+        </div>
+      </section>
+      
+      <section id="cards" class="fh-ui-component-section">
+        <h2>Cards</h2>
+        <p class="description">Glassmorphic cards with hover effects for content grouping. Perfect for articles, product displays, or information grouping.</p>
+        
+        <div class="fh-ui-component-row">
+          <div class="fh-ui-component-demo">
+            <div class="fh-ui-card" style="width:100%">
+              <h3>Card Title</h3>
+              <p>Content with glassmorphism, microfeedbacks and a hover lift effect.</p>
+            </div>
+          </div>
+          <div class="fh-ui-component-code">
+            <pre>&lt;div class="fh-ui-card"&gt;
+  &lt;h3&gt;Card Title&lt;/h3&gt;
+  &lt;p&gt;Content with glassmorphism, microfeedbacks and a hover lift effect.&lt;/p&gt;
+&lt;/div&gt;</pre>
+            <button class="copy-btn" data-code-ref="cards">Copy</button>
+          </div>
+        </div>
+      </section>
+      
+      <section id="grid" class="fh-ui-component-section">
+        <h2>Layout Grid</h2>
+        <p class="description">Responsive grid layout using CSS Grid. Automatically adjusts columns based on available width using the golden ratio.</p>
+        
+        <div class="fh-ui-component-row">
+          <div class="fh-ui-component-demo" style="width:100%">
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--fh-lg);width:100%">
+              <div class="fh-ui-card">Item 1</div>
+              <div class="fh-ui-card">Item 2</div>
+              <div class="fh-ui-card">Item 3</div>
+            </div>
+          </div>
+          <div class="fh-ui-component-code">
+            <pre>&lt;div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--fh-lg)"&gt;
+  &lt;div class="fh-ui-card"&gt;Item 1&lt;/div&gt;
+  &lt;div class="fh-ui-card"&gt;Item 2&lt;/div&gt;
+  &lt;div class="fh-ui-card"&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;</pre>
+            <button class="copy-btn" data-code-ref="grid">Copy</button>
+          </div>
+        </div>
+      </section>
+      
+      <section id="table" class="fh-ui-component-section">
+        <h2>Table</h2>
+        <p class="description">Clean and readable tables with subtle borders and consistent spacing. Great for data presentation.</p>
+        
+        <div class="fh-ui-component-row">
+          <div class="fh-ui-component-demo" style="width:100%">
+            <table style="width:100%;border-collapse:collapse">
+              <thead>
+                <tr>
+                  <th style="border-bottom:1px solid var(--fh-glass-border);padding:var(--fh-sm)">Name</th>
+                  <th style="border-bottom:1px solid var(--fh-glass-border);padding:var(--fh-sm)">Email</th>
+                  <th style="border-bottom:1px solid var(--fh-glass-border);padding:var(--fh-sm)">Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding:var(--fh-sm)">Alice</td>
+                  <td style="padding:var(--fh-sm)">alice@example.com</td>
+                  <td style="padding:var(--fh-sm)">Admin</td>
+                </tr>
+                <tr>
+                  <td style="padding:var(--fh-sm)">Bob</td>
+                  <td style="padding:var(--fh-sm)">bob@example.com</td>
+                  <td style="padding:var(--fh-sm)">User</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="fh-ui-component-code">
+            <pre>&lt;table style="width:100%;border-collapse:collapse"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style="border-bottom:1px solid var(--fh-glass-border);padding:var(--fh-sm)"&gt;Name&lt;/th&gt;
+      &lt;th style="border-bottom:1px solid var(--fh-glass-border);padding:var(--fh-sm)"&gt;Email&lt;/th&gt;
+      &lt;th style="border-bottom:1px solid var(--fh-glass-border);padding:var(--fh-sm)"&gt;Role&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style="padding:var(--fh-sm)"&gt;Alice&lt;/td&gt;
+      &lt;td style="padding:var(--fh-sm)"&gt;alice@example.com&lt;/td&gt;
+      &lt;td style="padding:var(--fh-sm)"&gt;Admin&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style="padding:var(--fh-sm)"&gt;Bob&lt;/td&gt;
+      &lt;td style="padding:var(--fh-sm)"&gt;bob@example.com&lt;/td&gt;
+      &lt;td style="padding:var(--fh-sm)"&gt;User&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+            <button class="copy-btn" data-code-ref="table">Copy</button>
+          </div>
+        </div>
+      </section>
+      
+      <section id="info" class="fh-ui-component-section">
+        <h2>Info Cards</h2>
+        <p class="description">Information cards with hover effects, glow animation, and various styles. Perfect for feature highlights or important notifications.</p>
+        
+        <div class="fh-ui-component-row">
+          <div class="fh-ui-component-demo">
+            <div class="fh-ui-info-card primary">
+              <i class="fa-solid fa-lightbulb"></i>
+              <h3>Primary Info</h3>
+              <p>Important information with primary color accent.</p>
+            </div>
+            <div class="fh-ui-info-card accent" style="margin-top: var(--fh-lg);">
+              <i class="fa-solid fa-bell"></i>
+              <h3>Accent Info</h3>
+              <p>Alternative information with accent color highlight.</p>
+            </div>
+          </div>
+          <div class="fh-ui-component-code">
+            <pre>&lt;div class="fh-ui-info-card primary"&gt;
+  &lt;i class="fa-solid fa-lightbulb"&gt;&lt;/i&gt;
+  &lt;h3&gt;Primary Info&lt;/h3&gt;
+  &lt;p&gt;Important information with primary color accent.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="fh-ui-info-card accent"&gt;
+  &lt;i class="fa-solid fa-bell"&gt;&lt;/i&gt;
+  &lt;h3&gt;Accent Info&lt;/h3&gt;
+  &lt;p&gt;Alternative information with accent color highlight.&lt;/p&gt;
+&lt;/div&gt;</pre>
+            <button class="copy-btn" data-code-ref="info-card">Copy</button>
+          </div>
+        </div>
+      </section>
+      
+      <section id="forms" class="fh-ui-component-section">
+        <h2>Forms</h2>
+        <p class="description">Styled form inputs with focus states and consistent sizing. Includes text fields, select dropdowns, and textareas.</p>
+        
+        <div class="fh-ui-component-row">
+          <div class="fh-ui-component-demo" style="width:100%">
+            <form>
+              <input class="fh-ui-input" type="text" placeholder="Your Name" />
+              <select class="fh-ui-select">
+                <option>Option 1</option>
+                <option>Option 2</option>
+              </select>
+              <textarea class="fh-ui-textarea" rows="3" placeholder="Your Message"></textarea>
+              <button class="fh-ui-button">Submit</button>
+            </form>
+          </div>
+          <div class="fh-ui-component-code">
+            <pre>&lt;form&gt;
+  &lt;input class="fh-ui-input" type="text" placeholder="Your Name" /&gt;
+  &lt;select class="fh-ui-select"&gt;
+    &lt;option&gt;Option 1&lt;/option&gt;
+    &lt;option&gt;Option 2&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;textarea class="fh-ui-textarea" rows="3" placeholder="Your Message"&gt;&lt;/textarea&gt;
+  &lt;button class="fh-ui-button"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</pre>
+            <button class="copy-btn" data-code-ref="forms">Copy</button>
+          </div>
+        </div>
+      </section>
+        <section id="loader" class="fh-ui-component-section">
+        <h2>Loader</h2>
+        <p class="description">CSS-only loading indicators for async operations. Includes spinners in various sizes and a full-screen overlay option.</p>
+        
+        <div class="fh-ui-component-row">
+          <div class="fh-ui-component-demo">
+            <div style="display: flex; align-items: center; gap: var(--fh-lg);">
+              <div class="fh-ui-spinner sm"></div>
+              <div class="fh-ui-spinner"></div>
+              <div class="fh-ui-spinner lg"></div>
+            </div>
+            <label for="loader-overlay-checkbox" class="fh-ui-button" style="margin-top:var(--fh-lg)">Show Loader Overlay</label>
+          </div>
+          <div class="fh-ui-component-code">
+            <pre>&lt;!-- CSS-only Spinner sizes --&gt;
+&lt;div class="fh-ui-spinner sm"&gt;&lt;/div&gt;
+&lt;div class="fh-ui-spinner"&gt;&lt;/div&gt;
+&lt;div class="fh-ui-spinner lg"&gt;&lt;/div&gt;
+&lt;div class="fh-ui-spinner xl"&gt;&lt;/div&gt;
+
+&lt;!-- Loader Overlay with auto-hiding --&gt;
+&lt;input type="checkbox" id="loader-overlay-checkbox" class="fh-ui-loader-checkbox"&gt;
+&lt;div id="fh-ui-loader-overlay"&gt;
+  &lt;div class="fh-ui-spinner xl"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+            <button class="copy-btn" data-code-ref="loader">Copy</button>
+          </div>
+        </div>
+          <input type="checkbox" id="loader-overlay-checkbox" class="fh-ui-loader-checkbox">
+        <div id="fh-ui-loader-overlay">
+          <div class="fh-ui-spinner xl"></div>
+        </div>
+      </section>
+      
+      <section id="popup" class="fh-ui-component-section">
+        <h2>Popup</h2>
+        <p class="description">Modal popup overlay with glassmorphism effect. Use for confirmations or focused user interactions.</p>
+        
+        <div class="fh-ui-component-row">        <div class="fh-ui-component-demo">
+            <label for="demo-popup-checkbox" class="fh-ui-button">Open Popup</label>
+          </div>
+          <div class="fh-ui-component-code">
+            <pre>&lt;input type="checkbox" id="demo-popup-checkbox" class="fh-ui-popup-checkbox"&gt;
+&lt;div class="fh-ui-popup" id="demo-popup"&gt;
+  &lt;div class="fh-ui-popup-content"&gt;
+    &lt;p&gt;Your premium modal pop-up.&lt;/p&gt;
+    &lt;label for="demo-popup-checkbox" class="fh-ui-button"&gt;Close&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;label for="demo-popup-checkbox" class="fh-ui-close-overlay"&gt;&lt;/label&gt;
+&lt;/div&gt;</pre>
+            <button class="copy-btn" data-code-ref="popup">Copy</button>
+          </div>
+        </div>          <input type="checkbox" id="demo-popup-checkbox" class="fh-ui-popup-checkbox">          <div class="fh-ui-popup" id="demo-popup">
+            <div class="fh-ui-popup-content">
+              <h3><i class="fa-solid fa-circle-info fa-beat-fade" style="color: #219EFF"></i> Popup</h3>
+              <p>Your premium modal pop-up with glassmorphism effect.</p>
+              <label for="demo-popup-checkbox" class="fh-ui-button">Return to Demo <i class="fa-solid fa-reply"></i></label>
+            </div>
+            <label for="demo-popup-checkbox" class="fh-ui-close-overlay"></label>
+          </div>
+      </section>
+      
+      <section id="toast" class="fh-ui-component-section">
+        <h2>Toast</h2>
+        <p class="description">Temporary notifications that appear and disappear automatically. Use for confirmations or alerts.</p>
+        
+        <div class="fh-ui-component-row">        <div class="fh-ui-component-demo">
+            <label for="demo-toast-checkbox" class="fh-ui-button">Show Toast</label>
+          </div>
+          <div class="fh-ui-component-code">
+            <pre>&lt;input type="checkbox" id="demo-toast-checkbox" class="fh-ui-toast-checkbox"&gt;
+&lt;div class="fh-ui-toast" id="demo-toast"&gt;This is a toast notification!&lt;/div&gt;</pre>
+            <button class="copy-btn" data-code-ref="toast">Copy</button>
+          </div>
+        </div>
+        
+        <input type="checkbox" id="demo-toast-checkbox" class="fh-ui-toast-checkbox">
+        <div class="fh-ui-toast" id="demo-toast"><i class="fa-solid fa-bell fa-shake"></i> This is a CSS-only toast notification with auto-hide animation!</div>
+      </section>
+      
+      <section id="dialog" class="fh-ui-component-section">
+        <h2>Dialog</h2>
+        <p class="description">Full-screen modal dialog for important interactions. Includes a centered content area with title.</p>
+        
+        <div class="fh-ui-component-row">        <div class="fh-ui-component-demo">
+            <label for="demo-dialog-checkbox" class="fh-ui-button">Open Dialog</label>
+          </div>
+          <div class="fh-ui-component-code">
+            <pre>&lt;input type="checkbox" id="demo-dialog-checkbox" class="fh-ui-dialog-checkbox"&gt;
+&lt;div class="fh-ui-dialog" id="demo-dialog"&gt;
+  &lt;div class="fh-ui-dialog-content"&gt;
+    &lt;h3&gt;Dialog Title&lt;/h3&gt;
+    &lt;p&gt;This is a dialog box with HTML and CSS.&lt;/p&gt;
+    &lt;label for="demo-dialog-checkbox" class="fh-ui-button"&gt;Close&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;label for="demo-dialog-checkbox" class="fh-ui-close-overlay"&gt;&lt;/label&gt;
+&lt;/div&gt;</pre>
+            <button class="copy-btn" data-code-ref="dialog">Copy</button>
+          </div>
+        </div>          <input type="checkbox" id="demo-dialog-checkbox" class="fh-ui-dialog-checkbox">          <div class="fh-ui-dialog" id="demo-dialog">
+            <div class="fh-ui-dialog-content">
+              <h3><i class="fa-solid fa-circle-exclamation fa-beat-fade" style="color: #219EFF"></i> Dialog Box</h3>
+              <p>This is a full-screen modal dialog that uses only pure CSS techniques. No JavaScript is needed for this interaction.</p>
+              <label for="demo-dialog-checkbox" class="fh-ui-button">Return to Demo <i class="fa-solid fa-reply"></i></label>
+            </div>
+            <label for="demo-dialog-checkbox" class="fh-ui-close-overlay"></label>
+          </div>
+      </section>
+    </main>
+  </div>
+  
+  <a href="/" class="floating-link">Back to Home</a>
+    <footer class="fh-ui-footer" id="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>Fathead UI</h3>
+        <p>Pure CSS Framework</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="/">Home</a>
+        <a href="components.html">Components</a>
+        <a href="documentation.html">Documentation</a>
+      </div>
+      <div class="footer-links">
+        <h4>Follow</h4>
+        <a href="https://github.com/daveymason/fathead-ui" target="_blank"><i class="fab fa-github fa-bounce"></i> GitHub</a>
+        <a href="https://fatheadsolutions.com" target="_blank"><i class="fas fa-globe fa-spin-pulse"></i> Website</a>
+        <a href="documentation.html"><i class="fas fa-book fa-flip"></i> Docs</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Fathead UI. Built with pure CSS. No JavaScript used.</p>
+    </div>
+  </footer>
+    <!-- All JavaScript functionality has been replaced with pure CSS solutions -->
+  <!-- See the CSS file for details on how each component works -->
+</body>
+</html>

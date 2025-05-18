@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fathead UI – Documentation</title>
+  <link rel="stylesheet" href="./fathead-ui.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
+<body class="fh-ui" data-theme="light">
+  <label for="theme-toggle" class="theme-toggle-label" title="Toggle light/dark mode"></label>
+  <div class="fh-ui-navbar">
+    <a href="/" class="logo">Fathead UI</a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="components.html" class="nav-link">Components</a>
+      <a href="documentation.html" class="nav-link active">Docs</a>
+    </div>
+  </div>
+  <div style="display:flex;gap:var(--fh-xl);max-width:1200px;margin:0 auto;">
+    <aside class="fh-ui-sidebar" style="min-width:220px;max-width:260px;">
+      <h3>Docs</h3>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--fh-sm)">
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#components">Components</a></li>
+        <li><a href="#utilities">Utility Classes</a></li>
+        <li><a href="#spacing">Golden Ratio & Spacing</a></li>
+        <li><a href="#hci">HCI & Accessibility</a></li>
+        <li><a href="#customization">Customization</a></li>
+      </ul>
+    </aside>
+    <main class="fh-ui-container" style="flex:1;min-width:0;">
+      <section id="getting-started">
+        <h2>Getting Started</h2>
+        <p>To use Fathead UI, include the CDN link in your <code>&lt;head&gt;</code>:</p>        <div class="code-snippet">
+          <pre>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/daveymason/fathead-ui@latest/fathead-ui.css" /&gt;</pre>
+          <button class="copy-btn">Copy</button>
+        </div>
+        
+        <h3>CDN Options</h3>
+        <div class="fh-ui-info-card primary" style="margin-bottom:var(--fh-lg)">
+          <h4><i class="fas fa-server fa-fade"></i> Multiple CDN Options Available</h4>
+          <div class="code-snippet" style="margin-top:var(--fh-sm)">
+            <pre>&lt;!-- jsDelivr CDN (recommended) --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/daveymason/fathead-ui@latest/fathead-ui.css" /&gt;
+
+&lt;!-- Unpkg CDN (alternative) --&gt;
+&lt;link rel="stylesheet" href="https://unpkg.com/fathead-ui@latest/fathead-ui.css" /&gt;
+
+&lt;!-- GitHub Pages (direct) --&gt;
+&lt;link rel="stylesheet" href="https://daveymason.github.io/fathead-ui/fathead-ui.css" /&gt;</pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+        </div>
+        
+        <p>Wrap your app in <code>&lt;body class=&quot;fh-ui&quot; data-theme=&quot;light&quot;&gt;</code> for theme support.</p>
+      </section>
+      <hr />
+      <section id="components">
+        <h2>Components</h2>
+        <ul>
+          <li><b>Navbar:</b> <code>.fh-ui-navbar</code> – Responsive, sticky, glassmorphic navigation bar.</li>
+          <li><b>Button:</b> <code>.fh-ui-button</code> – Gradient, animated, accessible buttons.</li>
+          <li><b>Card:</b> <code>.fh-ui-card</code> – Glassmorphism, shadow, and hover effects.</li>
+          <li><b>Sidebar:</b> <code>.fh-ui-sidebar</code> – Vertical navigation, glassmorphic, responsive.</li>
+          <li><b>Hero Section:</b> <code>.hero-section</code> – Large, gradient, animated intro section.</li>
+          <li><b>Code Snippet:</b> <code>.code-snippet</code> – Highlighted code with copy button.</li>
+          <li><b>Floating Link:</b> <code>.floating-link</code> – Fixed, glassy, animated call-to-action.</li>
+          <li><b>Alert/Feedback:</b> <code>.fh-ui-feedback</code> – Accessible, animated info banners.</li>
+        </ul>
+      </section>
+      <hr />
+      <section id="utilities">
+        <h2>Utility Classes</h2>
+        <ul>
+          <li><code>.fh-ui-glass</code> – Apply glassmorphism to any element.</li>
+          <li><code>.fh-ui-holo-icon</code> – Holographic animated icon effect.</li>
+        </ul>
+      </section>
+      <hr />
+      <section id="spacing">
+        <h2>Golden Ratio & Spacing</h2>
+        <p>Fathead UI uses the golden ratio (<b>1.618</b>) for all spacing and sizing. Core variables:</p>
+        <ul>
+          <li><code>--fh-base</code>: 1rem (base unit)</li>
+          <li><code>--fh-xs</code>: <code>calc(var(--fh-base) / 1.618)</code></li>
+          <li><code>--fh-sm</code>: <code>calc(var(--fh-xs) * 1.618)</code></li>
+          <li><code>--fh-md</code>: <code>var(--fh-base)</code></li>
+          <li><code>--fh-lg</code>: <code>calc(var(--fh-base) * 1.618)</code></li>
+          <li><code>--fh-xl</code>: <code>calc(var(--fh-lg) * 1.618)</code></li>
+          <li><code>--fh-xxl</code>: <code>calc(var(--fh-xl) * 1.618)</code></li>
+        </ul>
+        <p>Use these variables for margin, padding, gap, and font-size for harmonious layouts.</p>
+      </section>
+      <hr />
+      <section id="hci">
+        <h2>HCI & Accessibility</h2>
+        <ul>
+          <li>All components use high-contrast colors and large touch targets.</li>
+          <li>Keyboard navigation and focus states are built-in.</li>
+          <li>WCAG 2.1 AA color contrast and ARIA best practices.</li>
+          <li>Animations respect <code>prefers-reduced-motion</code> for accessibility.</li>
+        </ul>
+      </section>
+      <hr />
+      <section id="customization">
+        <h2>Customization</h2>
+        <p>Override any <code>:root</code> CSS variable to change theme colors, spacing, or fonts. Example:</p>
+        <div class="code-snippet">
+          <pre>:root {
+  --fh-primary: #2DC0FF;
+  --fh-accent: #FF8A00;
+}</pre>
+          <button class="copy-btn">Copy</button>
+        </div>
+        <p>Switch between <b>light</b> and <b>dark</b> themes by changing <code>data-theme</code> on <code>&lt;body&gt;</code>.</p>
+      </section>
+      <hr />
+      <section id="implementation">
+        <h2>CSS-Only Implementation</h2>
+        <p>Fathead UI uses pure CSS solutions with no JavaScript dependencies, making it lightweight and compatible with any JavaScript framework (or none at all).</p>
+          <h3>Interactive Components</h3>
+        <ul>
+          <li>
+            <b>Copy Buttons:</b> Use CSS-only animations for feedback when clicked. The <code>::before</code> pseudo-element slides into view on click and fades out using keyframe animations.
+          </li>
+          <li>
+            <b>Popups &amp; Dialogs:</b> Implemented using hidden checkboxes for state management. When a <code>&lt;label for="checkbox-id"&gt;</code> is clicked, the associated checkbox toggles and CSS shows/hides the popup using the <code>:checked</code> selector.
+          </li>
+          <li>
+            <b>Toasts:</b> Use checkbox-based state with auto-hiding animations. The toast appears when the checkbox is checked and automatically fades out after a set duration using CSS animations.
+          </li>
+          <li>
+            <b>Loaders:</b> Show and auto-hide with CSS animations. The <code>loader-auto-hide</code> animation automatically hides the loader after a delay when triggered.
+          </li>
+          <li>
+            <b>Active Navigation:</b> Sidebar links use the <code>.active</code> class for highlighting, which is applied based on the current section using only CSS.
+          </li>
+        </ul>
+          <h3>Example: CSS-Only Modal</h3>
+        <div class="code-snippet">
+          <pre>&lt;!-- Hidden checkbox for state management --&gt;
+&lt;input type="checkbox" id="my-popup-checkbox" class="fh-ui-popup-checkbox"&gt;
+
+&lt;!-- Trigger label styled as a button --&gt;
+&lt;label for="my-popup-checkbox" class="fh-ui-button"&gt;Open Popup&lt;/label&gt;
+
+&lt;!-- The modal/popup --&gt;
+&lt;div class="fh-ui-popup" id="my-popup"&gt;
+  &lt;div class="fh-ui-popup-content"&gt;
+    &lt;p&gt;Popup content&lt;/p&gt;
+    &lt;label for="my-popup-checkbox" class="fh-ui-button"&gt;Close&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;label for="my-popup-checkbox" class="fh-ui-close-overlay"&gt;&lt;/label&gt;
+&lt;/div&gt;</pre>
+          <button class="copy-btn">Copy</button>
+        </div>
+      </section>
+    </main>
+  </div>  <a href="components.html" class="floating-link">Component Library <i class="fa-solid fa-arrow-right"></i></a>
+  
+  <footer class="fh-ui-footer" id="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>Fathead UI</h3>
+        <p>Pure CSS Framework</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="/">Home</a>
+        <a href="components.html">Components</a>
+        <a href="documentation.html">Documentation</a>
+      </div>
+      <div class="footer-links">
+        <h4>Follow</h4>
+        <a href="https://github.com/daveymason/fathead-ui" target="_blank"><i class="fab fa-github fa-bounce"></i> GitHub</a>
+        <a href="https://fatheadsolutions.com" target="_blank"><i class="fas fa-globe fa-spin-pulse"></i> Website</a>
+        <a href="documentation.html"><i class="fas fa-book fa-flip"></i> Docs</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Fathead UI. Built with pure CSS. No JavaScript used.</p>
+    </div>
+  </footer>
+</body>
+</html>

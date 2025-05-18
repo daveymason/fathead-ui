@@ -1,0 +1,2096 @@
+/*!
+ * Fathead UI Design Kit
+ * Minimalist Futuristic 2030 – Golden Ratio, Glassmorphism, Microfeedbacks
+ * https://fatheadsolutions.com/fathead-ui
+ */
+
+/* =========================
+   1. Root Variables
+   ========================= */
+:root {
+    --fh-primary: #219EFF;
+    --fh-secondary: #6A0DAD;
+    --fh-accent: #FF8A00;
+    --fh-background: rgba(20, 20, 30, 0.85);
+    --fh-text: #fff;
+    --fh-text-secondary: rgba(255,255,255,0.8);
+    --fh-text-tertiary: rgba(255,255,255,0.6);
+    --fh-glow: rgba(33, 158, 255, 0.5);
+    --fh-shadow: rgba(0,0,0,0.3);
+    --fh-golden: 1.618;
+    --fh-radius: 12px;
+    --fh-transition: all 0.25s cubic-bezier(0.23,1,0.32,1);
+
+    /* Golden ratio sizing */
+    --fh-base: 1rem;
+    --fh-xs: calc(var(--fh-base) / var(--fh-golden));
+    --fh-sm: calc(var(--fh-xs) * var(--fh-golden));
+    --fh-md: var(--fh-base);
+    --fh-lg: calc(var(--fh-base) * var(--fh-golden));
+    --fh-xl: calc(var(--fh-lg) * var(--fh-golden));
+    --fh-xxl: calc(var(--fh-xl) * var(--fh-golden));
+
+    /* Glassmorphism */
+    --fh-glass-bg: rgba(20,20,30,0.7);
+    --fh-glass-border: rgba(255,255,255,0.2);
+    --fh-glass-highlight: rgba(0,0,0,0.14);
+    --fh-glass-shadow: rgba(255,255,255,0.05);
+    --fh-glass-blur: 20px;    /* Gaussian blur for glass surfaces */
+    --fh-bg-blur: 10px;       /* Background blur intensity */
+
+    /* Fonts */
+    --fh-font-body: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    --fh-font-headings: var(--fh-font-body);
+}
+
+/* Light theme override: corporate professional light mode */
+.fh-ui[data-theme="light"] {
+    --fh-background: #F0F2F5;
+    --fh-text: #222222;
+    --fh-text-secondary: rgba(30,30,30,0.75);
+    --fh-glass-bg: rgba(255,255,255,0.7);
+    --fh-glass-border: rgba(0,0,0,0.1);
+    --fh-glow: rgba(195,49,125,0.2);
+    --fh-shadow: rgba(0,0,0,0.15);
+}
+
+/* =========================
+   2. Reset & Base
+   ========================= */
+.fh-ui *,
+.fh-ui *::before,
+.fh-ui *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: var(--fh-transition);
+}
+
+.fh-ui {
+    font-family: var(--fh-font-body);
+    color: var(--fh-text);
+    background: var(--fh-background);
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+/* =========================
+   3. Layout & Containers
+   ========================= */
+.fh-ui-container {
+    background: var(--fh-glass-bg);
+    backdrop-filter: blur(var(--fh-bg-blur));
+    border-radius: var(--fh-radius);
+    box-shadow: 0 4px 20px var(--fh-shadow);
+    padding: var(--fh-lg);
+    margin: var(--fh-lg) auto;
+    max-width: 900px;
+    position: relative;
+    overflow: hidden;
+}
+.fh-ui-container::before {
+    content: '';
+    position: absolute;
+    top: var(--mouse-y, 50%);
+    left: var(--mouse-x, 50%);
+    width: 300%;
+    height: 300%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 60%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.fh-ui-container:hover::before {
+    opacity: 1;
+}
+
+.fh-ui-header {
+    text-align: center;
+    padding: var(--fh-xl) 0 var(--fh-lg);
+    margin-bottom: var(--fh-xl);
+    position: relative;
+}
+
+.fh-ui-header h1 {
+    font-family: var(--fh-font-headings);
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, var(--fh-primary), var(--fh-secondary), var(--fh-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 15px var(--fh-glow);
+    display: inline-block;
+    animation: fh-fade-in 0.8s ease-out;
+}
+
+.fh-ui-header p {
+    font-size: var(--fh-md);
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.8;
+    animation: fh-fade-in 1s ease-out 0.2s both;
+}
+
+/* =========================
+   4. Cards & Glassmorphism
+   ========================= */
+.fh-ui-card {
+    background: linear-gradient(120deg, var(--fh-glass-bg) 80%, rgba(45,192,255,0.05) 100%);
+    border: 1px solid var(--fh-glass-border);
+    border-left: 4px solid var(--fh-primary);
+    border-radius: var(--fh-radius);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 15px var(--fh-glow);
+    padding: var(--fh-lg);
+    margin-bottom: var(--fh-lg);
+    position: relative;
+    overflow: hidden;
+    animation: fh-slide-up 0.5s cubic-bezier(0.23,1,0.32,1) both;
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(var(--fh-glass-blur));
+    font-size: var(--fh-lg);
+}
+.fh-ui-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px var(--fh-glow);
+}
+
+/* =========================
+   5. Inputs & Forms
+   ========================= */
+.fh-ui-input,
+.fh-ui-textarea,
+.fh-ui-select {
+    width: 100%;
+    background: rgba(20,20,30,0.6);
+    color: var(--fh-text);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    padding: 0 15px;
+    font-size: 1rem;
+    font-family: var(--fh-font-body);
+    margin-bottom: var(--fh-sm);
+    transition: var(--fh-transition);
+}
+.fh-ui-input:focus,
+.fh-ui-textarea:focus,
+.fh-ui-select:focus {
+    outline: none;
+    border-color: var(--fh-primary);
+    box-shadow: 0 0 15px var(--fh-glow);
+}
+
+/* =========================
+   6. Buttons
+   ========================= */
+.fh-ui-button {
+    background: linear-gradient(90deg, var(--fh-primary), var(--fh-accent));
+    color: #fff;
+    border: none;
+    border-radius: var(--fh-radius);
+    padding: var(--fh-sm) var(--fh-xl);
+    font-size: var(--fh-md);
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 12px var(--fh-glow);
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    outline: none;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background: #219EFF;
+}
+.fh-ui-button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 24px var(--fh-glow);
+}
+.fh-ui-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: calc(var(--fh-radius) - 2px);
+    transform: scale(1.1);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+    z-index: -1;
+}
+.fh-ui-button:hover::before {
+    transform: scale(1);
+    opacity: 1;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Enhanced CSS-only functionality */
+.fh-ui-button {
+    cursor: pointer;
+}
+
+/* Make label buttons behave like regular buttons */
+label.fh-ui-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================
+   7. Microfeedbacks & Animations
+   ========================= */
+@keyframes fh-fade-in {
+    from { opacity: 0; transform: translateY(-10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+@keyframes fh-slide-up {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+@keyframes fh-rotate-holo {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+}
+@keyframes fh-shine {
+    0% { transform: translateX(-100%);}
+    20% { transform: translateX(100%);}
+    100% { transform: translateX(100%);}
+}
+
+/* =========================
+   8. Hologram & Glow Effects
+   ========================= */
+.fh-ui-holo-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.fh-ui-holo-icon::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -30%;
+    width: 160%;
+    height: 160%;
+    background: conic-gradient(
+        from 0deg, 
+        transparent 0%, 
+        var(--fh-glow) 15%, 
+        var(--fh-accent) 35%, 
+        var(--fh-glow) 65%,
+        transparent 100%
+    );
+    border-radius: 50%;
+    z-index: -1;
+    animation: fh-rotate-holo 8s linear infinite;
+    filter: blur(5px);
+}
+
+/* =========================
+   9. Accessibility & Responsiveness
+   ========================= */
+@media (max-width: 768px) {
+    .fh-ui-header h1 { font-size: calc(var(--fh-base) * var(--fh-golden) * 1.2);}
+    .fh-ui-container { padding: var(--fh-md);}
+    .fh-ui-card { padding: var(--fh-md);}
+}
+
+/* =========================
+   10. Utility Classes
+   ========================= */
+.fh-ui-glass {
+    background: var(--fh-glass-bg);
+    border: 1px solid var(--fh-glass-border);
+    backdrop-filter: blur(10px);
+    border-radius: var(--fh-radius);
+    box-shadow: 0 4px 20px var(--fh-shadow);
+}
+
+/* =========================
+   11. Feedback, Info, Loader
+   ========================= */
+.fh-ui-feedback {
+    background: var(--fh-glass-bg);
+    border-left: 3px solid var(--fh-primary);
+    border-radius: var(--fh-radius);
+    padding: var(--fh-md);
+    margin-top: var(--fh-base);
+    font-size: var(--fh-base);
+    color: var(--fh-text);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+.fh-ui-feedback.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Loader Overlay */
+#fh-ui-loader-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(20,20,30,0.7);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  animation: fh-fade-in 0.4s;
+}
+
+.fh-ui-loader-checkbox {
+  display: none;
+}
+
+.fh-ui-loader-checkbox:checked + #fh-ui-loader-overlay {
+  display: flex;
+  animation: loader-auto-hide 2s forwards;
+}
+
+/* Toast Notification */
+.fh-ui-toast {
+  position: fixed;
+  bottom: var(--fh-xl);
+  left: 50%;
+  transform: translateX(-50%) translateY(40px);
+  background: var(--fh-glass-bg);
+  color: var(--fh-text);
+  border-radius: var(--fh-radius);
+  box-shadow: 0 4px 24px var(--fh-shadow);
+  padding: var(--fh-md) var(--fh-xl);
+  font-size: var(--fh-md);
+  backdrop-filter: blur(var(--fh-glass-blur));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s, transform 0.4s;
+  z-index: 2100;
+  border-left: 4px solid var(--fh-primary);
+}
+
+.fh-ui-toast-checkbox {
+  display: none;
+}
+
+.fh-ui-toast-checkbox:checked + .fh-ui-toast {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+  animation: toast-show-hide 3s forwards;
+}
+
+@keyframes toast-show-hide {
+  0% { 
+    opacity: 0;
+    transform: translateX(-50%) translateY(40px); 
+  }
+  10% { 
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); 
+  }
+  90% { 
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); 
+  }
+  100% { 
+    opacity: 0;
+    transform: translateX(-50%) translateY(40px); 
+  }
+}
+
+/* Dialog */
+.fh-ui-dialog {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(20,20,30,0.6);
+  z-index: 2100;
+  align-items: center;
+  justify-content: center;
+  animation: fh-fade-in 0.4s;
+}
+
+.fh-ui-dialog-checkbox {
+  display: none;
+}
+
+.fh-ui-dialog-checkbox:checked + .fh-ui-dialog {
+  display: flex;
+}
+.fh-ui-dialog-content {
+  background: var(--fh-glass-bg);
+  border-radius: var(--fh-radius);
+  box-shadow: 0 8px 32px var(--fh-shadow);
+  padding: var(--fh-xl);
+  min-width: 320px;
+  max-width: 90vw;
+  text-align: center;
+  animation: fh-slide-up 0.5s;
+}
+.fh-ui-dialog-content h3 {
+  margin-bottom: var(--fh-md);
+}
+
+/* =========================
+   12. Navbar
+   ========================= */
+.fh-ui-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--fh-base) * 0.75) var(--fh-xl);
+  background: var(--fh-glass-bg);
+  backdrop-filter: blur(var(--fh-glass-blur));
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 16px var(--fh-shadow);
+  border-bottom: 1px solid var(--fh-glass-border);
+  min-height: 72px;
+}
+.fh-ui-navbar .logo {
+  font-size: var(--fh-xl);
+  font-weight: 700;
+  color: var(--fh-primary);
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  font-family: 'SF Pro Display', 'Segoe UI', Arial, sans-serif;
+  text-shadow: 0 2px 12px var(--fh-glow);
+  transition: color 0.2s;
+}
+.fh-ui-navbar .logo:hover {
+  color: var(--fh-accent);
+}
+.fh-ui-navbar .nav-links {
+  display: flex;
+  gap: var(--fh-lg);
+}
+.fh-ui-navbar .nav-link {
+  position: relative;
+  color: var(--fh-text);
+  text-decoration: none;
+  font-size: var(--fh-md);
+  font-weight: 500;
+  padding: var(--fh-xs) 0;
+  transition: color 0.2s;
+}
+.fh-ui-navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--fh-primary), var(--fh-accent));
+  border-radius: 2px;
+  transition: width 0.3s cubic-bezier(0.23,1,0.32,1);
+}
+.fh-ui-navbar .nav-link:hover,
+.fh-ui-navbar .nav-link.active {
+  color: var(--fh-primary);
+}
+.fh-ui-navbar .nav-link:hover::after,
+.fh-ui-navbar .nav-link.active::after {
+  width: 100%;
+}
+
+/* =========================
+   13. Hero Section
+   ========================= */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80vh;
+  padding: var(--fh-xxl) var(--fh-lg) var(--fh-xl) var(--fh-lg);
+  background: linear-gradient(120deg, rgba(45,192,255,0.08) 0%, rgba(255,138,0,0.06) 100%);
+  border-radius: 0 0 var(--fh-xl) var(--fh-xl);
+  box-shadow: 0 8px 32px var(--fh-shadow);
+  position: relative;
+  overflow: hidden;
+}
+.hero-section h1 {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-family: 'SF Pro Display', 'Segoe UI', Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, var(--fh-primary), var(--fh-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 24px var(--fh-glow);
+  margin-bottom: var(--fh-lg);
+  animation: fh-fade-in 0.8s cubic-bezier(0.23,1,0.32,1);
+}
+.hero-section p {
+  font-size: var(--fh-xl);
+  font-weight: 400;
+  color: var(--fh-text-secondary);
+  margin-bottom: var(--fh-xl);
+  max-width: 700px;
+  animation: fh-fade-in 1s cubic-bezier(0.23,1,0.32,1) 0.2s both;
+}
+.hero-section .cta-button {
+  margin-top: var(--fh-lg);
+  font-size: var(--fh-lg);
+  padding: var(--fh-sm) var(--fh-xl);
+  border-radius: var(--fh-radius);
+  box-shadow: 0 4px 24px var(--fh-glow);
+}
+
+/* =========================
+   14. Code Snippet + Copy
+   ========================= */
+.code-snippet {
+  position: relative;
+  background: var(--fh-glass-bg);
+  border: 1px solid var(--fh-glass-border);
+  border-radius: var(--fh-radius);
+  padding: var(--fh-lg) var(--fh-xl) var(--fh-lg) var(--fh-lg);
+  margin-top: var(--fh-lg);
+  font-family: 'JetBrains Mono', 'Fira Mono', 'Courier New', monospace;
+  font-size: var(--fh-md);
+  box-shadow: 0 2px 12px var(--fh-shadow);
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: box-shadow 0.2s;
+  animation: float-animation 6s ease-in-out infinite;
+}
+.code-snippet pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--fh-text-secondary);
+}
+.code-snippet .copy-btn {
+  position: absolute;
+  top: var(--fh-sm);
+  right: var(--fh-sm);
+  background: var(--fh-primary);
+  color: #fff;
+  border: none;
+  padding: var(--fh-xs) var(--fh-sm);
+  border-radius: var(--fh-radius);
+  font-size: var(--fh-xs);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--fh-glow);
+  transition: background 0.3s, box-shadow 0.2s;
+}
+.code-snippet .copy-btn:hover {
+  background: var(--fh-accent);
+  box-shadow: 0 4px 16px var(--fh-glow);
+}
+.code-snippet .copy-btn::after {
+  content: "✓ Copied";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(33, 150, 243, 0.8);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: var(--fh-radius);
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.4);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+.code-snippet .copy-btn:active::after,
+.code-snippet .copy-btn:focus::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+  animation: hologram-fade 1.5s forwards;
+}
+
+@keyframes hologram-fade {
+  0%, 10% {
+    opacity: 0.9;
+    transform: translateX(-50%) translateY(-5px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(-50%) translateY(-15px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-25px) scale(0.9);
+  }
+}
+
+/* =========================
+   15. Floating Library Link
+   ========================= */
+.floating-link {
+  position: fixed;
+  bottom: var(--fh-xl);
+  right: var(--fh-xl);
+  background: var(--fh-glass-bg);
+  border: 1px solid var(--fh-glass-border);
+  padding: var(--fh-sm) var(--fh-xl);
+  border-radius: var(--fh-radius);
+  backdrop-filter: blur(var(--fh-glass-blur));
+  box-shadow: 0 4px 24px var(--fh-shadow);
+  text-decoration: none;
+  color: var(--fh-primary);
+  font-weight: 700;
+  font-size: var(--fh-lg);
+  letter-spacing: 1px;
+  transition: transform 0.3s, box-shadow 0.3s, color 0.2s;
+  z-index: 1200;
+}
+.floating-link:hover {
+  transform: translateY(-4px) scale(1.04);
+  color: var(--fh-accent);
+  box-shadow: 0 8px 32px var(--fh-glow);
+}
+
+/* =========================
+   13. Glass Grid & Backgrounds
+   ========================= */
+.fh-ui-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, #0c0d10, #161925);
+    z-index: -2;
+}
+.fh-ui-bg::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 25% 25%, rgba(45,192,255,0.15), transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(251,195,5,0.15), transparent 50%);
+    opacity: 0.2;
+    z-index: -1;
+}
+.fh-ui-grid {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: -1;
+    pointer-events: none;
+    transform: perspective(500px) rotateX(60deg);
+    transform-origin: center top;
+    opacity: 0.3;
+}
+
+/* =========================
+   14. Reduced Motion
+   ========================= */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (max-width: 900px) {
+  .fh-ui-navbar { flex-direction: column; align-items: flex-start; padding: var(--fh-md) var(--fh-lg); }
+  .fh-ui-navbar .nav-links { gap: var(--fh-md); }
+  .hero-section { padding: var(--fh-xl) var(--fh-md); }
+  .floating-link { right: var(--fh-lg); bottom: var(--fh-lg); }
+}
+
+/* =========================
+   16. Components Page Layout & Snap Scroll
+   ========================= */
+.fh-ui-components-layout {
+  display: flex;
+  min-height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  padding-left: 260px; /* Match sidebar width */
+}
+.fh-ui-components-sidebar {
+  position: fixed;
+  top: 72px; /* Match navbar height */
+  left: 0;
+  width: 260px;
+  height: calc(100vh - 72px);
+  overflow-y: auto;
+  background: var(--fh-glass-bg);
+  border-right: 1px solid var(--fh-glass-border);
+  padding: var(--fh-xl) var(--fh-lg);
+  z-index: 10;
+  box-shadow: 2px 0 16px var(--fh-shadow);
+  transition: transform 0.1s ease;
+}
+.fh-ui-components-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--fh-lg);
+}
+.fh-ui-components-sidebar a {
+  color: var(--fh-text-secondary);
+  text-decoration: none;
+  font-size: var(--fh-lg);
+  font-weight: 500;
+  padding: var(--fh-md) var(--fh-lg);
+  border-radius: var(--fh-radius);
+  transition: background 0.2s, color 0.2s;
+  display: block;
+}
+.fh-ui-components-sidebar a.active,
+.fh-ui-components-sidebar a:hover {
+  color: var(--fh-primary);
+  background: rgba(45,192,255,0.10);
+}
+
+.fh-ui-component-section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--fh-xxl) var(--fh-xl);
+  animation: fh-fade-in 1s cubic-bezier(0.23,1,0.32,1);
+  position: relative;
+  padding-top: var(--fh-xxl);
+  padding-bottom: var(--fh-xxl);
+  margin-bottom: var(--fh-xl);
+  animation: fh-fade-in-permanent 1s cubic-bezier(0.23,1,0.32,1);
+  border-bottom: 1px solid var(--fh-glass-border);
+  margin-bottom: var(--fh-xxl);
+  padding-bottom: var(--fh-xxl);
+}
+.fh-ui-component-section h2 {
+  font-size: var(--fh-xxl);
+  margin-bottom: var(--fh-md);
+  background: linear-gradient(90deg, var(--fh-primary), var(--fh-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 15px var(--fh-glow);
+  align-self: flex-start;
+}
+.fh-ui-component-section .description {
+  font-size: var(--fh-lg);
+  color: var(--fh-text-secondary);
+  margin-bottom: var(--fh-xl);
+  align-self: flex-start;
+  max-width: 800px;
+}
+
+/* 2-column layout for component and code */
+.fh-ui-component-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--fh-xl);
+  width: 100%;
+  margin-top: var(--fh-lg);
+}
+.fh-ui-component-demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+.fh-ui-component-code {
+  background: var(--fh-glass-bg);
+  border: 1px solid var(--fh-glass-border);
+  border-radius: var(--fh-radius);
+  padding: var(--fh-lg);
+  position: relative;
+  font-family: 'JetBrains Mono', 'Fira Mono', 'Courier New', monospace;
+  font-size: var(--fh-sm);
+  box-shadow: 0 2px 12px var(--fh-shadow);
+  max-height: 300px;
+  overflow-y: auto;
+  color: var(--fh-text-secondary);
+}
+.fh-ui-component-code pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.fh-ui-component-code .copy-btn {
+  position: absolute;
+  top: var(--fh-sm);
+  right: var(--fh-sm);
+  background: var(--fh-primary);
+  color: #fff;
+  border: none;
+  padding: var(--fh-xs) var(--fh-sm);
+  border-radius: var(--fh-radius);
+  font-size: var(--fh-xs);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--fh-glow);
+  transition: background 0.3s, box-shadow 0.2s;
+}
+.fh-ui-component-code .copy-btn:hover {
+  background: var(--fh-accent);
+}
+
+/* Section entry animation on scroll */
+.fh-ui-component-section {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s cubic-bezier(0.23,1,0.32,1), transform 0.7s cubic-bezier(0.23,1,0.32,1);
+}
+.fh-ui-component-section:target {
+  animation: highlight-section 1.5s ease-out;
+}
+
+@keyframes highlight-section {
+  0% { background-color: rgba(195,49,125,0.1); }
+  100% { background-color: transparent; }
+}
+
+@keyframes fh-fade-in-permanent {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fix components layout for sidebar */
+@media (max-width: 900px) {
+  .fh-ui-component-row { grid-template-columns: 1fr; }
+  .fh-ui-components-sidebar { 
+    position: static;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid var(--fh-glass-border);
+    border-right: none;
+  }
+  .fh-ui-components-layout { padding-left: 0; }
+  .fh-ui-components-layout { flex-direction: column; }
+  .fh-ui-component-section { min-height: 80vh; padding: var(--fh-xl) var(--fh-md); }
+}
+
+/* Popup improvements */
+.fh-ui-popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; 
+  width: 100vw; 
+  height: 100vh;
+  background: rgba(20,20,30,0.6);
+  z-index: 2100;
+  align-items: center;
+  justify-content: center;
+  animation: fh-fade-in 0.4s;
+  min-width: 320px;
+  max-width: 90vw;
+  text-align: center;
+}
+
+.fh-ui-popup-checkbox {
+  display: none;
+}
+
+.fh-ui-popup-checkbox:checked + .fh-ui-popup {
+  display: flex;
+}
+
+.fh-ui-popup-content {
+  background: var(--fh-glass-bg);
+  border-radius: var(--fh-radius);
+  backdrop-filter: blur(var(--fh-glass-blur));
+  box-shadow: 0 8px 32px var(--fh-shadow);
+  padding: var(--fh-lg);
+  margin: var(--fh-md);
+  position: relative;
+}
+
+/* =========================
+   23. CSS-Only Functionality 
+   ========================= */
+
+/* Copy button CSS-only feedback */
+.copy-btn {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.copy-btn::before {
+  content: "Copied!";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--fh-accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.copy-btn:active::before {
+  opacity: 1;
+  animation: copy-feedback 1.5s forwards;
+}
+
+@keyframes copy-feedback {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* CSS-only popup/dialog using :target pseudo-class */
+.fh-ui-popup:target,
+.fh-ui-dialog:target {
+  display: flex;
+  animation: fh-fade-in 0.4s;
+}
+
+.fh-ui-popup:target .fh-ui-popup-content,
+.fh-ui-dialog:target .fh-ui-dialog-content {
+  animation: fh-slide-up 0.5s;
+}
+
+/* Overlay close button (works with :target) */
+.fh-ui-close-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: -1;
+}
+
+/* CSS-only loader using :target */
+#fh-ui-loader-overlay:target {
+  display: flex;
+  animation: fh-fade-in 0.4s, fh-fade-out 2s 1.5s forwards;
+}
+
+@keyframes fh-fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+/* CSS-only toast using :target */
+.fh-ui-toast:target {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+  animation: show-toast 2.5s forwards;
+}
+
+@keyframes show-toast {
+  0% { opacity: 0; transform: translateX(-50%) translateY(40px); }
+  15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(40px); }
+}
+
+/* CSS-only animations for auto-hiding components */
+@keyframes loader-auto-hide {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes toast-auto-hide {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(40px); }
+}
+
+/* Make overlays stay visible until explicitly closed */
+.fh-ui-close-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: -1;
+}
+
+/* CSS-only scroll spy for sidebar navigation */
+.fh-ui-components-sidebar a {
+  position: relative;
+  padding-left: var(--fh-lg);
+  transition: color 0.3s;
+}
+
+.fh-ui-components-sidebar a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--fh-text-tertiary);
+  transition: background 0.3s, transform 0.3s;
+}
+
+/* When a section is the target, highlight its sidebar link */
+.fh-ui-components-sidebar a.active {
+  color: var(--fh-primary);
+  font-weight: 600;
+}
+
+.fh-ui-components-sidebar a.active::before {
+  background: var(--fh-primary);
+  transform: translateY(-50%) scale(1.5);
+}
+
+/* Reset checkboxes when navigating to a different section */
+:target ~ .fh-ui-popup-checkbox:checked,
+:target ~ .fh-ui-dialog-checkbox:checked,
+:target ~ .fh-ui-toast-checkbox:checked,
+:target ~ .fh-ui-loader-checkbox:checked {
+  /* This won't actually uncheck them but at least we can hide the related elements */
+  pointer-events: none;
+}
+
+:target ~ .fh-ui-popup-checkbox:checked + .fh-ui-popup,
+:target ~ .fh-ui-dialog-checkbox:checked + .fh-ui-dialog,
+:target ~ .fh-ui-loader-checkbox:checked + #fh-ui-loader-overlay {
+  display: none;
+}
+
+:target ~ .fh-ui-toast-checkbox:checked + .fh-ui-toast {
+  opacity: 0;
+  transform: translateX(-50%) translateY(40px);
+}
+
+/* Improve accessibility by making checkboxes focusable */
+.fh-ui-popup-checkbox:focus + label,
+.fh-ui-dialog-checkbox:focus + label,
+.fh-ui-toast-checkbox:focus + label,
+.fh-ui-loader-checkbox:focus + label {
+  outline: 2px solid var(--fh-primary);
+  outline-offset: 2px;
+}
+
+/* Allow keyboard users to interact with the UI */
+.fh-ui-button:focus,
+.copy-btn:focus,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--fh-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--fh-glow);
+}
+
+/* CSS-only dark mode toggle */
+.theme-toggle-checkbox {
+  display: none;
+}
+
+.theme-toggle-label {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 45px;
+  height: 22px;
+  background: var(--fh-glass-bg);
+  border-radius: 999px;
+  cursor: pointer;
+  z-index: 3000;
+  box-shadow: 0 2px 12px var(--fh-shadow);
+  border: 1px solid var(--fh-glass-border);
+  transition: all 0.3s;
+}
+
+.theme-toggle-label::after {
+  content: "🌙";
+  position: absolute;
+  left: 5px;
+  top: 3px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.theme-toggle-checkbox:checked + .fh-ui {
+  --fh-background: rgba(20, 20, 30, 0.85);
+  --fh-text: #fff;
+  --fh-text-secondary: rgba(255,255,255,0.8);
+  --fh-text-tertiary: rgba(255,255,255,0.6);
+  --fh-glass-bg: rgba(20,20,30,0.7);
+  --fh-glass-border: rgba(255,255,255,0.2);
+}
+
+.theme-toggle-checkbox:checked + .fh-ui .theme-toggle-label::after {
+  content: "☀️";
+  transform: translateX(22px);
+}
+
+/* =========================
+   24. Component Improvements and Fixes
+   ========================= */
+
+/* Info Card with improved styling */
+.fh-ui-info-card {
+  display: flex;
+  padding: var(--fh-lg);
+  margin: var(--fh-lg) 0;
+  background: var(--fh-glass-bg);
+  backdrop-filter: blur(var(--fh-glass-blur));
+  border-radius: var(--fh-radius);
+  box-shadow: 0 6px 24px var(--fh-shadow);
+  border-left: 4px solid var(--fh-primary);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.fh-ui-info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px var(--fh-shadow);
+}
+
+.fh-ui-info-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--fh-primary);
+  box-shadow: 0 0 15px var(--fh-glow);
+}
+
+.fh-ui-info-card-icon {
+  margin-right: var(--fh-lg);
+  font-size: var(--fh-xl);
+  color: var(--fh-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fh-ui-info-card-content {
+  flex: 1;
+}
+
+.fh-ui-info-card-title {
+  margin: 0 0 var(--fh-xs) 0;
+  font-size: var(--fh-lg);
+  color: var(--fh-primary);
+}
+
+.fh-ui-info-card-text {
+  margin: 0;
+  color: var(--fh-text-secondary);
+}
+
+/* Alert styles with various types */
+.fh-ui-alert {
+  padding: var(--fh-md) var(--fh-lg);
+  margin: var(--fh-md) 0;
+  border-radius: var(--fh-radius);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  animation: fh-slide-up 0.4s;
+}
+
+.fh-ui-alert::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  border-radius: var(--fh-radius) 0 0 var(--fh-radius);
+}
+
+.fh-ui-alert-icon {
+  margin-right: var(--fh-md);
+  font-size: var(--fh-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fh-ui-alert-content {
+  flex: 1;
+}
+
+.fh-ui-alert-title {
+  font-size: var(--fh-md);
+  margin: 0 0 var(--fh-xs) 0;
+  font-weight: 600;
+}
+
+.fh-ui-alert-text {
+  margin: 0;
+  font-size: calc(var(--fh-md) * 0.9);
+}
+
+.fh-ui-alert-success {
+  background: rgba(46, 204, 113, 0.1);
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.15);
+}
+.fh-ui-alert-success::before { background: rgba(46, 204, 113, 1); }
+.fh-ui-alert-success .fh-ui-alert-icon { color: rgba(46, 204, 113, 1); }
+.fh-ui-alert-success .fh-ui-alert-title { color: rgba(46, 204, 113, 1); }
+
+.fh-ui-alert-info {
+  background: rgba(33, 150, 243, 0.1);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+}
+.fh-ui-alert-info::before { background: rgba(33, 150, 243, 1); }
+.fh-ui-alert-info .fh-ui-alert-icon { color: rgba(33, 150, 243, 1); }
+.fh-ui-alert-info .fh-ui-alert-title { color: rgba(33, 150, 243, 1); }
+
+.fh-ui-alert-warning {
+  background: rgba(255, 152, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.15);
+}
+.fh-ui-alert-warning::before { background: rgba(255, 152, 0, 1); }
+.fh-ui-alert-warning .fh-ui-alert-icon { color: rgba(255, 152, 0, 1); }
+.fh-ui-alert-warning .fh-ui-alert-title { color: rgba(255, 152, 0, 1); }
+
+.fh-ui-alert-error {
+  background: rgba(244, 67, 54, 0.1);
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.15);
+}
+.fh-ui-alert-error::before { background: rgba(244, 67, 54, 1); }
+.fh-ui-alert-error .fh-ui-alert-icon { color: rgba(244, 67, 54, 1); }
+.fh-ui-alert-error .fh-ui-alert-title { color: rgba(244, 67, 54, 1); }
+
+/* Advanced Navigation styles */
+.fh-ui-navigation {
+  display: flex;
+  flex-direction: column;
+  background: var(--fh-glass-bg);
+  backdrop-filter: blur(var(--fh-glass-blur));
+  border-radius: var(--fh-radius);
+  overflow: hidden;
+  box-shadow: 0 4px 20px var(--fh-shadow);
+  width: 100%;
+}
+
+.fh-ui-navigation-item {
+  display: flex;
+  align-items: center;
+  padding: var(--fh-md);
+  color: var(--fh-text);
+  text-decoration: none;
+  position: relative;
+  transition: background-color 0.2s, color 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.fh-ui-navigation-item:hover {
+  background: rgba(33, 150, 243, 0.1);
+  color: var(--fh-primary);
+}
+
+.fh-ui-navigation-item.active {
+  border-left: 3px solid var(--fh-primary);
+  background: rgba(33, 150, 243, 0.1);
+  color: var(--fh-primary);
+}
+
+.fh-ui-navigation-icon {
+  margin-right: var(--fh-md);
+  font-size: var(--fh-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+}
+
+/* Add spinner component */
+.fh-ui-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(33, 150, 243, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--fh-primary);
+  animation: fh-spin 1s linear infinite;
+}
+
+.fh-ui-spinner-sm {
+  width: 24px;
+  height: 24px;
+  border-width: 2px;
+}
+
+.fh-ui-spinner-lg {
+  width: 60px;
+  height: 60px;
+  border-width: 4px;
+}
+
+@keyframes fh-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* =========================
+   Spinner Component
+   ========================= */
+.fh-ui-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: var(--fh-primary);
+  display: inline-block;
+  animation: fh-spin 1s linear infinite;
+}
+
+.fh-ui-spinner.sm {
+  width: 24px;
+  height: 24px;
+  border-width: 3px;
+}
+
+.fh-ui-spinner.lg {
+  width: 48px;
+  height: 48px;
+  border-width: 5px;
+}
+
+.fh-ui-spinner.xl {
+  width: 64px;
+  height: 64px;
+  border-width: 6px;
+}
+
+/* Spinner animations */
+@keyframes fh-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* CSS-only loader overlay */
+.fh-ui-loader-checkbox {
+  display: none;
+}
+
+.fh-ui-loader-checkbox:checked + #fh-ui-loader-overlay {
+  visibility: visible;
+  opacity: 1;
+  animation: fh-loader-auto-hide 3s forwards;
+}
+
+#fh-ui-loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s;
+}
+
+@keyframes fh-loader-auto-hide {
+  0%, 80% {
+    opacity: 1;
+    visibility: visible;
+  }
+  99% {
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* =========================
+   Info Cards Component
+   ========================= */
+.fh-ui-info-card {
+  padding: calc(var(--fh-base) * 1.5);
+  margin-bottom: var(--fh-lg);
+  border-radius: var(--fh-radius);
+  background: var(--fh-glass-bg);
+  backdrop-filter: blur(var(--fh-glass-blur));
+  -webkit-backdrop-filter: blur(var(--fh-glass-blur));
+  border-left: 4px solid var(--fh-primary);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  transition: var(--fh-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.fh-ui-info-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  opacity: 0;
+  transition: var(--fh-transition);
+}
+
+.fh-ui-info-card:hover:before {
+  opacity: 1;
+  animation: fh-info-card-shine 2s infinite;
+}
+
+.fh-ui-info-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18), 0 0 16px var(--fh-glow);
+  transform: translateY(-2px);
+}
+
+.fh-ui-info-card h3 {
+  margin-top: 0;
+  font-size: calc(var(--fh-base) * 1.2);
+  color: var(--fh-primary);
+}
+
+.fh-ui-info-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Info card variants */
+.fh-ui-info-card.primary {
+  border-left-color: var(--fh-primary);
+}
+
+.fh-ui-info-card.accent {
+  border-left-color: var(--fh-accent);
+}
+
+.fh-ui-info-card.secondary {
+  border-left-color: var(--fh-secondary);
+}
+
+@keyframes fh-info-card-shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* =========================
+   Alert Component
+   ========================= */
+.fh-ui-alert {
+  padding: var(--fh-lg);
+  border-radius: var(--fh-radius);
+  margin-bottom: var(--fh-lg);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--fh-base);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: var(--fh-transition);
+  border-left: 4px solid var(--fh-primary);
+  background: rgba(33, 158, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.fh-ui-alert:before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.fh-ui-alert-content {
+  flex: 1;
+}
+
+.fh-ui-alert-content h4 {
+  margin-top: 0;
+  margin-bottom: var(--fh-xs);
+}
+
+.fh-ui-alert-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Alert variants */
+.fh-ui-alert.info {
+  background: rgba(33, 158, 255, 0.08);
+  border-left-color: var(--fh-primary);
+}
+
+.fh-ui-alert.info:before {
+  content: "i";
+  color: var(--fh-primary);
+  background-color: rgba(33, 158, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  font-weight: bold;
+  font-family: serif;
+}
+
+.fh-ui-alert.success {
+  background: rgba(72, 199, 116, 0.08);
+  border-left-color: #48c774;
+}
+
+.fh-ui-alert.success:before {
+  content: "✓";
+  color: #48c774;
+  background-color: rgba(72, 199, 116, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.fh-ui-alert.warning {
+  background: rgba(255, 138, 0, 0.08);
+  border-left-color: var(--fh-accent);
+}
+
+.fh-ui-alert.warning:before {
+  content: "!";
+  color: var(--fh-accent);
+  background-color: rgba(255, 138, 0, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.fh-ui-alert.error {
+  background: rgba(241, 70, 104, 0.08);
+  border-left-color: #f14668;
+}
+
+.fh-ui-alert.error:before {
+  content: "×";
+  color: #f14668;
+  background-color: rgba(241, 70, 104, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* =========================
+   Navigation Component
+   ========================= */
+.fh-ui-navigation {
+  display: flex;
+  gap: var(--fh-sm);
+  padding: var(--fh-base);
+  background: var(--fh-glass-bg);
+  backdrop-filter: blur(var(--fh-glass-blur));
+  -webkit-backdrop-filter: blur(var(--fh-glass-blur));
+  border-radius: var(--fh-radius);
+  margin-bottom: var(--fh-lg);
+}
+
+.fh-ui-navigation-item {
+  padding: var(--fh-sm) var(--fh-base);
+  color: var(--fh-text-secondary);
+  text-decoration: none;
+  border-radius: calc(var(--fh-radius) / 2);
+  transition: var(--fh-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.fh-ui-navigation-item:hover {
+  color: var(--fh-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.fh-ui-navigation-item.active {
+  color: var(--fh-text);
+  background: rgba(33, 158, 255, 0.15);
+}
+
+.fh-ui-navigation-item.active:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: var(--fh-base);
+  right: var(--fh-base);
+  height: 2px;
+  background: var(--fh-primary);
+  border-radius: 2px;
+}
+
+/* Hover animation */
+.fh-ui-navigation-item:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.03), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.fh-ui-navigation-item:hover:before {
+  transform: translateX(100%);
+}
+
+/* Vertical navigation */
+.fh-ui-navigation.vertical {
+  flex-direction: column;
+  width: fit-content;
+  min-width: 180px;
+}
+
+.fh-ui-navigation.vertical .fh-ui-navigation-item.active:after {
+  top: var(--fh-base);
+  bottom: var(--fh-base);
+  left: 0;
+  right: auto;
+  width: 2px;
+  height: auto;
+}
+
+/* Tab-style navigation */
+.fh-ui-navigation.tabs {
+  border-bottom: 1px solid var(--fh-glass-border);
+  padding-bottom: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.fh-ui-navigation.tabs .fh-ui-navigation-item {
+  border-radius: var(--fh-radius) var(--fh-radius) 0 0;
+  padding: var(--fh-sm) var(--fh-lg);
+}
+
+.fh-ui-navigation.tabs .fh-ui-navigation-item.active {
+  background: var(--fh-glass-bg);
+  border-top: 2px solid var(--fh-primary);
+}
+
+.fh-ui-navigation.tabs .fh-ui-navigation-item.active:after {
+  display: none;
+}
+
+/* =========================
+   Enhanced Index Page Styles
+   ========================= */
+.features-section {
+  padding: var(--fh-xxl) var(--fh-lg);
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-section h2 {
+  font-size: var(--fh-xxl);
+  margin-bottom: var(--fh-xl);
+  background: linear-gradient(90deg, var(--fh-primary), var(--fh-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--fh-xl);
+  margin: var(--fh-xl) 0;
+}
+
+.features-grid .fh-ui-info-card {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.features-grid .fh-ui-info-card i {
+  font-size: calc(var(--fh-xl) * 1.5);
+  color: var(--fh-primary);
+  margin-bottom: var(--fh-md);
+  align-self: flex-start;
+}
+
+.features-grid .fh-ui-info-card.accent i {
+  color: var(--fh-accent);
+}
+
+.features-grid .fh-ui-info-card.secondary i {
+  color: var(--fh-secondary);
+}
+
+.fh-ui-navigation.tabs {
+  display: inline-flex;
+  margin: var(--fh-xl) auto;
+  background: var(--fh-glass-bg);
+  border-radius: var(--fh-radius);
+  padding: var(--fh-xs);
+  position: relative;
+}
+
+.tab-content {
+  background: var(--fh-glass-bg);
+  backdrop-filter: blur(var(--fh-glass-blur));
+  -webkit-backdrop-filter: blur(var(--fh-glass-blur));
+  padding: var(--fh-xl);
+  border-radius: var(--fh-radius);
+  margin-bottom: var(--fh-xl);
+  text-align: left;
+}
+
+.tab-content h3 {
+  color: var(--fh-primary);
+  margin-bottom: var(--fh-md);
+}
+
+.demo-area {
+  margin-top: var(--fh-lg);
+  display: grid;
+  gap: var(--fh-md);
+}
+
+.demo-section {
+  padding: var(--fh-xxl) var(--fh-lg);
+  text-align: center;
+  background: linear-gradient(135deg, rgba(33, 158, 255, 0.05), rgba(255, 138, 0, 0.05));
+  border-radius: var(--fh-radius);
+  margin: var(--fh-xl) auto;
+  max-width: 1200px;
+}
+
+.demo-section h2 {
+  font-size: var(--fh-xxl);
+  margin-bottom: var(--fh-xl);
+  background: linear-gradient(90deg, var(--fh-primary), var(--fh-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.demo-controls {
+  display: flex;
+  gap: var(--fh-lg);
+  justify-content: center;
+  margin-bottom: var(--fh-xl);
+  flex-wrap: wrap;
+}
+
+.demo-controls .fh-ui-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fh-sm);
+}
+
+.spinner-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fh-lg);
+  margin: var(--fh-xl) 0;
+}
+
+.color-theory-section {
+  padding: var(--fh-xxl) var(--fh-lg);
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.color-theory-section h2 {
+  font-size: var(--fh-xxl);
+  margin-bottom: var(--fh-md);
+  background: linear-gradient(90deg, var(--fh-primary), var(--fh-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.color-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fh-lg);
+  margin: var(--fh-xl) 0;
+}
+
+.color-box {
+  padding: var(--fh-lg);
+  width: 220px;
+  height: 160px;
+  border-radius: var(--fh-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.color-box:hover {
+  transform: translateY(-5px);
+}
+
+.color-box.primary {
+  background: var(--fh-primary);
+}
+
+.color-box.accent {
+  background: var(--fh-accent);
+}
+
+.color-box span {
+  font-size: var(--fh-lg);
+}
+
+.color-box code {
+  font-family: monospace;
+  font-size: var(--fh-md);
+  background: rgba(255, 255, 255, 0.2);
+  padding: var(--fh-xs) var(--fh-sm);
+  border-radius: calc(var(--fh-radius) / 2);
+}
+
+.color-arrow {
+  font-size: var(--fh-xl);
+  color: var(--fh-text-secondary);
+}
+
+.color-explanation {
+  margin-top: var(--fh-lg);
+  font-style: italic;
+  color: var(--fh-text-secondary);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Footer styles */
+.fh-ui-footer {
+  background: var(--fh-glass-bg);
+  backdrop-filter: blur(var(--fh-glass-blur));
+  -webkit-backdrop-filter: blur(var(--fh-glass-blur));
+  padding: var(--fh-xl) var(--fh-lg) var(--fh-md);
+  margin-top: var(--fh-xxl);
+  border-top: 1px solid var(--fh-glass-border);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--fh-xl);
+  max-width: 1200px;
+  margin: 0 auto var(--fh-xl);
+}
+
+.footer-logo h3 {
+  font-size: var(--fh-xl);
+  color: var(--fh-primary);
+  margin-bottom: var(--fh-xs);
+}
+
+.footer-logo p {
+  color: var(--fh-text-secondary);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fh-sm);
+}
+
+.footer-links h4 {
+  margin-bottom: var(--fh-sm);
+  color: var(--fh-text);
+}
+
+.footer-links a {
+  color: var(--fh-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--fh-primary);
+}
+
+.footer-links a i {
+  margin-right: var(--fh-xs);
+  width: 20px;
+  text-align: center;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--fh-glass-border);
+  padding-top: var(--fh-md);
+  text-align: center;
+  color: var(--fh-text-tertiary);
+  font-size: calc(var(--fh-md) * 0.9);
+}
+
+/* Enhanced button hover animation */
+.fh-ui-button::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: transparent;
+  border-radius: calc(var(--fh-radius) + 2px);
+  border: 2px solid transparent;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.fh-ui-button:hover::after {
+  opacity: 1;
+  border-color: var(--fh-primary);
+  animation: fh-border-pulse 1.5s infinite;
+}
+
+@keyframes fh-border-pulse {
+  0% {
+    border-color: rgba(33, 158, 255, 0.6);
+    box-shadow: 0 0 0 0 rgba(33, 158, 255, 0.4);
+  }
+  70% {
+    border-color: rgba(33, 158, 255, 0);
+    box-shadow: 0 0 0 10px rgba(33, 158, 255, 0);
+  }
+  100% {
+    border-color: rgba(33, 158, 255, 0);
+    box-shadow: 0 0 0 0 rgba(33, 158, 255, 0);
+  }
+}
+
+/* Enhanced hologram copy button effect */
+.copy-btn:active::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(33, 158, 255, 0.4) 15%,
+    var(--fh-accent) 35%,
+    rgba(33, 158, 255, 0.4) 65%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  z-index: -1;
+  animation: fh-copy-hologram 2s linear;
+  opacity: 0.7;
+  filter: blur(8px);
+}
+
+@keyframes fh-copy-hologram {
+  0% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.2) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Responsive adjustments for the new sections */
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .demo-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .spinner-showcase {
+    flex-wrap: wrap;
+  }
+  
+  .color-showcase {
+    flex-direction: column;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+    .footer-links {
+    align-items: center;
+  }
+}
+
+/* Float animation for code snippet */
+@keyframes float-animation {
+  0% {
+    transform: translateY(0);
+    box-shadow: 0 2px 12px var(--fh-shadow);
+  }
+  50% {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 20px var(--fh-shadow);
+  }
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 2px 12px var(--fh-shadow);
+  }
+  }
+}

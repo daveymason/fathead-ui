@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fathead UI – Home</title>
+    <link rel="stylesheet" href="./fathead-ui.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
+<body class="fh-ui" data-theme="light">
+  <label for="theme-toggle" class="theme-toggle-label" title="Toggle light/dark mode"></label>
+  <div class="fh-ui-navbar">
+    <a href="/" class="logo">Fathead UI</a>
+    <div class="nav-links">
+      <a href="/" class="nav-link active">Home</a>
+      <a href="components.html" class="nav-link">Components</a>
+      <a href="documentation.html" class="nav-link">Docs</a>
+    </div>
+  </div>
+
+  <section class="hero-section">
+    <h1>Fathead-UI</h1> 
+    <h4>A futuristic, zero-JavaScript CSS framework. </h4>
+    <p>For building modern web interfaces with data-based design & cognitive psychology principles.</p>
+  <div class="code-snippet">
+      <pre>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/daveymason/fathead-ui@latest/fathead-ui.css" /&gt;</pre>
+      <button class="copy-btn" id="copy-cdn-btn">Copy</button>
+    </div>
+    <a href="components.html" class="fh-ui-button cta-button">Explore Components <i class="fa-solid fa-arrow-right-long"></i></a>
+  </section>
+
+  <section class="features-section">
+    <h2>Designed for Modern Web</h2>
+    
+    <div class="features-grid">
+      <div class="fh-ui-info-card primary">
+        <i class="fa-solid fa-wand-magic-sparkles fa-beat-fade"></i>
+        <h3>Pure CSS Magic</h3>
+        <p>All interactive components built with CSS-only techniques. No JavaScript dependencies means faster loading and better reliability.</p>
+      </div>
+
+      <div class="fh-ui-info-card accent">
+        <i class="fa-solid fa-brain fa-bounce"></i>
+        <h3>Human-Centered Design</h3>
+        <p>Based on cognitive psychology principles and human-computer interaction research for optimal user experience.</p>
+      </div>
+
+      <div class="fh-ui-info-card secondary">
+        <i class="fa-solid fa-ruler-combined fa-flip"></i>
+        <h3>Golden Ratio Harmony</h3>
+        <p>Layout system based on the Fibonacci sequence (1.618 ratio) creates naturally pleasing visual proportions.</p>
+      </div>
+    </div>
+
+    <div class="fh-ui-navigation tabs">
+      <a href="#css" class="fh-ui-navigation-item active">CSS-Only</a>
+      <a href="#accessibility" class="fh-ui-navigation-item">Accessibility</a>
+      <a href="#components" class="fh-ui-navigation-item">Components</a>
+    </div>
+
+    <div class="tab-content" id="css">
+      <h3>No JavaScript Required</h3>
+      <p>All interactivity implemented with pure CSS techniques including:</p>
+      
+      <div class="demo-area">
+        <div class="fh-ui-alert info">
+          <div class="fh-ui-alert-content">
+            <h4>Hidden checkbox pattern</h4>
+            <p>For toggles, dialogs, and popups</p>
+          </div>
+        </div>
+        
+        <div class="fh-ui-alert success">
+          <div class="fh-ui-alert-content">
+            <h4>CSS animations</h4>
+            <p>For micro-interactions and feedback</p>
+          </div>
+        </div>
+        
+        <div class="fh-ui-alert warning">
+          <div class="fh-ui-alert-content">
+            <h4>:target selector</h4>
+            <p>For navigation and content targeting</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="demo-section">
+    <h2>See It In Action</h2>
+    
+    <div class="demo-controls">
+      <label for="demo-toast-checkbox" class="fh-ui-button">Show Toast <i class="fa-solid fa-bell fa-shake"></i></label>
+      <label for="demo-dialog-checkbox" class="fh-ui-button">Open Dialog <i class="fa-solid fa-message fa-beat"></i></label>
+      <label for="loader-overlay-checkbox" class="fh-ui-button">Show Loader <i class="fa-solid fa-spinner fa-spin"></i></label>
+    </div>
+    
+    <div class="spinner-showcase">
+      <div class="fh-ui-spinner sm"></div>
+      <div class="fh-ui-spinner"></div>
+      <div class="fh-ui-spinner lg"></div>
+      <div class="fh-ui-spinner xl"></div>
+    </div>
+    
+    <input type="checkbox" id="demo-toast-checkbox" class="fh-ui-toast-checkbox">
+    <div class="fh-ui-toast" id="demo-toast">CSS-only toast notification with auto-hide animation!</div>
+    
+    <input type="checkbox" id="demo-dialog-checkbox" class="fh-ui-dialog-checkbox">
+    <div class="fh-ui-dialog" id="demo-dialog">
+      <div class="fh-ui-dialog-content">
+        <h3><i class="fa-solid fa-circle-info fa-beat-fade" style="color: #219EFF"></i> Pure CSS Dialog</h3>
+        <p>This modal dialog requires no JavaScript and works with the hidden checkbox technique.</p>
+        <label for="demo-dialog-checkbox" class="fh-ui-button">Return to Demo <i class="fa-solid fa-reply"></i></label>
+      </div>
+      <label for="demo-dialog-checkbox" class="fh-ui-close-overlay"></label>
+    </div>
+    
+    <input type="checkbox" id="loader-overlay-checkbox" class="fh-ui-loader-checkbox">
+    <div id="fh-ui-loader-overlay">
+      <div class="fh-ui-spinner xl"></div>
+    </div>
+  </section>
+  
+  <section class="color-theory-section">
+    <h2>Color Theory & Mathematics</h2>
+    <p>Our color system is based on precise mathematical relationships:</p>
+    
+    <div class="color-showcase">
+      <div class="color-box primary">
+        <span>Primary Blue</span>
+        <code>#219EFF</code>
+      </div>
+      <div class="color-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="color-box accent">
+        <span>Complementary Orange</span>
+        <code>#FF8A00</code>
+      </div>
+    </div>
+    
+    <p class="color-explanation">
+      Colors are mathematically derived using complementary color theory and the golden ratio for harmonic relationships between different UI elements.
+    </p>
+  </section>
+
+  <footer class="fh-ui-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>Fathead UI</h3>
+        <p>Pure CSS Framework</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="/">Home</a>
+        <a href="components.html">Components</a>
+        <a href="documentation.html">Documentation</a>
+      </div>      <div class="footer-links">
+        <h4>Follow</h4>
+        <a href="https://github.com/daveymason/fathead-ui" target="_blank"><i class="fab fa-github fa-bounce"></i> GitHub</a>
+        <a href="https://fatheadsolutions.com" target="_blank"><i class="fas fa-globe fa-spin-pulse"></i> Website</a>
+        <a href="documentation.html"><i class="fas fa-book fa-flip"></i> Docs</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Fathead UI. Built with pure CSS. No JavaScript used.</p>
+    </div>
+  </footer>
+
+  <a href="components.html" class="floating-link">Library <i class="fa-solid fa-arrow-right"></i></a>
+
+  <!-- All functionality implemented with pure CSS -->
+</body>
+</html>
