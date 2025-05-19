@@ -44,27 +44,29 @@
 
 ## Pending
 - Revamp sidebar styling:
-  - Modern slide-in/out for mobile
-  - Add collapsible behavior
-  - Use golden ratio sizing for width & padding
-  - Add icons
+  - Modern slide-in/out for mobile with nice transition/animation
+  - Add collapsible behavior (Is this possible with CSS only?)
   - Components page: group sidebar components logincally
 
 - Component imporvements
   - Improve the spacing between paragraphs and buttons, like in the popup and buttons
   - Improve the text spacing in the cards
   - Improve the alerts components Section, Maybe just the name of the alert and the icon, press and user will see example (like toast)
-  
-  - Homepage improvements
-   - Add here. Make footer stick to bottom of screen, have addition elements in bottom section so that footer stays on bottom page but more things in the index page footer
-
-  - Documentation improvement
-    - Ensure the padding and spacing jsut like the index page. 
-    - Add the dots navigation on the side
-    - Add icons just like the sidebar on /components page.
+    - ✅ Homepage improvements
+   - ✅ Made footer stick to bottom of screen by using flex layout and margin-top: auto
+   - Added elements in bottom section so that footer stays on bottom page
+  - ✅ Documentation improvement
+    - ✅ Ensured the padding and spacing just like the index page
+    - ✅ Added the dots navigation on the side
+    - ✅ Added icons just like the sidebar on /components page
+    - ✅ Implemented scroll snap functionality for better navigation
 
 - Validate accessibility:
   - WCAG 2.1 AA contrast ratios
   - ARIA labels for navigation and toggles
 
 - Test across screen sizes & ensure responsiveness
+- Move the light / dark switcher to udner the navbar. 
+- Ensure light / dark switcher works on components page. 
+- Add more colours, update the index section "Designed for Modern Web" with teh bottom three info boxes to use the three new colours. 
+- Improve the way the information in the docs pages are shown. Righ tnow just very basic. Use some of the styling elements. Improve the components offerings for text based UX. 

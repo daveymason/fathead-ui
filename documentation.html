@@ -17,20 +17,31 @@
       <a href="components.html" class="nav-link">Components</a>
       <a href="documentation.html" class="nav-link active">Docs</a>
     </div>
-  </div>  <div class="fh-ui-components-layout">
-    <aside class="fh-ui-components-sidebar">
-      <h3>Documentation</h3>
-      <ul>
-        <li><a href="#getting-started">Getting Started</a></li>
-        <li><a href="#components">Components</a></li>
-        <li><a href="#utilities">Utility Classes</a></li>
-        <li><a href="#spacing">Golden Ratio & Spacing</a></li>
-        <li><a href="#hci">HCI & Accessibility</a></li>
-        <li><a href="#customization">Customization</a></li>
-      </ul>
-    </aside>
-    <main>
-      <section id="getting-started">
+  </div>
+  
+  <div class="fh-ui-snap-container">
+    <div class="fh-ui-snap-dots">
+      <a href="#getting-started" class="dot active" data-section="getting-started"></a>
+      <a href="#components" class="dot" data-section="components"></a>
+      <a href="#utilities" class="dot" data-section="utilities"></a>
+      <a href="#spacing" class="dot" data-section="spacing"></a>
+      <a href="#hci" class="dot" data-section="hci"></a>
+      <a href="#customization" class="dot" data-section="customization"></a>
+    </div>
+    
+    <div class="fh-ui-components-layout">
+      <aside class="fh-ui-components-sidebar">
+        <h3>Documentation</h3>
+        <ul>
+          <li><a href="#getting-started"><i class="fas fa-rocket"></i> Getting Started</a></li>
+          <li><a href="#components"><i class="fas fa-puzzle-piece"></i> Components</a></li>
+          <li><a href="#utilities"><i class="fas fa-tools"></i> Utility Classes</a></li>
+          <li><a href="#spacing"><i class="fas fa-ruler-combined"></i> Golden Ratio & Spacing</a></li>
+          <li><a href="#hci"><i class="fas fa-universal-access"></i> HCI & Accessibility</a></li>
+          <li><a href="#customization"><i class="fas fa-paint-brush"></i> Customization</a></li>
+        </ul>
+      </aside>    <main>
+      <section id="getting-started" class="fh-ui-snap-section">
         <h2>Getting Started</h2>
         <p>To use Fathead UI, add this stylesheet link to your project:</p>
         <div class="code-snippet">
@@ -46,8 +57,8 @@
         
         <p>Wrap your app in <code>&lt;body class=&quot;fh-ui&quot; data-theme=&quot;light&quot;&gt;</code> for theme support.</p>
       </section>
-      <hr />
-      <section id="components">
+      
+      <section id="components" class="fh-ui-snap-section">
         <h2>Components</h2>
         <ul>
           <li><b>Navbar:</b> <code>.fh-ui-navbar</code> – Responsive, sticky, glassmorphic navigation bar.</li>
@@ -60,16 +71,14 @@
           <li><b>Alert/Feedback:</b> <code>.fh-ui-feedback</code> – Accessible, animated info banners.</li>
         </ul>
       </section>
-      <hr />
-      <section id="utilities">
+      <hr />      <section id="utilities" class="fh-ui-snap-section">
         <h2>Utility Classes</h2>
         <ul>
           <li><code>.fh-ui-glass</code> – Apply glassmorphism to any element.</li>
           <li><code>.fh-ui-holo-icon</code> – Holographic animated icon effect.</li>
         </ul>
       </section>
-      <hr />
-      <section id="spacing">
+      <hr />      <section id="spacing" class="fh-ui-snap-section">
         <h2>Golden Ratio & Spacing</h2>
         <p>Fathead UI uses the golden ratio (<b>1.618</b>) for all spacing and sizing. Core variables:</p>
         <ul>
@@ -83,8 +92,7 @@
         </ul>
         <p>Use these variables for margin, padding, gap, and font-size for harmonious layouts.</p>
       </section>
-      <hr />
-      <section id="hci">
+      <hr />      <section id="hci" class="fh-ui-snap-section">
         <h2>HCI & Accessibility</h2>
         <ul>
           <li>All components use high-contrast colors and large touch targets.</li>
@@ -93,8 +101,7 @@
           <li>Animations respect <code>prefers-reduced-motion</code> for accessibility.</li>
         </ul>
       </section>
-      <hr />
-      <section id="customization">
+      <hr />      <section id="customization" class="fh-ui-snap-section">
         <h2>Customization</h2>
         <p>Override any <code>:root</code> CSS variable to change theme colors, spacing, or fonts. Example:</p>
         <div class="code-snippet">
@@ -106,8 +113,8 @@
         </div>
         <p>Switch between <b>light</b> and <b>dark</b> themes by changing <code>data-theme</code> on <code>&lt;body&gt;</code>.</p>
       </section>
-      <hr />
-      <section id="implementation">
+      
+      <section id="implementation" class="fh-ui-snap-section">
         <h2>CSS-Only Implementation</h2>
         <p>Fathead UI uses pure CSS solutions with no JavaScript dependencies, making it lightweight and compatible with any JavaScript framework (or none at all).</p>
           <h3>Interactive Components</h3>
@@ -176,6 +183,56 @@
     document.addEventListener('DOMContentLoaded', function() {
       const copyButtons = document.querySelectorAll('.copy-btn');
       
+      // Scroll snap navigation dots functionality
+      const sections = document.querySelectorAll('.fh-ui-snap-section');
+      const dots = document.querySelectorAll('.fh-ui-snap-dots .dot');
+      const snapContainer = document.querySelector('.fh-ui-snap-container');
+      
+      // Add click events to dots
+      dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = dot.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+      
+      // Update active dot on scroll
+      const observerOptions = {
+        root: snapContainer,
+        rootMargin: '-50% 0px',
+        threshold: 0
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            // Update active dot
+            dots.forEach(dot => {
+              const dotSection = dot.getAttribute('href').substring(1);
+              if (dotSection === sectionId) {
+                dot.classList.add('active');
+              } else {
+                dot.classList.remove('active');
+              }
+            });
+            
+            // Add animations to section
+            entry.target.classList.add('active-section');
+          }
+        });
+      }, observerOptions);
+      
+      // Observe all sections
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+      
+      // Copy button functionality
       copyButtons.forEach(button => {
         button.addEventListener('click', async function() {
           // Handle different container types for copy buttons
@@ -234,6 +291,25 @@
           }
         });
       });
+      
+      // Theme switcher persistence
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.querySelector('body');
+      
+      // Load saved theme preference
+      const savedTheme = localStorage.getItem('fathead-theme');
+      if (savedTheme) {
+        body.setAttribute('data-theme', savedTheme);
+        themeToggle.checked = (savedTheme === 'dark');
+      }
+      
+      // Toggle theme and save preference
+      themeToggle.addEventListener('change', () => {
+        const newTheme = themeToggle.checked ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('fathead-theme', newTheme);
+      });
+      
     });
   </script>
 </body>

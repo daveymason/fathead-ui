@@ -73,6 +73,9 @@
     min-height: 100vh;
     width: 100%;
     position: relative;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent body scrolling */
 }
 
 /* =========================
@@ -740,10 +743,21 @@ label.fh-ui-button {
 .fh-ui-components-layout {
   display: flex;
   min-height: 100vh;
-  scroll-snap-type: y mandatory;
-  overflow-y: auto;
   padding-left: 260px; /* Match sidebar width */
+  width: 100%;
+  position: relative;
+  overflow: hidden; /* Remove overflow to prevent extra scrollbar */
 }
+
+/* Add styles for the main element in documentation page */
+.fh-ui-components-layout main {
+  flex: 1;
+  overflow-y: auto; /* Enable scrolling only on the main content */
+  height: calc(100vh - 72px); /* Match navbar height */
+  padding: var(--fh-lg);
+  scroll-behavior: smooth;
+}
+
 .fh-ui-components-sidebar {
   position: fixed;
   top: 72px; /* Match navbar height */
@@ -930,6 +944,10 @@ label.fh-ui-button {
   }
   .fh-ui-components-layout { padding-left: 0; }
   .fh-ui-components-layout { flex-direction: column; }
+  .fh-ui-components-layout main {
+    height: auto;
+    min-height: calc(100vh - 72px - 220px); /* Navbar height + approx sidebar height on mobile */
+  }
   .fh-ui-component-section { min-height: 80vh; padding: var(--fh-xl) var(--fh-md); }
 }
 
@@ -973,9 +991,13 @@ label.fh-ui-button {
    ========================= */
 .fh-ui-snap-container {
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto; /* Changed from scroll to auto */
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ensure it takes full width */
 }
 
 .fh-ui-snap-section {
@@ -1991,15 +2013,15 @@ textarea:focus-visible {
    Enhanced Index Page Styles
    ========================= */
 .features-section {
-  padding: var(--fh-xxl) var(--fh-lg);
+  padding: var(--fh-xl) var(--fh-lg);
   text-align: center;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .features-section h2 {
-  font-size: var(--fh-xxl);
-  margin-bottom: var(--fh-xl);
+  font-size: var(--fh-xl);
+  margin-bottom: var(--fh-lg);
   background: linear-gradient(90deg, var(--fh-primary), var(--fh-accent));
   -webkit-background-clip: text;
   background-clip: text;
@@ -2009,9 +2031,9 @@ textarea:focus-visible {
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--fh-xl);
-  margin: var(--fh-xl) 0;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--fh-lg);
+  margin: var(--fh-lg) 0;
 }
 
 .features-grid .fh-ui-info-card {
@@ -2019,12 +2041,13 @@ textarea:focus-visible {
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding: var(--fh-md);
 }
 
 .features-grid .fh-ui-info-card i {
-  font-size: calc(var(--fh-xl) * 1.5);
+  font-size: calc(var(--fh-lg) * 1.5);
   color: var(--fh-primary);
-  margin-bottom: var(--fh-md);
+  margin-bottom: var(--fh-sm);
   align-self: flex-start;
 }
 
@@ -2049,21 +2072,23 @@ textarea:focus-visible {
   background: var(--fh-glass-bg);
   backdrop-filter: blur(var(--fh-glass-blur));
   -webkit-backdrop-filter: blur(var(--fh-glass-blur));
-  padding: var(--fh-xl);
+  padding: var(--fh-lg);
   border-radius: var(--fh-radius);
-  margin-bottom: var(--fh-xl);
+  margin-bottom: var(--fh-lg);
   text-align: left;
 }
 
 .tab-content h3 {
   color: var(--fh-primary);
-  margin-bottom: var(--fh-md);
+  margin-bottom: var(--fh-sm);
+  font-size: var(--fh-lg);
 }
 
 .demo-area {
-  margin-top: var(--fh-lg);
+  margin-top: var(--fh-md);
   display: grid;
-  gap: var(--fh-md);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--fh-sm);
 }
 
 .demo-section {
@@ -2193,6 +2218,7 @@ textarea:focus-visible {
   padding: var(--fh-xl) var(--fh-lg) var(--fh-md);
   margin-top: var(--fh-xxl);
   border-top: 1px solid var(--fh-glass-border);
+  margin-top: auto; /* Push footer to bottom when content is short */
 }
 
 .footer-content {
@@ -2323,8 +2349,22 @@ textarea:focus-visible {
 }
 
 /* Responsive adjustments for the new sections */
+@media (max-width: 992px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .demo-area {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .demo-area {
     grid-template-columns: 1fr;
   }
   
@@ -2345,7 +2385,8 @@ textarea:focus-visible {
     grid-template-columns: 1fr;
     text-align: center;
   }
-    .footer-links {
+  
+  .footer-links {
     align-items: center;
   }
 }
