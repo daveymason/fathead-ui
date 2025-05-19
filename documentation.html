@@ -11,9 +11,9 @@
 <body class="fh-ui" data-theme="light">
   <label for="theme-toggle" class="theme-toggle-label" title="Toggle light/dark mode"></label>
   <div class="fh-ui-navbar">
-    <a href="/" class="logo">Fathead UI</a>
+    <a href="index.html" class="logo">Fathead UI</a>
     <div class="nav-links">
-      <a href="/" class="nav-link">Home</a>
+      <a href="index.html" class="nav-link">Home</a>
       <a href="components.html" class="nav-link">Components</a>
       <a href="documentation.html" class="nav-link active">Docs</a>
     </div>
@@ -42,102 +42,600 @@
         </ul>
       </aside>    <main>
       <section id="getting-started" class="fh-ui-snap-section">
-        <h2>Getting Started</h2>
-        <p>To use Fathead UI, add this stylesheet link to your project:</p>
-        <div class="code-snippet">
-          <h4>Add to your project:</h4>
-          <pre>&lt;link rel="stylesheet" href="https://daveymason.github.io/fathead-ui/fathead-ui.css" /&gt;</pre>
-          <button class="copy-btn">Copy</button>
+        <div class="fh-ui-card" style="margin-bottom: var(--fh-lg);">
+          <h2><i class="fas fa-rocket fa-beat-fade" style="--fa-beat-fade-opacity: 0.5; --fa-animation-duration: 2s;"></i> Getting Started</h2>
+          <div class="fh-ui-divider primary"></div>
+          
+          <div class="fh-ui-alert fh-ui-alert-info">
+            <div class="fh-ui-alert-icon">
+              <i class="fa-solid fa-circle-info"></i>
+            </div>
+            <div class="fh-ui-alert-content">
+              <h4 class="fh-ui-alert-title">Quick Setup</h4>
+              <p class="fh-ui-alert-text">Add the stylesheet link below to your HTML and wrap your content in a <code>fh-ui</code> class.</p>
+            </div>
+          </div>
+          
+          <div class="code-snippet" style="margin: var(--fh-lg) 0;">
+            <h4>Add to your project:</h4>
+            <pre>&lt;link rel="stylesheet" href="https://daveymason.github.io/fathead-ui/fathead-ui.css" /&gt;</pre>
+            <button class="copy-btn">Copy</button>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--fh-md); margin-top: var(--fh-lg);">
+            <div class="fh-ui-info-card primary">
+              <i class="fas fa-server fa-fade"></i>
+              <h4>Simple Installation</h4>
+              <p>Just add the stylesheet link to the head of your HTML document.</p>
+            </div>
+            
+            <div class="fh-ui-info-card accent">
+              <i class="fas fa-palette fa-flip" style="--fa-animation-duration: 3s;"></i>
+              <h4>Theme Support</h4>
+              <p>Wrap your app in <code>&lt;body class=&quot;fh-ui&quot; data-theme=&quot;light&quot;&gt;</code> for theming.</p>
+            </div>
+          </div>
+          
+          <div class="fh-ui-form-group" style="margin-top: var(--fh-lg);">
+            <label class="fh-ui-form-label">Try Light/Dark Mode</label>
+            <div class="fh-ui-switch">
+              <input type="checkbox" id="try-dark-mode-switch" class="fh-ui-switch-input" />
+              <span class="fh-ui-switch-slider"></span>
+              <label for="try-dark-mode-switch">Toggle Dark Mode</label>
+            </div>
+            <div class="fh-ui-form-help">Click to see how Fathead UI adapts to different themes</div>
+          </div>
         </div>
-        
-        <div class="fh-ui-info-card primary" style="margin-bottom:var(--fh-lg); margin-top:var(--fh-lg);">
-          <h4><i class="fas fa-server fa-fade"></i> Simple Installation</h4>
-          <p>Just add the stylesheet link to the head of your HTML document and you're ready to start using Fathead UI components.</p>
-        </div>
-        
-        <p>Wrap your app in <code>&lt;body class=&quot;fh-ui&quot; data-theme=&quot;light&quot;&gt;</code> for theme support.</p>
       </section>
       
       <section id="components" class="fh-ui-snap-section">
-        <h2>Components</h2>
-        <ul>
-          <li><b>Navbar:</b> <code>.fh-ui-navbar</code> – Responsive, sticky, glassmorphic navigation bar.</li>
-          <li><b>Button:</b> <code>.fh-ui-button</code> – Gradient, animated, accessible buttons.</li>
-          <li><b>Card:</b> <code>.fh-ui-card</code> – Glassmorphism, shadow, and hover effects.</li>
-          <li><b>Sidebar:</b> <code>.fh-ui-sidebar</code> – Vertical navigation, glassmorphic, responsive.</li>
-          <li><b>Hero Section:</b> <code>.hero-section</code> – Large, gradient, animated intro section.</li>
-          <li><b>Code Snippet:</b> <code>.code-snippet</code> – Highlighted code with copy button.</li>
-          <li><b>Floating Link:</b> <code>.floating-link</code> – Fixed, glassy, animated call-to-action.</li>
-          <li><b>Alert/Feedback:</b> <code>.fh-ui-feedback</code> – Accessible, animated info banners.</li>
-        </ul>
-      </section>
-      <hr />      <section id="utilities" class="fh-ui-snap-section">
-        <h2>Utility Classes</h2>
-        <ul>
-          <li><code>.fh-ui-glass</code> – Apply glassmorphism to any element.</li>
-          <li><code>.fh-ui-holo-icon</code> – Holographic animated icon effect.</li>
-        </ul>
-      </section>
-      <hr />      <section id="spacing" class="fh-ui-snap-section">
-        <h2>Golden Ratio & Spacing</h2>
-        <p>Fathead UI uses the golden ratio (<b>1.618</b>) for all spacing and sizing. Core variables:</p>
-        <ul>
-          <li><code>--fh-base</code>: 1rem (base unit)</li>
-          <li><code>--fh-xs</code>: <code>calc(var(--fh-base) / 1.618)</code></li>
-          <li><code>--fh-sm</code>: <code>calc(var(--fh-xs) * 1.618)</code></li>
-          <li><code>--fh-md</code>: <code>var(--fh-base)</code></li>
-          <li><code>--fh-lg</code>: <code>calc(var(--fh-base) * 1.618)</code></li>
-          <li><code>--fh-xl</code>: <code>calc(var(--fh-lg) * 1.618)</code></li>
-          <li><code>--fh-xxl</code>: <code>calc(var(--fh-xl) * 1.618)</code></li>
-        </ul>
-        <p>Use these variables for margin, padding, gap, and font-size for harmonious layouts.</p>
-      </section>
-      <hr />      <section id="hci" class="fh-ui-snap-section">
-        <h2>HCI & Accessibility</h2>
-        <ul>
-          <li>All components use high-contrast colors and large touch targets.</li>
-          <li>Keyboard navigation and focus states are built-in.</li>
-          <li>WCAG 2.1 AA color contrast and ARIA best practices.</li>
-          <li>Animations respect <code>prefers-reduced-motion</code> for accessibility.</li>
-        </ul>
+        <div class="fh-ui-card" style="margin-bottom: var(--fh-lg);">
+          <h2><i class="fas fa-puzzle-piece fa-bounce" style="--fa-bounce-height: 4px; --fa-animation-duration: 2s;"></i> Components</h2>
+          <div class="fh-ui-divider accent"></div>
+          
+          <p style="margin: var(--fh-md) 0;">Explore our collection of CSS-first UI components designed for modern web applications:</p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: var(--fh-md); margin: var(--fh-lg) 0;">
+            <!-- Navigation Component -->
+            <div class="fh-ui-card" style="padding: var(--fh-md); transition: all 0.3s;">
+              <div style="display: flex; align-items: center; margin-bottom: var(--fh-xs);">
+                <i class="fas fa-bars" style="margin-right: var(--fh-xs); color: var(--fh-primary);"></i>
+                <h4>Navbar</h4>
+              </div>
+              <code>.fh-ui-navbar</code>
+              <p style="font-size: 0.9em; margin-top: var(--fh-xs);">Responsive, sticky, glassmorphic navigation bar.</p>
+            </div>
+            
+            <!-- Button Component -->
+            <div class="fh-ui-card" style="padding: var(--fh-md); transition: all 0.3s;">
+              <div style="display: flex; align-items: center; margin-bottom: var(--fh-xs);">
+                <i class="fas fa-square" style="margin-right: var(--fh-xs); color: var(--fh-accent);"></i>
+                <h4>Button</h4>
+              </div>
+              <code>.fh-ui-button</code>
+              <div style="margin-top: var(--fh-xs);">
+                <button class="fh-ui-button" style="font-size: 0.8em; padding: 5px 10px;">Example</button>
+              </div>
+            </div>
+            
+            <!-- Card Component -->
+            <div class="fh-ui-card" style="padding: var(--fh-md); transition: all 0.3s;">
+              <div style="display: flex; align-items: center; margin-bottom: var(--fh-xs);">
+                <i class="fas fa-credit-card" style="margin-right: var(--fh-xs); color: var(--fh-secondary);"></i>
+                <h4>Card</h4>
+              </div>
+              <code>.fh-ui-card</code>
+              <p style="font-size: 0.9em; margin-top: var(--fh-xs);">Glassmorphism, shadow, and hover effects.</p>
+            </div>
+            
+            <!-- Sidebar Component -->
+            <div class="fh-ui-card" style="padding: var(--fh-md); transition: all 0.3s;">
+              <div style="display: flex; align-items: center; margin-bottom: var(--fh-xs);">
+                <i class="fas fa-columns" style="margin-right: var(--fh-xs); color: var(--fh-primary);"></i>
+                <h4>Sidebar</h4>
+              </div>
+              <code>.fh-ui-sidebar</code>
+              <p style="font-size: 0.9em; margin-top: var(--fh-xs);">Vertical navigation, glassmorphic, responsive.</p>
+            </div>
+            
+            <!-- Hero Section Component -->
+            <div class="fh-ui-card" style="padding: var(--fh-md); transition: all 0.3s;">
+              <div style="display: flex; align-items: center; margin-bottom: var(--fh-xs);">
+                <i class="fas fa-mountain" style="margin-right: var(--fh-xs); color: var(--fh-accent);"></i>
+                <h4>Hero Section</h4>
+              </div>
+              <code>.hero-section</code>
+              <p style="font-size: 0.9em; margin-top: var(--fh-xs);">Large, gradient, animated intro section.</p>
+            </div>
+            
+            <!-- Code Snippet Component -->
+            <div class="fh-ui-card" style="padding: var(--fh-md); transition: all 0.3s;">
+              <div style="display: flex; align-items: center; margin-bottom: var(--fh-xs);">
+                <i class="fas fa-code" style="margin-right: var(--fh-xs); color: var(--fh-secondary);"></i>
+                <h4>Code Snippet</h4>
+              </div>
+              <code>.code-snippet</code>
+              <p style="font-size: 0.9em; margin-top: var(--fh-xs);">Highlighted code with copy button.</p>
+            </div>
+            
+            <!-- Floating Link Component -->
+            <div class="fh-ui-card" style="padding: var(--fh-md); transition: all 0.3s;">
+              <div style="display: flex; align-items: center; margin-bottom: var(--fh-xs);">
+                <i class="fas fa-link" style="margin-right: var(--fh-xs); color: var(--fh-primary);"></i>
+                <h4>Floating Link</h4>
+              </div>
+              <code>.floating-link</code>
+              <p style="font-size: 0.9em; margin-top: var(--fh-xs);">Fixed, glassy, animated call-to-action.</p>
+            </div>
+            
+            <!-- Alert/Feedback Component -->
+            <div class="fh-ui-card" style="padding: var(--fh-md); transition: all 0.3s;">
+              <div style="display: flex; align-items: center; margin-bottom: var(--fh-xs);">
+                <i class="fas fa-bell" style="margin-right: var(--fh-xs); color: var(--fh-accent);"></i>
+                <h4>Alert/Feedback</h4>
+              </div>
+              <code>.fh-ui-feedback</code>
+              <p style="font-size: 0.9em; margin-top: var(--fh-xs);">Accessible, animated info banners.</p>
+            </div>
+          </div>
+          
+          <div class="fh-ui-alert fh-ui-alert-success" style="margin-top: var(--fh-md);">
+            <div class="fh-ui-alert-icon">
+              <i class="fa-solid fa-check-circle"></i>
+            </div>
+            <div class="fh-ui-alert-content">
+              <h4 class="fh-ui-alert-title">Ready to Use</h4>
+              <p class="fh-ui-alert-text">All components work out of the box with minimal markup. Visit the <a href="components.html" style="color: inherit; text-decoration: underline;">Components page</a> for detailed examples.</p>
+            </div>
+          </div>
+        </div>
+      </section>      <section id="utilities" class="fh-ui-snap-section">
+        <div class="fh-ui-card" style="margin-bottom: var(--fh-lg);">
+          <h2><i class="fas fa-tools fa-shake" style="--fa-animation-duration: 3s;"></i> Utility Classes</h2>
+          <div class="fh-ui-divider primary"></div>
+          
+          <p style="margin: var(--fh-md) 0;">Enhance your UI with these powerful utility classes:</p>
+          
+          <div style="display: flex; flex-wrap: wrap; gap: var(--fh-md); margin: var(--fh-md) 0;">
+            <div style="flex: 1; min-width: 280px;">
+              <div class="fh-ui-info-card primary" style="height: 100%;">
+                <i class="fas fa-glass-martini-alt fa-fade" style="--fa-fade-opacity: 0.6;"></i>
+                <h4>Glassmorphism</h4>
+                <code>.fh-ui-glass</code>
+                <p>Apply beautiful glassmorphism effect to any element with a single class.</p>
+                <div style="margin-top: var(--fh-sm); padding: var(--fh-xs); background: var(--fh-glass-bg); border-radius: var(--fh-radius); backdrop-filter: blur(5px); border: 1px solid var(--fh-glass-border);">
+                  Glass effect example
+                </div>
+              </div>
+            </div>
+            
+            <div style="flex: 1; min-width: 280px;">
+              <div class="fh-ui-info-card accent" style="height: 100%;">
+                <i class="fas fa-magic fa-bounce" style="--fa-bounce-height: 3px;"></i>
+                <h4>Holographic Icons</h4>
+                <code>.fh-ui-holo-icon</code>
+                <p>Add futuristic holographic animation effects to any icon element.</p>
+                <div style="margin-top: var(--fh-sm); text-align: center;">
+                  <i class="fas fa-atom fa-2x" style="animation: pulse 2s infinite; color: var(--fh-accent);"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="fh-ui-divider with-text" style="margin: var(--fh-lg) 0;">
+            <span class="fh-ui-divider-text">More Utilities</span>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--fh-md);">
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h5><i class="fas fa-text-height" style="color: var(--fh-primary);"></i> Text Utils</h5>
+              <code>.fh-ui-text-center</code>
+              <code>.fh-ui-text-primary</code>
+              <code>.fh-ui-text-accent</code>
+            </div>
+            
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h5><i class="fas fa-arrows-alt" style="color: var(--fh-accent);"></i> Spacing</h5>
+              <code>.fh-ui-m-1</code> to <code>.fh-ui-m-5</code>
+              <code>.fh-ui-p-1</code> to <code>.fh-ui-p-5</code>
+            </div>
+            
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h5><i class="fas fa-th-large" style="color: var(--fh-secondary);"></i> Layout</h5>
+              <code>.fh-ui-flex</code>
+              <code>.fh-ui-grid</code>
+              <code>.fh-ui-gap-sm</code>
+            </div>
+            
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h5><i class="fas fa-adjust" style="color: var(--fh-primary);"></i> Effects</h5>
+              <code>.fh-ui-shadow</code>
+              <code>.fh-ui-glow</code>
+              <code>.fh-ui-blur</code>
+            </div>
+          </div>
+        </div>
+      </section>      <section id="spacing" class="fh-ui-snap-section">
+        <div class="fh-ui-card" style="margin-bottom: var(--fh-lg);">
+          <h2><i class="fas fa-ruler-combined fa-flip" style="--fa-animation-duration: 3s;"></i> Golden Ratio & Spacing</h2>
+          <div class="fh-ui-divider accent"></div>
+          
+          <div class="fh-ui-info-card primary" style="margin: var(--fh-md) 0;">
+            <i class="fas fa-calculator fa-beat-fade"></i>
+            <h4>Mathematical Harmony</h4>
+            <p>Fathead UI uses the mathematical golden ratio (<b>1.618</b>) for all spacing and sizing to create naturally pleasing visual harmony.</p>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--fh-lg); margin: var(--fh-lg) 0;">
+            <div>
+              <h4><i class="fas fa-code" style="color: var(--fh-primary);"></i> CSS Variables</h4>
+              <div class="fh-ui-card" style="padding: var(--fh-md); margin-top: var(--fh-sm);">
+                <div style="font-family: monospace; line-height: 1.6; font-size: 0.9em;">
+                  <div><span style="color: var(--fh-primary);">--fh-base</span>: 1rem <span style="color: var(--fh-text-tertiary);">/* base unit */</span></div>
+                  <div><span style="color: var(--fh-primary);">--fh-xs</span>: calc(var(--fh-base) / 1.618)</div>
+                  <div><span style="color: var(--fh-primary);">--fh-sm</span>: calc(var(--fh-xs) * 1.618)</div>
+                  <div><span style="color: var(--fh-primary);">--fh-md</span>: var(--fh-base)</div>
+                  <div><span style="color: var(--fh-primary);">--fh-lg</span>: calc(var(--fh-base) * 1.618)</div>
+                  <div><span style="color: var(--fh-primary);">--fh-xl</span>: calc(var(--fh-lg) * 1.618)</div>
+                  <div><span style="color: var(--fh-primary);">--fh-xxl</span>: calc(var(--fh-xl) * 1.618)</div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h4><i class="fas fa-th" style="color: var(--fh-accent);"></i> Visual Representation</h4>
+              <div style="display: flex; flex-direction: column; gap: var(--fh-xs); margin-top: var(--fh-sm);">
+                <div style="height: calc(var(--fh-xxl) - var(--fh-xl)); background: var(--fh-primary); border-radius: var(--fh-radius); display: flex; align-items: center; padding-left: var(--fh-sm);">
+                  <span>--fh-xxl</span>
+                </div>
+                <div style="height: calc(var(--fh-xl) - var(--fh-lg)); background: var(--fh-accent); border-radius: var(--fh-radius); display: flex; align-items: center; padding-left: var(--fh-sm);">
+                  <span>--fh-xl</span>
+                </div>
+                <div style="height: calc(var(--fh-lg) - var(--fh-md)); background: var(--fh-secondary); border-radius: var(--fh-radius); display: flex; align-items: center; padding-left: var(--fh-sm);">
+                  <span>--fh-lg</span>
+                </div>
+                <div style="height: calc(var(--fh-md) - var(--fh-sm)); background: var(--fh-primary); opacity: 0.7; border-radius: var(--fh-radius); display: flex; align-items: center; padding-left: var(--fh-sm);">
+                  <span>--fh-md</span>
+                </div>
+                <div style="height: calc(var(--fh-sm) - var(--fh-xs)); background: var(--fh-accent); opacity: 0.7; border-radius: var(--fh-radius); display: flex; align-items: center; padding-left: var(--fh-sm);">
+                  <span>--fh-sm</span>
+                </div>
+                <div style="height: var(--fh-xs); background: var(--fh-secondary); opacity: 0.7; border-radius: var(--fh-radius); display: flex; align-items: center; padding-left: var(--fh-sm);">
+                  <span>--fh-xs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="fh-ui-alert fh-ui-alert-info" style="margin-top: var(--fh-md);">
+            <div class="fh-ui-alert-icon">
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
+            <div class="fh-ui-alert-content">
+              <h4 class="fh-ui-alert-title">Pro Tip</h4>
+              <p class="fh-ui-alert-text">Use these variables for margin, padding, gap, and font-size to create visually balanced and harmonious layouts that follow natural proportions.</p>
+            </div>
+          </div>
+        </div>
+      </section>      <section id="hci" class="fh-ui-snap-section">
+        <div class="fh-ui-card" style="margin-bottom: var(--fh-lg);">
+          <h2><i class="fas fa-universal-access fa-pulse" style="--fa-animation-duration: 2.5s;"></i> HCI & Accessibility</h2>
+          <div class="fh-ui-divider primary"></div>
+          
+          <div class="fh-ui-alert fh-ui-alert-warning" style="margin: var(--fh-md) 0;">
+            <div class="fh-ui-alert-icon">
+              <i class="fa-solid fa-shield-alt"></i>
+            </div>
+            <div class="fh-ui-alert-content">
+              <h4 class="fh-ui-alert-title">Accessibility First</h4>
+              <p class="fh-ui-alert-text">All Fathead UI components are designed with accessibility as a core principle, not an afterthought.</p>
+            </div>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--fh-md); margin: var(--fh-md) 0;">
+            <div class="fh-ui-info-card primary" style="height: 100%;">
+              <i class="fas fa-eye fa-beat" style="--fa-beat-scale: 1.1;"></i>
+              <h4>Visual Accessibility</h4>
+              <ul style="text-align: left; margin-top: var(--fh-sm); list-style-position: inside;">
+                <li>High-contrast color schemes in both light and dark modes</li>
+                <li>WCAG 2.1 AA compliant text contrast ratios</li>
+                <li>Focus indicators for improved keyboard navigation</li>
+                <li>Consistent spacing with golden ratio proportions</li>
+              </ul>
+            </div>
+            
+            <div class="fh-ui-info-card accent" style="height: 100%;">
+              <i class="fas fa-keyboard fa-flip" style="--fa-flip-x: 1; --fa-flip-y: 0;"></i>
+              <h4>Keyboard & Screen Reader</h4>
+              <ul style="text-align: left; margin-top: var(--fh-sm); list-style-position: inside;">
+                <li>Full keyboard navigation support</li>
+                <li>Properly labeled form elements and controls</li>
+                <li>ARIA attributes for enhanced screen reader support</li>
+                <li>Semantic HTML structure throughout components</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h4 style="margin: var(--fh-lg) 0 var(--fh-sm)"><i class="fas fa-sliders-h" style="color: var(--fh-accent);"></i> Motion & Animation Control</h4>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--fh-md);">
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h5>Reduced Motion Support</h5>
+              <div class="code-snippet" style="margin-top: var(--fh-xs);">
+                <pre>@media (prefers-reduced-motion) {
+  .fh-ui * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}</pre>
+              </div>
+            </div>
+            
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h5>Touch Target Sizes</h5>
+              <div style="display: flex; align-items: center; justify-content: space-around; margin-top: var(--fh-sm);">
+                <div style="width: 44px; height: 44px; background: var(--fh-primary); border-radius: var(--fh-radius); display: flex; align-items: center; justify-content: center;">
+                  <span>44px</span>
+                </div>
+                <div style="width: 2px; height: 30px; background: var(--fh-text-tertiary);"></div>
+                <div style="text-align: center;">
+                  <p style="margin-bottom: var(--fh-xs); font-size: 0.9em;">Minimum touch target</p>
+                  <p style="font-size: 0.8em;">WCAG 2.5.5 compliant</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="fh-ui-form-group" style="margin-top: var(--fh-lg);">
+            <label for="explore-a11y" class="fh-ui-form-label">Experience Focus States</label>
+            <input type="text" id="explore-a11y" class="fh-ui-form-input" placeholder="Click or tab to this input" />
+            <div class="fh-ui-form-help">Try navigating with your keyboard using Tab key</div>
+          </div>
+        </div>
       </section>
       <hr />      <section id="customization" class="fh-ui-snap-section">
-        <h2>Customization</h2>
-        <p>Override any <code>:root</code> CSS variable to change theme colors, spacing, or fonts. Example:</p>
-        <div class="code-snippet">
-          <pre>:root {
+        <div class="fh-ui-card" style="margin-bottom: var(--fh-lg);">
+          <h2><i class="fas fa-paint-brush fa-shake" style="--fa-animation-duration: 3.5s;"></i> Customization</h2>
+          <div class="fh-ui-divider primary"></div>
+          
+          <div class="fh-ui-info-card accent" style="margin: var(--fh-md) 0;">
+            <i class="fas fa-magic fa-spin" style="--fa-animation-duration: 4s;"></i>
+            <h4>Tailored to Your Brand</h4>
+            <p>Fathead UI offers extensive customization via CSS variables (custom properties) that control everything from colors and spacing to component behavior.</p>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--fh-md); margin-top: var(--fh-lg);">
+            <!-- Color Customization -->
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h4><i class="fas fa-palette" style="color: var(--fh-accent);"></i> Color Theme</h4>
+              
+              <div class="code-snippet" style="margin: var(--fh-sm) 0;">
+                <pre>:root {
   --fh-primary: #2DC0FF;
   --fh-accent: #FF8A00;
+  --fh-secondary: #6A0DAD;
 }</pre>
-          <button class="copy-btn">Copy</button>
+                <button class="copy-btn">Copy</button>
+              </div>
+              
+              <div style="display: flex; flex-wrap: wrap; gap: var(--fh-xs); margin-top: var(--fh-sm);">
+                <div style="width: 45px; height: 45px; border-radius: 50%; background: var(--fh-primary); box-shadow: 0 2px 8px var(--fh-shadow);"></div>
+                <div style="width: 45px; height: 45px; border-radius: 50%; background: var(--fh-accent); box-shadow: 0 2px 8px var(--fh-shadow);"></div>
+                <div style="width: 45px; height: 45px; border-radius: 50%; background: var(--fh-secondary); box-shadow: 0 2px 8px var(--fh-shadow);"></div>
+              </div>
+            </div>
+            
+            <!-- Styling Customization -->
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h4><i class="fas fa-sliders-h" style="color: var(--fh-primary);"></i> Component Styling</h4>
+              
+              <div class="code-snippet" style="margin: var(--fh-sm) 0;">
+                <pre>:root {
+  --fh-radius: 8px;
+  --fh-glass-blur: 15px;
+  --fh-transition: 0.2s ease;
+}</pre>
+                <button class="copy-btn">Copy</button>
+              </div>
+              
+              <!-- Visual examples of radius changes -->
+              <div style="display: flex; gap: var(--fh-md); margin-top: var(--fh-sm);">
+                <div style="flex: 1; height: 50px; background: var(--fh-primary); border-radius: 0px; display: flex; align-items: center; justify-content: center; font-size: 0.8em;">0px</div>
+                <div style="flex: 1; height: 50px; background: var(--fh-primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.8em;">8px</div>
+                <div style="flex: 1; height: 50px; background: var(--fh-primary); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 0.8em;">16px</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="fh-ui-divider with-text" style="margin: var(--fh-lg) 0 var(--fh-md);">
+            <span class="fh-ui-divider-text">Theme Switching</span>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--fh-md);">
+            <!-- Light/Dark Mode -->
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h5>Theme Attributes</h5>
+              <div class="code-snippet" style="margin-top: var(--fh-xs);">
+                <pre>&lt;body class="fh-ui" data-theme="light"&gt;
+&lt;!-- Content --&gt;
+&lt;/body&gt;</pre>
+                <button class="copy-btn">Copy</button>
+              </div>
+              <p style="margin-top: var(--fh-xs); font-size: 0.9em;">Toggle between <code>"light"</code> and <code>"dark"</code> themes with JavaScript:</p>
+              <div class="code-snippet" style="margin-top: var(--fh-xs);">
+                <pre>document.body.setAttribute(
+  'data-theme', 
+  'dark'
+);</pre>
+                <button class="copy-btn">Copy</button>
+              </div>
+            </div>
+            
+            <!-- Custom Themes -->
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h5>Custom Themes</h5>
+              <p style="margin-bottom: var(--fh-xs); font-size: 0.9em;">Create additional themes by adding CSS selectors:</p>
+              <div class="code-snippet" style="margin-top: var(--fh-xs);">
+                <pre>.fh-ui[data-theme="neon"] {
+  --fh-primary: #0ff;
+  --fh-accent: #f0f;
+  --fh-glass-bg: rgba(0,0,30,0.7);
+}</pre>
+                <button class="copy-btn">Copy</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="fh-ui-alert fh-ui-alert-info" style="margin-top: var(--fh-lg);">
+            <div class="fh-ui-alert-icon">
+              <i class="fa-solid fa-info-circle"></i>
+            </div>
+            <div class="fh-ui-alert-content">
+              <h4 class="fh-ui-alert-title">Best Practice</h4>
+              <p class="fh-ui-alert-text">Keep your custom CSS in a separate file and import it after the Fathead UI stylesheet to override default styles without modifying the original library.</p>
+            </div>
+          </div>
         </div>
-        <p>Switch between <b>light</b> and <b>dark</b> themes by changing <code>data-theme</code> on <code>&lt;body&gt;</code>.</p>
       </section>
       
       <section id="implementation" class="fh-ui-snap-section">
-        <h2>CSS-Only Implementation</h2>
-        <p>Fathead UI uses pure CSS solutions with no JavaScript dependencies, making it lightweight and compatible with any JavaScript framework (or none at all).</p>
-          <h3>Interactive Components</h3>
-        <ul>
-          <li>
-            <b>Copy Buttons:</b> Use CSS-only animations for feedback when clicked. The <code>::before</code> pseudo-element slides into view on click and fades out using keyframe animations.
-          </li>
-          <li>
-            <b>Popups &amp; Dialogs:</b> Implemented using hidden checkboxes for state management. When a <code>&lt;label for="checkbox-id"&gt;</code> is clicked, the associated checkbox toggles and CSS shows/hides the popup using the <code>:checked</code> selector.
-          </li>
-          <li>
-            <b>Toasts:</b> Use checkbox-based state with auto-hiding animations. The toast appears when the checkbox is checked and automatically fades out after a set duration using CSS animations.
-          </li>
-          <li>
-            <b>Loaders:</b> Show and auto-hide with CSS animations. The <code>loader-auto-hide</code> animation automatically hides the loader after a delay when triggered.
-          </li>
-          <li>
-            <b>Active Navigation:</b> Sidebar links use the <code>.active</code> class for highlighting, which is applied based on the current section using only CSS.
-          </li>
-        </ul>
-          <h3>Example: CSS-Only Modal</h3>
-        <div class="code-snippet">
-          <pre>&lt;!-- Hidden checkbox for state management --&gt;
+        <div class="fh-ui-card" style="margin-bottom: var(--fh-lg);">
+          <h2><i class="fas fa-code fa-bounce" style="--fa-bounce-start-scale: 1; --fa-bounce-height: 4px;"></i> CSS-First Implementation</h2>
+          <div class="fh-ui-divider accent"></div>
+          
+          <div class="fh-ui-alert fh-ui-alert-success" style="margin: var(--fh-md) 0;">
+            <div class="fh-ui-alert-icon">
+              <i class="fa-solid fa-feather-alt"></i>
+            </div>
+            <div class="fh-ui-alert-content">
+              <h4 class="fh-ui-alert-title">Lightweight By Design</h4>
+              <p class="fh-ui-alert-text">Fathead UI uses CSS-first solutions with minimal JavaScript dependencies, making it lightweight and compatible with any frontend framework.</p>
+            </div>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--fh-lg); margin: var(--fh-lg) 0;">
+            <div>
+              <h4><i class="fas fa-puzzle-piece" style="color: var(--fh-primary);"></i> Why CSS-First?</h4>
+              <div class="fh-ui-info-card primary" style="margin-top: var(--fh-sm);">
+                <i class="fas fa-rocket fa-fade"></i>
+                <h5>Performance Benefits</h5>
+                <ul style="text-align: left; margin-top: var(--fh-xs); list-style-position: inside; font-size: 0.95em;">
+                  <li>Faster page loading times</li>
+                  <li>Less JavaScript overhead</li>
+                  <li>Better browser rendering performance</li>
+                  <li>Reduced bundle size with no dependencies</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div>
+              <h4><i class="fas fa-universal-access" style="color: var(--fh-accent);"></i> Framework Agnostic</h4>
+              <div class="fh-ui-info-card accent" style="margin-top: var(--fh-sm);">
+                <i class="fas fa-handshake fa-pulse"></i>
+                <h5>Works With Any Framework</h5>
+                <div style="display: flex; flex-wrap: wrap; gap: var(--fh-xs); margin-top: var(--fh-sm); justify-content: center;">
+                  <span class="fh-ui-badge">React</span>
+                  <span class="fh-ui-badge">Vue</span>
+                  <span class="fh-ui-badge">Angular</span>
+                  <span class="fh-ui-badge">Svelte</span>
+                  <span class="fh-ui-badge">Plain HTML</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="fh-ui-divider with-text" style="margin: var(--fh-lg) 0 var(--fh-md);">
+            <span class="fh-ui-divider-text">Interactive Components</span>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--fh-md);">
+            <!-- Copy Button Implementation -->
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h5><i class="fas fa-copy" style="color: var(--fh-primary); margin-right: var(--fh-xs);"></i> Copy Buttons</h5>
+              <p style="font-size: 0.9em; margin-top: var(--fh-xs);">CSS animations for feedback when clicked. The <code>::before</code> pseudo-element slides into view and fades.</p>
+              <div style="margin: var(--fh-sm) 0; text-align: center;">
+                <button class="copy-btn" style="position: relative; transform: scale(1.2);">Copy</button>
+              </div>
+            </div>
+            
+            <!-- Popup Implementation -->
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h5><i class="fas fa-window-maximize" style="color: var(--fh-accent); margin-right: var(--fh-xs);"></i> Popups & Dialogs</h5>
+              <p style="font-size: 0.9em; margin-top: var(--fh-xs);">Hidden checkboxes toggle visibility with the <code>:checked</code> selector—no JavaScript needed.</p>
+              
+              <!-- Demo checkbox popup system -->
+              <div style="margin-top: var(--fh-sm); text-align: center; position: relative;">
+                <input type="checkbox" id="demo-popup" style="display: none;">
+                <label for="demo-popup" class="fh-ui-button">Try It</label>
+                <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--fh-glass-bg); backdrop-filter: blur(5px); border-radius: var(--fh-radius); padding: var(--fh-sm); margin-top: var(--fh-xs); border: 1px solid var(--fh-glass-border); box-shadow: 0 4px 15px var(--fh-shadow); z-index: 5; width: 120%; max-width: 200px; display: none;">
+                  <p style="margin-bottom: var(--fh-xs);">Popup content!</p>
+                  <label for="demo-popup" class="fh-ui-button" style="font-size: 0.8em;">Close</label>
+                </div>
+                <style>
+                  #demo-popup:checked + label + div {
+                    display: block;
+                    animation: fadeIn 0.2s ease;
+                  }
+                  @keyframes fadeIn {
+                    from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+                    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+                  }
+                </style>
+              </div>
+            </div>
+            
+            <!-- Toast Implementation -->
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h5><i class="fas fa-bell" style="color: var(--fh-primary); margin-right: var(--fh-xs);"></i> Toasts & Alerts</h5>
+              <p style="font-size: 0.9em; margin-top: var(--fh-xs);">Auto-hiding animations triggered by checkbox state changes. Times out using CSS animations.</p>
+              
+              <div style="margin-top: var(--fh-sm); text-align: center;">
+                <input type="checkbox" id="demo-toast" style="display: none;">
+                <label for="demo-toast" class="fh-ui-button">Show Toast</label>
+                <div class="toast-demo" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--fh-glass-bg); backdrop-filter: blur(10px); padding: var(--fh-sm); border-radius: var(--fh-radius); border: 1px solid var(--fh-glass-border); box-shadow: 0 4px 20px var(--fh-shadow); z-index: 100; display: none; min-width: 200px; text-align: center;">
+                  <i class="fas fa-check-circle" style="color: var(--fh-primary); margin-right: var(--fh-xs);"></i> Success!
+                </div>
+                <style>
+                  #demo-toast:checked ~ .toast-demo {
+                    display: block;
+                    animation: toastIn 0.3s ease, toastOut 0.3s ease 3s forwards;
+                  }
+                  @keyframes toastIn {
+                    from { transform: translateX(-50%) translateY(20px); opacity: 0; }
+                    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+                  }
+                  @keyframes toastOut {
+                    from { transform: translateX(-50%) translateY(0); opacity: 1; }
+                    to { transform: translateX(-50%) translateY(20px); opacity: 0; }
+                  }
+                </style>
+              </div>
+            </div>
+            
+            <!-- Active Navigation -->
+            <div class="fh-ui-card" style="padding: var(--fh-md);">
+              <h5><i class="fas fa-map-signs" style="color: var(--fh-accent); margin-right: var(--fh-xs);"></i> Active Navigation</h5>
+              <p style="font-size: 0.9em; margin-top: var(--fh-xs);">Sidebar links use the <code>.active</code> class for highlighting the current section.</p>
+              
+              <div style="display: flex; margin-top: var(--fh-sm); border-radius: var(--fh-radius); overflow: hidden; border: 1px solid var(--fh-glass-border);">
+                <a href="#" style="flex: 1; text-align: center; padding: var(--fh-xs); background: var(--fh-glass-bg); color: var(--fh-text-secondary); text-decoration: none;">Link</a>
+                <a href="#" style="flex: 1; text-align: center; padding: var(--fh-xs); background: var(--fh-primary); color: white; text-decoration: none; position: relative;">
+                  Active
+                  <span style="position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--fh-accent);"></span>
+                </a>
+                <a href="#" style="flex: 1; text-align: center; padding: var(--fh-xs); background: var(--fh-glass-bg); color: var(--fh-text-secondary); text-decoration: none;">Link</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="fh-ui-divider with-text" style="margin: var(--fh-lg) 0 var(--fh-md);">
+            <span class="fh-ui-divider-text">Code Examples</span>
+          </div>
+          
+          <h4><i class="fas fa-laptop-code" style="color: var(--fh-primary);"></i> Example: CSS-First Modal</h4>
+          
+          <div class="code-snippet" style="margin-top: var(--fh-sm);">
+            <pre>&lt;!-- Hidden checkbox for state management --&gt;
 &lt;input type="checkbox" id="my-popup-checkbox" class="fh-ui-popup-checkbox"&gt;
 
 &lt;!-- Trigger label styled as a button --&gt;
@@ -151,7 +649,18 @@
   &lt;/div&gt;
   &lt;label for="my-popup-checkbox" class="fh-ui-close-overlay"&gt;&lt;/label&gt;
 &lt;/div&gt;</pre>
-          <button class="copy-btn">Copy</button>
+            <button class="copy-btn">Copy</button>
+          </div>
+          
+          <div class="fh-ui-alert fh-ui-alert-info" style="margin-top: var(--fh-lg);">
+            <div class="fh-ui-alert-icon">
+              <i class="fa-solid fa-hand-point-right"></i>
+            </div>
+            <div class="fh-ui-alert-content">
+              <h4 class="fh-ui-alert-title">Progressive Enhancement</h4>
+              <p class="fh-ui-alert-text">Fathead UI components work without JavaScript but can be enhanced with JS for additional functionality. This creates a better user experience for all visitors regardless of device capabilities.</p>
+            </div>
+          </div>
         </div>
       </section>
     </main>  </div>

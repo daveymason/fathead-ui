@@ -1,16 +1,16 @@
 # Fathead UI
 
-A futuristic, zero-JavaScript CSS framework for building modern web interfaces with data-based design & cognitive psychology principles.
+A futuristic, CSS-first framework for building modern web interfaces with mathematically precise design & applied cognitive psychology principles. ✨🧠
 
-**Pure CSS implementation - zero JavaScript dependencies**
+**CSS-first implementation - minimal JavaScript dependencies - maximum psychological impact**
 
 **Features**
-- Golden ratio & Fibonacci-based spacing and layout (1.618 ratio)
-- Glassmorphism & advanced microfeedback animations
-- Psychological HCI principles & accessibility compliant (WCAG 2.1)
-- Light & dark themes with mathematically-derived color pairing
-- Font Awesome 6 integration with animated icons
-- Easy CDN or local install
+- ➗ Golden ratio & Fibonacci-based spacing and layout (precisely 1.618:1 ratio)
+- 🌠 Glassmorphism & psychologically-optimized microfeedback animations
+- 🧠 Cognitive psychology HCI principles & accessibility compliant (WCAG 2.1)
+- 🌓 Light & dark themes with mathematically-derived color harmonics
+- ✨ Font Awesome 6 integration with context-aware animated icons
+- 🚀 Easy CDN or local install
 
 **Quickstart - Add to your project:**
 ```html
@@ -28,7 +28,7 @@ Wrap your app in the root class and set theme:
 </body>
 ```
 
-**CSS-Only Interactive Components**
+**CSS-First Interactive Components**
 - Popups/Modals: Hidden checkbox technique with `:checked` pseudo-class
 - Toasts: Auto-hiding notifications with CSS animations
 - Loaders: Self-dismissing spinners and overlays
@@ -49,7 +49,7 @@ Wrap your app in the root class and set theme:
 ```
 
 **New Components**
-- CSS-only Spinner with multiple sizes
+- CSS-first Spinner with multiple sizes
 - Enhanced Alerts with 4 types (info, success, warning, error)
 - Info Cards with icons and animations
 - Advanced Navigation components

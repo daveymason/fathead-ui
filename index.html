@@ -29,47 +29,48 @@
     </div>
     <section id="hero" class="hero-section fh-ui-snap-section">
       <h1>Fathead-UI</h1> 
-      <h4>A futuristic, zero-JavaScript CSS framework. </h4>
-      <p>For building modern web interfaces with data-based design & cognitive psychology principles.</p>  <div class="code-snippet">
+      <h4>A futuristic, CSS-first framework. </h4>
+      <p>For building modern web interfaces</p>  <div class="code-snippet">
         <h4>Add to your project:</h4>
         <pre>&lt;link rel="stylesheet" href="https://daveymason.github.io/fathead-ui/fathead-ui.css" /&gt;</pre>
         <button class="copy-btn" id="copy-cdn-btn">Copy</button>
       </div>
     </section>
     <section id="features" class="features-section fh-ui-snap-section">
-      <h2>Designed for Modern Web</h2>
+      <h2>Designed for the Modern Web</h2>
       
-      <div class="features-grid">      <div class="fh-ui-info-card primary">
-        <i class="fa-solid fa-code fa-fade"></i>
-        <h3>Pure CSS Magic</h3>
-        <p>All interactive components built with CSS-only techniques. No JavaScript dependencies means faster loading and better reliability.</p>
+      <div class="features-grid">      <div class="fh-ui-info-card primary entry-top-left">
+        <i class="fa-solid fa-code fa-flip" style="--fa-animation-duration: 3s; --fa-flip-x: 1; --fa-flip-y: 0;"></i>
+        <h3>CSS-First Magic</h3>
+        <p>Interactive components built with CSS-first techniques. Minimal JavaScript dependencies means faster loading and better reliability.</p>
       </div>
 
-      <div class="fh-ui-info-card accent">
-        <i class="fa-solid fa-lightbulb fa-pulse"></i>
+      <div class="fh-ui-info-card accent entry-top">
+        <i class="fa-solid fa-lightbulb fa-fade" style="--fa-fade-opacity: 0.4; --fa-animation-duration: 1.5s;"></i>
         <h3>Human-Centered Design</h3>
         <p>Based on cognitive psychology principles and human-computer interaction research for optimal user experience.</p>
       </div>
 
-      <div class="fh-ui-info-card secondary">
-        <i class="fa-solid fa-layer-group fa-bounce"></i>
+      <div class="fh-ui-info-card secondary entry-top-right">
+        <i class="fa-solid fa-layer-group fa-bounce" style="--fa-bounce-height: 5px; --fa-animation-duration: 2s;"></i>
         <h3>Golden Ratio Harmony</h3>
         <p>Layout system based on the Fibonacci sequence (1.618 ratio) creates naturally pleasing visual proportions.</p>
       </div>
 
-        <div class="fh-ui-info-card tertiary">
-            <i class="fa-solid fa-paintbrush fa-shake"></i>
+        <div class="fh-ui-info-card tertiary entry-bottom-left">
+            <i class="fa-solid fa-paintbrush" style="transform-origin: bottom center; animation: paintbrush-sweep 3s ease-in-out infinite;"></i>
             <h3>Color Theory</h3>
             <p>Colors are derived from mathematical relationships for harmonious and complementary color schemes.</p>
         </div>
 
-        <div class="fh-ui-info-card quaternary">
-            <i class="fa-solid fa-shield-alt fa-beat"></i>
+        <div class="fh-ui-info-card quaternary entry-bottom">
+            <i class="fa-solid fa-shield-alt fa-beat" style="--fa-beat-scale: 1.1; --fa-animation-duration: 2s;"></i>
             <h3>Accessibility First</h3>
             <p>Built with accessibility in mind, ensuring all users can interact with your web applications.</p>
         </div>
-        <div class="fh-ui-info-card quinary">
-            <i class="fa-solid fa-cog fa-spin"></i>
+
+        <div class="fh-ui-info-card quinary entry-bottom-right">
+            <i class="fa-solid fa-cog" style="--fa-animation-duration: 8s;"></i>
             <h3>Customizable</h3>
             <p>Easy to customize and extend with your own styles, making it a flexible choice for any project.</p>
         </div>
@@ -92,14 +93,16 @@
       </div>
       
       <input type="checkbox" id="demo-toast-checkbox" class="fh-ui-toast-checkbox">
-      <div class="fh-ui-toast" id="demo-toast">CSS-only toast notification with auto-hide animation!</div>
+      <div class="fh-ui-toast" id="demo-toast">CSS-first toast notification with auto-hide animation!</div>
       
       <input type="checkbox" id="demo-dialog-checkbox" class="fh-ui-dialog-checkbox">
       <div class="fh-ui-dialog" id="demo-dialog">
         <div class="fh-ui-dialog-content">
-          <h3><i class="fa-solid fa-circle-info fa-beat-fade" style="color: #219EFF"></i> Pure CSS Dialog</h3>
+          <h3><i class="fa-solid fa-circle-info fa-beat-fade" style="color: #219EFF; --fa-beat-fade-opacity: 0.6; --fa-animation-duration: 2s;"></i> Pure CSS Dialog</h3>
           <p>This modal dialog requires no JavaScript and works with the hidden checkbox technique.</p>
-          <label for="demo-dialog-checkbox" class="fh-ui-button">Return to Demo <i class="fa-solid fa-reply"></i></label>
+          <div class="dialog-button-container" style="margin-top: var(--fh-lg); display: flex; justify-content: center;">
+            <label for="demo-dialog-checkbox" class="fh-ui-button">Return to Demo <i class="fa-solid fa-reply fa-fade"></i></label>
+          </div>
         </div>
         <label for="demo-dialog-checkbox" class="fh-ui-close-overlay"></label>
       </div>
@@ -148,7 +151,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Fathead UI. Built with pure CSS. No JavaScript used.</p>
+        <p>&copy; 2025 Fathead UI. - https://fatheadsolutions.com </p>
       </div>  </footer>
   </div><!-- End of snap container -->
   <a href="components.html" class="floating-link">Library <i class="fa-solid fa-arrow-right"></i></a>

@@ -43,31 +43,92 @@
   - Improved hover state animations for cards, buttons, links
 
 ## Pending
+
+### Cognitive Psychology Enhancements
+- Implement golden ratio precision in all typography and spacing:
+  - Set font sizes to follow exact 1.618 ratio progression
+  - Adjust all margins and paddings to follow Fibonacci sequence (8px, 13px, 21px, 34px, 55px)
+  - Document the mathematical basis in a new "Design Science" section of documentation
+
+- Add subtle parallax effects based on depth perception psychology:
+  - Implement subtle background movement on scroll (z-index 0)
+  - Medium movement for cards and containers (z-index 10-50)
+  - Pronounced movement for interactive elements (z-index 100+)
+  - Use CSS perspective and transform properties for 3D depth cues
+
+- Enhance microinteractions based on human attention patterns:
+  - Add subtle icon animations that trigger when parent cards are hovered
+  - Implement gradual color transitions that follow visual processing speed (300-500ms)
+  - Create focus states that utilize peripheral vision psychology
+
+- Improve visual hierarchy using Gestalt principles:
+  - Apply proximity grouping for related elements
+  - Enhance similarity patterns for items of equal importance
+  - Implement continuity in navigation and card layouts
+  - Add subtle animation to reinforce closure principle
+
+- Better mobile responsive design:
+  - Optimize layouts for mobile devices
+  - Implement responsive navigation
+  - Ensure components scale properly on small screens
+  
 - Revamp sidebar styling:
   - Modern slide-in/out for mobile with nice transition/animation
-  - Add collapsible behavior (Is this possible with CSS only?)
-  - Components page: group sidebar components logincally
+  - Add collapsible behavior (Is this possible with CSS-first?)
+  - Components page: group sidebar components logically
 
-- Component imporvements
-  - Improve the spacing between paragraphs and buttons, like in the popup and buttons
-  - Improve the text spacing in the cards
-  - Improve the alerts components Section, Maybe just the name of the alert and the icon, press and user will see example (like toast)
+### Mathematical Design Implementation
+- Implement animated border-radius on buttons:
+  - Create fluid morphing effects using CSS keyframes
+  - Transition between circular and rounded rectangle shapes
+  - Use timing functions derived from natural movement patterns
+
+- Apply true golden ratio to all component dimensions:
+  - Set card dimensions to follow 1:1.618 aspect ratio
+  - Ensure all UI elements follow Fibonacci sequence widths/heights
+  - Document the mathematical relationships in examples
+
+
+- Component improvements
+  - Improve the spacing between paragraphs and buttons using golden ratio
+  - Adjust text spacing in cards to follow mathematical precision
+  - Enhance alerts component section with psychological color theory
     - ✅ Homepage improvements
    - ✅ Made footer stick to bottom of screen by using flex layout and margin-top: auto
    - Added elements in bottom section so that footer stays on bottom page
   - ✅ Documentation improvement
     - ✅ Ensured the padding and spacing just like the index page
     - ✅ Added the dots navigation on the side
+    - ✅ Enhanced HCI & Accessibility section with visual examples and interactive components
+    - ✅ Improved Customization section with color swatches and visual representations
+    - ✅ Revamped CSS-First Implementation section with interactive examples
+    - ✅ Added badge component and styling to showcase framework capabilities
     - ✅ Added icons just like the sidebar on /components page
     - ✅ Implemented scroll snap functionality for better navigation
 
-- Validate accessibility:
-  - WCAG 2.1 AA contrast ratios
-  - ARIA labels for navigation and toggles
+### Visual and Experiential Enhancements
+- Create subtle element float effects:
+  - Implement gentle hover animations with CSS transforms
+  - Add barely perceptible movement to static elements
+  - Create z-index-based hover intensity (more pronounced for interactive elements)
 
+- Add delicate background parallax follow effect:
+  - Implement subtle background movement based on cursor position
+  - Increase effect magnitude with z-index (subtle on background, pronounced on buttons)
+  - Use CSS custom properties to control effect intensity
+
+- Add scientifically-backed copyright highlighting cognitive science application:
+  - Develop persuasive copywriting emphasizing psychological benefits
+  - Add "Based on cognitive psychology research" citations
+  - Include subtle scientific notation and formulas in documentation
+
+- Enhance documentation with cognitive design principles:
+  - Add visualization of golden ratio application in components
+  - Include side-by-side comparisons of standard vs. cognitive design
+  - Add case studies showing measurable UX improvements
+
+- Validate accessibility:
+  - WCAG 2.1 AA contrast ratios while maintaining cognitive color theory
+  - ARIA labels for navigation and toggles
+  - Ensure cognitive enhancements don't interfere with assistive technologies
 - Test across screen sizes & ensure responsiveness
-- Move the light / dark switcher to udner the navbar. 
-- Ensure light / dark switcher works on components page. 
-- Add more colours, update the index section "Designed for Modern Web" with teh bottom three info boxes to use the three new colours. 
-- Improve the way the information in the docs pages are shown. Righ tnow just very basic. Use some of the styling elements. Improve the components offerings for text based UX. 
-- Fix the popups and toasts to show in the correct place all the time. 

@@ -11,9 +11,9 @@
 <body class="fh-ui" data-theme="light">
   <label for="theme-toggle" class="theme-toggle-label" title="Toggle light/dark mode"></label>
   <div class="fh-ui-navbar">
-    <a href="/" class="logo">Fathead UI</a>
+    <a href="index.html" class="logo">Fathead UI</a>
     <div class="nav-links">
-      <a href="/" class="nav-link">Home</a>
+      <a href="index.html" class="nav-link">Home</a>
       <a href="components.html" class="nav-link active">Components</a>
       <a href="documentation.html" class="nav-link">Docs</a>
     </div>
@@ -202,30 +202,199 @@
       
       <section id="forms" class="fh-ui-component-section">
         <h2>Forms</h2>
-        <p class="description">Styled form inputs with focus states and consistent sizing. Includes text fields, select dropdowns, and textareas.</p>
+        <p class="description">Modern, interactive form components with focus states, validation indicators and advanced input types. Fully responsive and accessible.</p>
         
         <div class="fh-ui-component-row">
           <div class="fh-ui-component-demo" style="width:100%">
             <form>
-              <input class="fh-ui-input" type="text" placeholder="Your Name" />
-              <select class="fh-ui-select">
-                <option>Option 1</option>
-                <option>Option 2</option>
-              </select>
-              <textarea class="fh-ui-textarea" rows="3" placeholder="Your Message"></textarea>
-              <button class="fh-ui-button">Submit</button>
+              <h4>Basic Inputs</h4>
+              <div class="fh-ui-form-group">
+                <label class="fh-ui-form-label">Your Name</label>
+                <div class="fh-ui-input-group">
+                  <input class="fh-ui-input fh-ui-input-with-icon-left" type="text" placeholder="Enter your full name" />
+                  <i class="fa-solid fa-user fh-ui-input-icon fh-ui-input-icon-left"></i>
+                </div>
+                <div class="fh-ui-form-help">Please enter your first and last name</div>
+              </div>
+              
+              <div class="fh-ui-form-group">
+                <label class="fh-ui-form-label">Email</label>
+                <div class="fh-ui-input-group">
+                  <input class="fh-ui-input fh-ui-input-with-icon-left" type="email" placeholder="your@email.com" />
+                  <i class="fa-solid fa-envelope fh-ui-input-icon fh-ui-input-icon-left"></i>
+                </div>
+              </div>
+              
+              <div class="fh-ui-form-group">
+                <label class="fh-ui-form-label">Password</label>
+                <div class="fh-ui-input-group">
+                  <input class="fh-ui-input fh-ui-input-with-icon-left" type="password" placeholder="••••••••" />
+                  <i class="fa-solid fa-lock fh-ui-input-icon fh-ui-input-icon-left"></i>
+                </div>
+                <div class="fh-ui-form-help">Must be at least 8 characters</div>
+              </div>
+
+              <div class="fh-ui-form-group">
+                <label class="fh-ui-form-label">Category</label>
+                <select class="fh-ui-select">
+                  <option value="" disabled selected>Choose a category</option>
+                  <option value="1">Design</option>
+                  <option value="2">Development</option>
+                  <option value="3">Marketing</option>
+                </select>
+              </div>
+              
+              <div class="fh-ui-form-group">
+                <label class="fh-ui-form-label">Your Message</label>
+                <textarea class="fh-ui-textarea" rows="3" placeholder="Type your message here..."></textarea>
+              </div>
+              
+              <h4>Validation States</h4>
+              <div class="fh-ui-form-group">
+                <label class="fh-ui-form-label">Valid Input</label>
+                <input class="fh-ui-input valid" type="text" value="Correct information" />
+                <div class="fh-ui-form-help valid">This information is valid</div>
+              </div>
+              
+              <div class="fh-ui-form-group">
+                <label class="fh-ui-form-label">Invalid Input</label>
+                <input class="fh-ui-input invalid" type="text" value="Wrong format" />
+                <div class="fh-ui-form-help error">Please enter a valid format</div>
+              </div>
+              
+              <h4>Input Combinations</h4>
+              <div class="fh-ui-form-group">
+                <label class="fh-ui-form-label">Website URL</label>
+                <div class="fh-ui-input-combo">
+                  <div class="fh-ui-input-combo-text">https://</div>
+                  <input class="fh-ui-input" type="text" placeholder="example.com" />
+                </div>
+              </div>
+              
+              <div class="fh-ui-form-group">
+                <label class="fh-ui-form-label">Price</label>
+                <div class="fh-ui-input-combo">
+                  <div class="fh-ui-input-combo-text">$</div>
+                  <input class="fh-ui-input" type="number" placeholder="0.00" step="0.01" />
+                </div>
+              </div>
+              
+              <h4>Floating Labels</h4>
+              <div class="fh-ui-form-group fh-ui-form-floating">
+                <input class="fh-ui-input" type="text" id="floating-name" placeholder=" " />
+                <label class="fh-ui-form-label" for="floating-name">Full Name</label>
+              </div>
+              
+              <div class="fh-ui-form-group fh-ui-form-floating">
+                <input class="fh-ui-input" type="email" id="floating-email" placeholder=" " />
+                <label class="fh-ui-form-label" for="floating-email">Email Address</label>
+              </div>
+
+              <h4>Range Slider</h4>
+              <div class="fh-ui-form-group">
+                <label class="fh-ui-form-label">Volume Level</label>
+                <div class="fh-ui-range-container">
+                  <input type="range" class="fh-ui-range" min="0" max="100" value="75" id="volume-range" />
+                  <span class="fh-ui-range-value">75%</span>
+                </div>
+              </div>
+              
+              <h4>Checkboxes & Switches</h4>
+              <div class="fh-ui-checkbox-group">
+                <div class="fh-ui-checkbox">
+                  <input type="checkbox" id="terms-checkbox" />
+                  <span class="fh-ui-checkbox-mark"></span>
+                  <label for="terms-checkbox">I agree to the terms and conditions</label>
+                </div>
+                
+                <div class="fh-ui-checkbox">
+                  <input type="checkbox" id="newsletter-checkbox" checked />
+                  <span class="fh-ui-checkbox-mark"></span>
+                  <label for="newsletter-checkbox">Subscribe to newsletter</label>
+                </div>
+              </div>
+              
+              <div style="margin-top: var(--fh-md);">
+                <div class="fh-ui-switch">
+                  <input type="checkbox" id="dark-mode-switch" class="fh-ui-switch-input" />
+                  <span class="fh-ui-switch-slider"></span>
+                  <label for="dark-mode-switch">Dark Mode</label>
+                </div>
+                
+                <div class="fh-ui-switch">
+                  <input type="checkbox" id="notifications-switch" class="fh-ui-switch-input" checked />
+                  <span class="fh-ui-switch-slider"></span>
+                  <label for="notifications-switch">Enable Notifications</label>
+                </div>
+              </div>
+              
+              <h4>Radio Buttons</h4>
+              <div class="fh-ui-radio-group">
+                <label class="fh-ui-form-label">Preferred Contact Method</label>
+                <div class="fh-ui-radio">
+                  <input type="radio" name="contact" id="email-radio" checked />
+                  <span class="fh-ui-radio-mark"></span>
+                  <label for="email-radio">Email</label>
+                </div>
+                <div class="fh-ui-radio">
+                  <input type="radio" name="contact" id="phone-radio" />
+                  <span class="fh-ui-radio-mark"></span>
+                  <label for="phone-radio">Phone</label>
+                </div>
+                <div class="fh-ui-radio">
+                  <input type="radio" name="contact" id="mail-radio" />
+                  <span class="fh-ui-radio-mark"></span>
+                  <label for="mail-radio">Mail</label>
+                </div>
+              </div>
+              
+              <div style="margin-top: var(--fh-lg);">
+                <button class="fh-ui-button" style="min-width: 120px;">Submit</button>
+              </div>
             </form>
           </div>
           <div class="fh-ui-component-code">
-            <pre>&lt;form&gt;
-  &lt;input class="fh-ui-input" type="text" placeholder="Your Name" /&gt;
-  &lt;select class="fh-ui-select"&gt;
-    &lt;option&gt;Option 1&lt;/option&gt;
-    &lt;option&gt;Option 2&lt;/option&gt;
-  &lt;/select&gt;
-  &lt;textarea class="fh-ui-textarea" rows="3" placeholder="Your Message"&gt;&lt;/textarea&gt;
-  &lt;button class="fh-ui-button"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</pre>
+            <pre>&lt;!-- Basic Input with Icon --&gt;
+&lt;div class="fh-ui-form-group"&gt;
+  &lt;label class="fh-ui-form-label"&gt;Your Name&lt;/label&gt;
+  &lt;div class="fh-ui-input-group"&gt;
+    &lt;input class="fh-ui-input fh-ui-input-with-icon-left" type="text" placeholder="Enter your name" /&gt;
+    &lt;i class="fa-solid fa-user fh-ui-input-icon fh-ui-input-icon-left"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;div class="fh-ui-form-help"&gt;Helper text goes here&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Validation States --&gt;
+&lt;div class="fh-ui-form-group"&gt;
+  &lt;label class="fh-ui-form-label"&gt;Valid Input&lt;/label&gt;
+  &lt;input class="fh-ui-input valid" type="text" /&gt;
+  &lt;div class="fh-ui-form-help valid"&gt;This information is valid&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Input Combinations --&gt;
+&lt;div class="fh-ui-input-combo"&gt;
+  &lt;div class="fh-ui-input-combo-text"&gt;https://&lt;/div&gt;
+  &lt;input class="fh-ui-input" type="text" placeholder="example.com" /&gt;
+&lt;/div&gt;
+
+&lt;!-- Floating Labels --&gt;
+&lt;div class="fh-ui-form-group fh-ui-form-floating"&gt;
+  &lt;input class="fh-ui-input" type="text" id="floating-name" placeholder=" " /&gt;
+  &lt;label class="fh-ui-form-label" for="floating-name"&gt;Full Name&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;!-- Range Slider --&gt;
+&lt;div class="fh-ui-range-container"&gt;
+  &lt;input type="range" class="fh-ui-range" min="0" max="100" value="75" /&gt;
+  &lt;span class="fh-ui-range-value"&gt;75%&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Switch Toggle --&gt;
+&lt;div class="fh-ui-switch"&gt;
+  &lt;input type="checkbox" id="dark-mode-switch" class="fh-ui-switch-input" /&gt;
+  &lt;span class="fh-ui-switch-slider"&gt;&lt;/span&gt;
+  &lt;label for="dark-mode-switch"&gt;Dark Mode&lt;/label&gt;
+&lt;/div&gt;</pre>
             <button class="copy-btn" data-code-ref="forms">Copy</button>
           </div>
         </div>
@@ -339,7 +508,7 @@
       
       <section id="loader" class="fh-ui-component-section">
         <h2>Loader</h2>
-        <p class="description">CSS-only loading indicators for async operations. Includes spinners in various sizes and a full-screen overlay option.</p>
+        <p class="description">CSS-first loading indicators for async operations. Includes spinners in various sizes and a full-screen overlay option.</p>
         
         <div class="fh-ui-component-row">
           <div class="fh-ui-component-demo">
@@ -351,7 +520,7 @@
             <label for="loader-overlay-checkbox" class="fh-ui-button" style="margin-top:var(--fh-lg)">Show Loader Overlay</label>
           </div>
           <div class="fh-ui-component-code">
-            <pre>&lt;!-- CSS-only Spinner sizes --&gt;
+            <pre>&lt;!-- CSS-first Spinner sizes --&gt;
 &lt;div class="fh-ui-spinner sm"&gt;&lt;/div&gt;
 &lt;div class="fh-ui-spinner"&gt;&lt;/div&gt;
 &lt;div class="fh-ui-spinner lg"&gt;&lt;/div&gt;
@@ -467,7 +636,7 @@
         </div>
         
         <input type="checkbox" id="demo-toast-checkbox" class="fh-ui-toast-checkbox">
-        <div class="fh-ui-toast" id="demo-toast"><i class="fa-solid fa-bell fa-shake"></i> This is a CSS-only toast notification with auto-hide animation!</div>
+        <div class="fh-ui-toast" id="demo-toast"><i class="fa-solid fa-bell fa-shake"></i> This is a CSS-first toast notification with auto-hide animation!</div>
       </section>
       
       <section id="dialog" class="fh-ui-component-section">
@@ -527,8 +696,29 @@
   <!-- All component functionality implemented with pure CSS solutions -->
   <!-- Only minimal JS used for copy buttons -->
   
-  <!-- Required minimal JS for copy functionality -->  <script>
+  <!-- Required minimal JS for copy functionality, form enhancements, and theme switching -->
+  <script src="form-controls.js"></script>
+  <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Theme switcher persistence
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.querySelector('body');
+      
+      // Load saved theme preference
+      const savedTheme = localStorage.getItem('fathead-theme');
+      if (savedTheme) {
+        body.setAttribute('data-theme', savedTheme);
+        themeToggle.checked = (savedTheme === 'dark');
+      }
+      
+      // Toggle theme and save preference
+      themeToggle.addEventListener('change', () => {
+        const newTheme = themeToggle.checked ? 'dark' : 'light';
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('fathead-theme', newTheme);
+      });
+      
+      // Copy button functionality
       const copyButtons = document.querySelectorAll('.copy-btn');
       
       copyButtons.forEach(button => {
