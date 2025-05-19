@@ -70,3 +70,4 @@
 - Ensure light / dark switcher works on components page. 
 - Add more colours, update the index section "Designed for Modern Web" with teh bottom three info boxes to use the three new colours. 
 - Improve the way the information in the docs pages are shown. Righ tnow just very basic. Use some of the styling elements. Improve the components offerings for text based UX. 
+- Fix the popups and toasts to show in the correct place all the time. 
