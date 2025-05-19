@@ -23,6 +23,10 @@
     <div class="fh-ui-snap-dots">
       <a href="#getting-started" class="dot active" data-section="getting-started"></a>
       <a href="#components" class="dot" data-section="components"></a>
+      <a href="#tables" class="dot" data-section="tables"></a>
+      <a href="#tabs-accordion" class="dot" data-section="tabs-accordion"></a>
+      <a href="#dropdown-pagination" class="dot" data-section="dropdown-pagination"></a>
+      <a href="#progress" class="dot" data-section="progress"></a>
       <a href="#utilities" class="dot" data-section="utilities"></a>
       <a href="#spacing" class="dot" data-section="spacing"></a>
       <a href="#hci" class="dot" data-section="hci"></a>
@@ -35,6 +39,10 @@
         <ul>
           <li><a href="#getting-started"><i class="fas fa-rocket"></i> Getting Started</a></li>
           <li><a href="#components"><i class="fas fa-puzzle-piece"></i> Components</a></li>
+          <li><a href="#tables"><i class="fas fa-table"></i> Tables</a></li>
+          <li><a href="#tabs-accordion"><i class="fas fa-folder"></i> Tabs & Accordion</a></li>
+          <li><a href="#dropdown-pagination"><i class="fas fa-caret-square-down"></i> Dropdown & Pagination</a></li>
+          <li><a href="#progress"><i class="fas fa-tasks"></i> Progress & Breadcrumbs</a></li>
           <li><a href="#utilities"><i class="fas fa-tools"></i> Utility Classes</a></li>
           <li><a href="#spacing"><i class="fas fa-ruler-combined"></i> Golden Ratio & Spacing</a></li>
           <li><a href="#hci"><i class="fas fa-universal-access"></i> HCI & Accessibility</a></li>
@@ -189,7 +197,317 @@
             </div>
           </div>
         </div>
-      </section>      <section id="utilities" class="fh-ui-snap-section">
+      </section>
+      
+      <section id="tables" class="fh-ui-snap-section">
+        <div class="fh-ui-card" style="margin-bottom: var(--fh-lg);">
+          <h2><i class="fas fa-table fa-flip" style="--fa-animation-duration: 3s;"></i> Tables</h2>
+          <div class="fh-ui-divider primary"></div>
+          
+          <p style="margin: var(--fh-md) 0;">Present data elegantly with Fathead UI's glassmorphic tables:</p>
+          
+          <div style="margin: var(--fh-lg) 0; overflow-x: auto;">
+            <table class="fh-ui-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Component</th>
+                  <th>Usage</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Tables</td>
+                  <td><code>.fh-ui-table</code></td>
+                  <td><span class="fh-ui-badge" style="background: var(--fh-primary); color: white;">New</span></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Striped Tables</td>
+                  <td><code>.fh-ui-table-striped</code></td>
+                  <td><span class="fh-ui-badge" style="background: var(--fh-primary); color: white;">New</span></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Compact Tables</td>
+                  <td><code>.fh-ui-table-compact</code></td>
+                  <td><span class="fh-ui-badge" style="background: var(--fh-primary); color: white;">New</span></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Responsive Tables</td>
+                  <td><code>.fh-ui-table-responsive</code></td>
+                  <td><span class="fh-ui-badge" style="background: var(--fh-primary); color: white;">New</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="fh-ui-alert fh-ui-alert-info" style="margin: var(--fh-md) 0;">
+            <div class="fh-ui-alert-icon">
+              <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="fh-ui-alert-content">
+              <h4 class="fh-ui-alert-title">Responsive by Default</h4>
+              <p class="fh-ui-alert-text">All tables become horizontally scrollable on small screens when using <code>.fh-ui-table-responsive</code>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="tabs-accordion" class="fh-ui-snap-section">
+        <div class="fh-ui-card" style="margin-bottom: var(--fh-lg);">
+          <h2><i class="fas fa-folder-open fa-bounce" style="--fa-bounce-start-scale: 1; --fa-bounce-jump-scale: 1.05; --fa-animation-duration: 2s;"></i> Tabs & Accordion</h2>
+          <div class="fh-ui-divider accent"></div>
+          
+          <div style="margin: var(--fh-md) 0;">
+            <h4><i class="fas fa-folder"></i> Tabs</h4>
+            <div class="fh-ui-tabs">
+              <div class="fh-ui-tabs-nav">
+                <div class="fh-ui-tab-item active">First Tab</div>
+                <div class="fh-ui-tab-item">Second Tab</div>
+                <div class="fh-ui-tab-item">Third Tab</div>
+              </div>
+              <div class="fh-ui-tabs-content">
+                <div class="fh-ui-tab-pane active">
+                  <h5>Tab Content 1</h5>
+                  <p>This is the content of the first tab. Tabs use elegant transitions when switching between content.</p>
+                </div>
+                <div class="fh-ui-tab-pane">
+                  <h5>Tab Content 2</h5>
+                  <p>This is the content of the second tab. Tabs maintain consistent height to prevent layout shifts.</p>
+                </div>
+                <div class="fh-ui-tab-pane">
+                  <h5>Tab Content 3</h5>
+                  <p>This is the content of the third tab. All animations follow the Fathead UI cubic-bezier curve.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="code-snippet" style="margin-top: var(--fh-sm);">
+              <pre>&lt;div class="fh-ui-tabs"&gt;
+  &lt;div class="fh-ui-tabs-nav"&gt;
+    &lt;div class="fh-ui-tab-item active"&gt;First Tab&lt;/div&gt;
+    &lt;div class="fh-ui-tab-item"&gt;Second Tab&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="fh-ui-tabs-content"&gt;
+    &lt;div class="fh-ui-tab-pane active"&gt;Tab 1 content&lt;/div&gt;
+    &lt;div class="fh-ui-tab-pane"&gt;Tab 2 content&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+          
+          <div style="margin: var(--fh-lg) 0;">
+            <h4><i class="fas fa-chevron-down"></i> Accordion</h4>
+            <div class="fh-ui-accordion">
+              <div class="fh-ui-accordion-item">
+                <div class="fh-ui-accordion-header">First Item</div>
+                <div class="fh-ui-accordion-body">
+                  <p>This is the content of the first accordion item. Accordions are perfect for FAQ sections and content that needs to be progressively disclosed.</p>
+                </div>
+              </div>
+              <div class="fh-ui-accordion-item">
+                <div class="fh-ui-accordion-header active">Second Item (Open)</div>
+                <div class="fh-ui-accordion-body active">
+                  <p>This accordion item starts open. You can set any item to be open by default by adding the <code>active</code> class to both the header and body elements.</p>
+                  <p>Accordions automatically adjust their height based on content.</p>
+                </div>
+              </div>
+              <div class="fh-ui-accordion-item">
+                <div class="fh-ui-accordion-header">Third Item</div>
+                <div class="fh-ui-accordion-body">
+                  <p>This is the content of the third accordion item.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="dropdown-pagination" class="fh-ui-snap-section">
+        <div class="fh-ui-card" style="margin-bottom: var(--fh-lg);">
+          <h2><i class="fas fa-caret-square-down fa-flip" style="--fa-flip-x: 1; --fa-animation-duration: 2.5s;"></i> Dropdown & Pagination</h2>
+          <div class="fh-ui-divider secondary"></div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--fh-md); margin: var(--fh-md) 0;">
+            <!-- Dropdown Examples -->
+            <div>
+              <h4><i class="fas fa-caret-down"></i> Dropdowns</h4>
+              <div style="margin: var(--fh-md) 0; display: flex; gap: var(--fh-md); flex-wrap: wrap;">
+                <div class="fh-ui-dropdown">
+                  <div class="fh-ui-dropdown-toggle">
+                    <i class="fas fa-sliders-h"></i> Settings
+                  </div>
+                  <div class="fh-ui-dropdown-menu">
+                    <a href="#" class="fh-ui-dropdown-item">Profile</a>
+                    <a href="#" class="fh-ui-dropdown-item">Preferences</a>
+                    <div class="fh-ui-dropdown-divider"></div>
+                    <a href="#" class="fh-ui-dropdown-item">Sign Out</a>
+                  </div>
+                </div>
+                
+                <div class="fh-ui-dropdown fh-ui-dropdown-right">
+                  <div class="fh-ui-dropdown-toggle">
+                    Right Aligned
+                  </div>
+                  <div class="fh-ui-dropdown-menu">
+                    <a href="#" class="fh-ui-dropdown-item">Option 1</a>
+                    <a href="#" class="fh-ui-dropdown-item">Option 2</a>
+                  </div>
+                </div>
+              </div>
+              
+              <p class="code-snippet" style="margin-top: var(--fh-md); font-size: 0.9em;"><code>Requires components.js for interactions</code></p>
+            </div>
+            
+            <!-- Pagination Examples -->
+            <div>
+              <h4><i class="fas fa-ellipsis-h"></i> Pagination</h4>
+              <div style="margin: var(--fh-md) 0;">
+                <div class="fh-ui-pagination">
+                  <a href="#" class="fh-ui-pagination-item disabled">
+                    <i class="fas fa-chevron-left"></i>
+                  </a>
+                  <a href="#" class="fh-ui-pagination-item active">1</a>
+                  <a href="#" class="fh-ui-pagination-item">2</a>
+                  <a href="#" class="fh-ui-pagination-item">3</a>
+                  <span class="fh-ui-pagination-item">...</span>
+                  <a href="#" class="fh-ui-pagination-item">10</a>
+                  <a href="#" class="fh-ui-pagination-item">
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </div>
+              </div>
+              
+              <div style="margin-top: var(--fh-md);">
+                <h5>Small Pagination</h5>
+                <div class="fh-ui-pagination fh-ui-pagination-sm">
+                  <a href="#" class="fh-ui-pagination-item">
+                    <i class="fas fa-chevron-left"></i>
+                  </a>
+                  <a href="#" class="fh-ui-pagination-item">1</a>
+                  <a href="#" class="fh-ui-pagination-item active">2</a>
+                  <a href="#" class="fh-ui-pagination-item">3</a>
+                  <a href="#" class="fh-ui-pagination-item">
+                    <i class="fas fa-chevron-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="progress" class="fh-ui-snap-section">
+        <div class="fh-ui-card" style="margin-bottom: var(--fh-lg);">
+          <h2><i class="fas fa-tasks fa-beat" style="--fa-beat-scale: 1.1; --fa-animation-duration: 2s;"></i> Progress & Breadcrumbs</h2>
+          <div class="fh-ui-divider primary"></div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--fh-lg); margin: var(--fh-md) 0;">
+            <!-- Progress Bars -->
+            <div>
+              <h4><i class="fas fa-sliders-h"></i> Progress Bars</h4>
+              
+              <div class="fh-ui-progress-labeled">
+                <div class="fh-ui-progress-label">
+                  <span>Default Progress</span>
+                  <span class="fh-ui-progress-value">65%</span>
+                </div>
+                <div class="fh-ui-progress">
+                  <div class="fh-ui-progress-bar" style="width: 65%"></div>
+                </div>
+              </div>
+              
+              <div class="fh-ui-progress-labeled" style="margin-top: var(--fh-md);">
+                <div class="fh-ui-progress-label">
+                  <span>Success Progress</span>
+                  <span class="fh-ui-progress-value">80%</span>
+                </div>
+                <div class="fh-ui-progress">
+                  <div class="fh-ui-progress-bar fh-ui-progress-bar-success" style="width: 80%"></div>
+                </div>
+              </div>
+              
+              <div class="fh-ui-progress-labeled" style="margin-top: var(--fh-md);">
+                <div class="fh-ui-progress-label">
+                  <span>Warning Progress</span>
+                  <span class="fh-ui-progress-value">45%</span>
+                </div>
+                <div class="fh-ui-progress">
+                  <div class="fh-ui-progress-bar fh-ui-progress-bar-warning" style="width: 45%"></div>
+                </div>
+              </div>
+              
+              <div class="fh-ui-progress-labeled" style="margin-top: var(--fh-md);">
+                <div class="fh-ui-progress-label">
+                  <span>Animated Progress</span>
+                  <span class="fh-ui-progress-value">50%</span>
+                </div>
+                <div class="fh-ui-progress">
+                  <div class="fh-ui-progress-bar fh-ui-progress-striped fh-ui-progress-animated" style="width: 50%"></div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Breadcrumbs -->
+            <div>
+              <h4><i class="fas fa-map-signs"></i> Breadcrumbs</h4>
+              
+              <div style="margin: var(--fh-md) 0;">
+                <div class="fh-ui-breadcrumbs">
+                  <div class="fh-ui-breadcrumb-item">
+                    <a href="#"><i class="fas fa-home"></i> Home</a>
+                  </div>
+                  <div class="fh-ui-breadcrumb-item">
+                    <a href="#">Components</a>
+                  </div>
+                  <div class="fh-ui-breadcrumb-item active">
+                    Breadcrumbs
+                  </div>
+                </div>
+              </div>
+              
+              <h5 style="margin-top: var(--fh-md);">Compact Breadcrumbs</h5>
+              <div style="margin: var(--fh-sm) 0;">
+                <div class="fh-ui-breadcrumbs fh-ui-breadcrumbs-compact">
+                  <div class="fh-ui-breadcrumb-item">
+                    <a href="#"><i class="fas fa-home"></i></a>
+                  </div>
+                  <div class="fh-ui-breadcrumb-item">
+                    <a href="#">Products</a>
+                  </div>
+                  <div class="fh-ui-breadcrumb-item">
+                    <a href="#">Electronics</a>
+                  </div>
+                  <div class="fh-ui-breadcrumb-item active">
+                    Smartphones
+                  </div>
+                </div>
+              </div>
+              
+              <h5 style="margin-top: var(--fh-md);">Transparent Style</h5>
+              <div style="margin: var(--fh-sm) 0;">
+                <div class="fh-ui-breadcrumbs fh-ui-breadcrumbs-transparent">
+                  <div class="fh-ui-breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                  </div>
+                  <div class="fh-ui-breadcrumb-item">
+                    <a href="#">Analytics</a>
+                  </div>
+                  <div class="fh-ui-breadcrumb-item active">
+                    Reports
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="utilities" class="fh-ui-snap-section">
         <div class="fh-ui-card" style="margin-bottom: var(--fh-lg);">
           <h2><i class="fas fa-tools fa-shake" style="--fa-animation-duration: 3s;"></i> Utility Classes</h2>
           <div class="fh-ui-divider primary"></div>
@@ -821,5 +1139,20 @@
       
     });
   </script>
+<script src="./components.js"></script>
+<script>
+  // Initialize all components on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    // Make certain dropdowns active for demo purposes
+    document.querySelectorAll('.fh-ui-dropdown').forEach(function(dropdown, index) {
+      if (index === 0) {
+        dropdown.classList.add('active');
+        setTimeout(function() {
+          dropdown.classList.remove('active');
+        }, 2000);
+      }
+    });
+  });
+</script>
 </body>
 </html>
