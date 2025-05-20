@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fathead UI – Components Library</title>
     <link rel="stylesheet" href="./fathead-ui.css" />
+    <link rel="stylesheet" href="./tabs-accordian-dropdown.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
@@ -178,48 +179,50 @@
         
         <div class="fh-ui-component-row">
           <div class="fh-ui-component-demo">
-            <div class="fh-ui-tabs">
-              <div class="fh-ui-tabs-nav">
-                <div class="fh-ui-tab-item active">First Tab</div>
-                <div class="fh-ui-tab-item">Second Tab</div>
-                <div class="fh-ui-tab-item">Third Tab</div>
+            <div class="fh-ui-css-tabs">
+              <input type="radio" id="component-tab1" class="fh-ui-css-tab-input" name="component-tabs" checked>
+              <label for="component-tab1" class="fh-ui-css-tab-label">First Tab</label>
+              <div class="fh-ui-css-tab-content">
+                <h4>First Tab Content</h4>
+                <p>This is the content of the first tab.</p>
               </div>
-              <div class="fh-ui-tabs-content">
-                <div class="fh-ui-tab-pane active">
-                  <h4>First Tab Content</h4>
-                  <p>This is the content of the first tab.</p>
-                </div>
-                <div class="fh-ui-tab-pane">
-                  <h4>Second Tab Content</h4>
-                  <p>This is the content of the second tab.</p>
-                </div>
-                <div class="fh-ui-tab-pane">
-                  <h4>Third Tab Content</h4>
-                  <p>This is the content of the third tab.</p>
-                </div>
+              
+              <input type="radio" id="component-tab2" class="fh-ui-css-tab-input" name="component-tabs">
+              <label for="component-tab2" class="fh-ui-css-tab-label">Second Tab</label>
+              <div class="fh-ui-css-tab-content">
+                <h4>Second Tab Content</h4>
+                <p>This is the content of the second tab.</p>
+              </div>
+              
+              <input type="radio" id="component-tab3" class="fh-ui-css-tab-input" name="component-tabs">
+              <label for="component-tab3" class="fh-ui-css-tab-label">Third Tab</label>
+              <div class="fh-ui-css-tab-content">
+                <h4>Third Tab Content</h4>
+                <p>This is the content of the third tab.</p>
               </div>
             </div>
           </div>
           <div class="fh-ui-component-code">
-            <pre>&lt;div class="fh-ui-tabs"&gt;
-  &lt;div class="fh-ui-tabs-nav"&gt;
-    &lt;div class="fh-ui-tab-item active"&gt;First Tab&lt;/div&gt;
-    &lt;div class="fh-ui-tab-item"&gt;Second Tab&lt;/div&gt;
-    &lt;div class="fh-ui-tab-item"&gt;Third Tab&lt;/div&gt;
+            <pre>&lt;div class="fh-ui-css-tabs"&gt;
+  &lt;input type="radio" id="tab1" class="fh-ui-css-tab-input" name="tabs" checked&gt;
+  &lt;label for="tab1" class="fh-ui-css-tab-label"&gt;First Tab&lt;/label&gt;
+  &lt;div class="fh-ui-css-tab-content"&gt;
+    &lt;h4&gt;First Tab Content&lt;/h4&gt;
+    &lt;p&gt;This is the content of the first tab.&lt;/p&gt;
   &lt;/div&gt;
-  &lt;div class="fh-ui-tabs-content"&gt;
-    &lt;div class="fh-ui-tab-pane active"&gt;
-      &lt;h4&gt;First Tab Content&lt;/h4&gt;
-      &lt;p&gt;This is the content of the first tab.&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class="fh-ui-tab-pane"&gt;
-      &lt;h4&gt;Second Tab Content&lt;/h4&gt;
-      &lt;p&gt;This is the content of the second tab.&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class="fh-ui-tab-pane"&gt;
-      &lt;h4&gt;Third Tab Content&lt;/h4&gt;
-      &lt;p&gt;This is the content of the third tab.&lt;/p&gt;
-    &lt;/div&gt;
+  
+  &lt;input type="radio" id="tab2" class="fh-ui-css-tab-input" name="tabs"&gt;
+  &lt;label for="tab2" class="fh-ui-css-tab-label"&gt;Second Tab&lt;/label&gt;
+  &lt;div class="fh-ui-css-tab-content"&gt;
+    &lt;h4&gt;Second Tab Content&lt;/h4&gt;
+    &lt;p&gt;This is the content of the second tab.&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;input type="radio" id="tab3" class="fh-ui-css-tab-input" name="tabs"&gt;
+  &lt;label for="tab3" class="fh-ui-css-tab-label"&gt;Third Tab&lt;/label&gt;
+  &lt;div class="fh-ui-css-tab-content"&gt;
+    &lt;h4&gt;Third Tab Content&lt;/h4&gt;
+    &lt;p&gt;This is the content of the third tab.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
             <button class="copy-btn" data-code-ref="tabs">Copy</button>
@@ -233,44 +236,62 @@
         
         <div class="fh-ui-component-row">
           <div class="fh-ui-component-demo">
-            <div class="fh-ui-accordion">
-              <div class="fh-ui-accordion-item">
-                <div class="fh-ui-accordion-header active">First Item</div>
-                <div class="fh-ui-accordion-body active">
+            <div class="fh-ui-css-accordion">
+              <div class="fh-ui-css-accordion-item">
+                <input type="checkbox" id="component-accordion-1" class="fh-ui-css-accordion-checkbox" checked>
+                <label for="component-accordion-1" class="fh-ui-css-accordion-header">
+                  First Item
+                </label>
+                <div class="fh-ui-css-accordion-content">
                   <p>This is the content of the first accordion item.</p>
                 </div>
               </div>
-              <div class="fh-ui-accordion-item">
-                <div class="fh-ui-accordion-header">Second Item</div>
-                <div class="fh-ui-accordion-body">
+              <div class="fh-ui-css-accordion-item">
+                <input type="checkbox" id="component-accordion-2" class="fh-ui-css-accordion-checkbox">
+                <label for="component-accordion-2" class="fh-ui-css-accordion-header">
+                  Second Item
+                </label>
+                <div class="fh-ui-css-accordion-content">
                   <p>This is the content of the second accordion item.</p>
                 </div>
               </div>
-              <div class="fh-ui-accordion-item">
-                <div class="fh-ui-accordion-header">Third Item</div>
-                <div class="fh-ui-accordion-body">
+              <div class="fh-ui-css-accordion-item">
+                <input type="checkbox" id="component-accordion-3" class="fh-ui-css-accordion-checkbox">
+                <label for="component-accordion-3" class="fh-ui-css-accordion-header">
+                  Third Item
+                </label>
+                <div class="fh-ui-css-accordion-content">
                   <p>This is the content of the third accordion item.</p>
                 </div>
               </div>
             </div>
           </div>
           <div class="fh-ui-component-code">
-            <pre>&lt;div class="fh-ui-accordion"&gt;
-  &lt;div class="fh-ui-accordion-item"&gt;
-    &lt;div class="fh-ui-accordion-header active"&gt;First Item&lt;/div&gt;
-    &lt;div class="fh-ui-accordion-body active"&gt;
+            <pre>&lt;div class="fh-ui-css-accordion"&gt;
+  &lt;div class="fh-ui-css-accordion-item"&gt;
+    &lt;input type="checkbox" id="accordion-1" class="fh-ui-css-accordion-checkbox" checked&gt;
+    &lt;label for="accordion-1" class="fh-ui-css-accordion-header"&gt;
+      First Item
+    &lt;/label&gt;
+    &lt;div class="fh-ui-css-accordion-content"&gt;
       &lt;p&gt;This is the content of the first accordion item.&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="fh-ui-accordion-item"&gt;
-    &lt;div class="fh-ui-accordion-header"&gt;Second Item&lt;/div&gt;
-    &lt;div class="fh-ui-accordion-body"&gt;
+  &lt;div class="fh-ui-css-accordion-item"&gt;
+    &lt;input type="checkbox" id="accordion-2" class="fh-ui-css-accordion-checkbox"&gt;
+    &lt;label for="accordion-2" class="fh-ui-css-accordion-header"&gt;
+      Second Item
+    &lt;/label&gt;
+    &lt;div class="fh-ui-css-accordion-content"&gt;
       &lt;p&gt;This is the content of the second accordion item.&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="fh-ui-accordion-item"&gt;
-    &lt;div class="fh-ui-accordion-header"&gt;Third Item&lt;/div&gt;
-    &lt;div class="fh-ui-accordion-body"&gt;
+  &lt;div class="fh-ui-css-accordion-item"&gt;
+    &lt;input type="checkbox" id="accordion-3" class="fh-ui-css-accordion-checkbox"&gt;
+    &lt;label for="accordion-3" class="fh-ui-css-accordion-header"&gt;
+      Third Item
+    &lt;/label&gt;
+    &lt;div class="fh-ui-css-accordion-content"&gt;
       &lt;p&gt;This is the content of the third accordion item.&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -287,41 +308,44 @@
         <div class="fh-ui-component-row">
           <div class="fh-ui-component-demo">
             <div style="display: flex; gap: var(--fh-md); flex-wrap: wrap;">
-              <div class="fh-ui-dropdown">
-                <div class="fh-ui-dropdown-toggle">
+              <div class="fh-ui-css-dropdown">
+                <input type="checkbox" id="component-dropdown-1" class="fh-ui-css-dropdown-checkbox">
+                <label for="component-dropdown-1" class="fh-ui-css-dropdown-toggle">
                   <i class="fas fa-user"></i> Account
-                </div>
-                <div class="fh-ui-dropdown-menu">
-                  <a href="#" class="fh-ui-dropdown-item">Profile</a>
-                  <a href="#" class="fh-ui-dropdown-item">Settings</a>
-                  <div class="fh-ui-dropdown-divider"></div>
-                  <a href="#" class="fh-ui-dropdown-item">Sign Out</a>
+                </label>
+                <div class="fh-ui-css-dropdown-menu">
+                  <a href="#" class="fh-ui-css-dropdown-item">Profile</a>
+                  <a href="#" class="fh-ui-css-dropdown-item">Settings</a>
+                  <div class="fh-ui-css-dropdown-divider"></div>
+                  <a href="#" class="fh-ui-css-dropdown-item">Sign Out</a>
                 </div>
               </div>
               
-              <div class="fh-ui-dropdown fh-ui-dropdown-right">
-                <div class="fh-ui-dropdown-toggle">
+              <div class="fh-ui-css-dropdown" style="margin-left: var(--fh-md);">
+                <input type="checkbox" id="component-dropdown-2" class="fh-ui-css-dropdown-checkbox">
+                <label for="component-dropdown-2" class="fh-ui-css-dropdown-toggle">
                   <i class="fas fa-ellipsis-v"></i> Options
-                </div>
-                <div class="fh-ui-dropdown-menu">
-                  <a href="#" class="fh-ui-dropdown-item">Edit</a>
-                  <a href="#" class="fh-ui-dropdown-item">Duplicate</a>
-                  <a href="#" class="fh-ui-dropdown-item">Archive</a>
+                </label>
+                <div class="fh-ui-css-dropdown-menu">
+                  <a href="#" class="fh-ui-css-dropdown-item">Edit</a>
+                  <a href="#" class="fh-ui-css-dropdown-item">Duplicate</a>
+                  <a href="#" class="fh-ui-css-dropdown-item">Archive</a>
                 </div>
               </div>
             </div>
             <p style="margin-top: var(--fh-md); font-size: 0.9em; color: var(--fh-text-secondary);">Click on the dropdowns to see them in action.</p>
           </div>
           <div class="fh-ui-component-code">
-            <pre>&lt;div class="fh-ui-dropdown"&gt;
-  &lt;div class="fh-ui-dropdown-toggle"&gt;
+            <pre>&lt;div class="fh-ui-css-dropdown"&gt;
+  &lt;input type="checkbox" id="dropdown-1" class="fh-ui-css-dropdown-checkbox"&gt;
+  &lt;label for="dropdown-1" class="fh-ui-css-dropdown-toggle"&gt;
     &lt;i class="fas fa-user"&gt;&lt;/i&gt; Account
-  &lt;/div&gt;
-  &lt;div class="fh-ui-dropdown-menu"&gt;
-    &lt;a href="#" class="fh-ui-dropdown-item"&gt;Profile&lt;/a&gt;
-    &lt;a href="#" class="fh-ui-dropdown-item"&gt;Settings&lt;/a&gt;
-    &lt;div class="fh-ui-dropdown-divider"&gt;&lt;/div&gt;
-    &lt;a href="#" class="fh-ui-dropdown-item"&gt;Sign Out&lt;/a&gt;
+  &lt;/label&gt;
+  &lt;div class="fh-ui-css-dropdown-menu"&gt;
+    &lt;a href="#" class="fh-ui-css-dropdown-item"&gt;Profile&lt;/a&gt;
+    &lt;a href="#" class="fh-ui-css-dropdown-item"&gt;Settings&lt;/a&gt;
+    &lt;div class="fh-ui-css-dropdown-divider"&gt;&lt;/div&gt;
+    &lt;a href="#" class="fh-ui-css-dropdown-item"&gt;Sign Out&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
             <button class="copy-btn" data-code-ref="dropdown">Copy</button>
@@ -1024,7 +1048,6 @@
   
   <!-- Required minimal JS for copy functionality, form enhancements, and theme switching -->
   <script src="form-controls.js"></script>
-  <script src="components.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Theme switcher persistence

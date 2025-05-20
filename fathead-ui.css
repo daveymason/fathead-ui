@@ -22,7 +22,7 @@
     --fh-transition: all 0.25s cubic-bezier(0.23,1,0.32,1);
 
     /* Golden ratio sizing */
-    --fh-base: 1rem;
+    --fh-base: 1.2rem;
     --fh-xs: calc(var(--fh-base) / var(--fh-golden));
     --fh-sm: calc(var(--fh-xs) * var(--fh-golden));
     --fh-md: var(--fh-base);
@@ -674,6 +674,76 @@
     opacity: 1;
 }
 
+/* hero-cta.css */
+
+.hero-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    margin-top: var(--fh-lg);
+    padding: var(--fh-md);
+}
+
+.hero-cta h4 {
+    margin-bottom: var(--fh-sm);
+    font-size: var(--fh-lg);
+    color: var(--fh-text-secondary);
+}
+
+.code-snippet-box {
+    background: var(--fh-glass-bg);
+    border: 1px solid var(--fh-glass-border);
+    border-radius: var(--fh-radius);
+    padding: var(--fh-sm) var(--fh-md);
+    margin-bottom: var(--fh-md);
+    width: 100%;
+    max-width: 1100px; /* Or a width that suits your design */
+    box-shadow: 0 2px 5px var(--fh-shadow);
+    backdrop-filter: blur(var(--fh-glass-blur));
+    -webkit-backdrop-filter: blur(var(--fh-glass-blur));
+    display: flex; /* Use flex to align items */
+    align-items: center; /* Vertically align items in the middle */
+    justify-content: space-between; /* Space between link and button */
+}
+
+.code-snippet-box p {
+    margin: 0; /* Remove default paragraph margin */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+    flex-grow: 1; /* Allow the paragraph to take available space */
+    margin-right: var(--fh-sm); /* Space before the copy button */
+}
+
+.code-snippet-box a {
+    color: var(--fh-primary);
+    text-decoration: none;
+    font-weight: 300;
+    font-size: var(--fh-lg)
+}
+
+.code-snippet-box a:hover {
+    text-decoration: underline;
+}
+
+.copy-button {
+    background-color: var(--fh-primary);
+    color: white;
+    border: none;
+    border-radius: var(--fh-radius);
+    padding: var(--fh-xs) var(--fh-sm);
+    cursor: pointer;
+    font-size: var(--fh-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--fh-xs);
+    transition: background-color 0.3s;
+}
+
+.copy-button:hover {
+    background-color: var(--fh-accent);
+}
+
 /* =========================
    6. Buttons
    ========================= */
@@ -1102,6 +1172,33 @@ label.fh-ui-button {
 }
 
 /* =========================
+   12. Custom Styles
+   ========================= */
+.fh-ui-link-box {
+    background: var(--fh-glass-bg);
+    border: 1px solid var(--fh-glass-border);
+    border-radius: var(--fh-radius);
+    padding: var(--fh-sm) var(--fh-md);
+    margin: var(--fh-sm) 0;
+    display: inline-block; /* To keep it on one line */
+    float: left; /* To float the box */
+    clear: both; /* Ensure it doesn't interfere with other floated elements */
+    box-shadow: 0 2px 5px var(--fh-shadow);
+    backdrop-filter: blur(var(--fh-glass-blur));
+    -webkit-backdrop-filter: blur(var(--fh-glass-blur));
+}
+
+.fh-ui-link-box a {
+    color: var(--fh-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.fh-ui-link-box a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
    13. Hero Section
    ========================= */
 .hero-section {
@@ -1154,6 +1251,54 @@ label.fh-ui-button {
   padding: var(--fh-sm) var(--fh-xl);
   border-radius: var(--fh-radius);
   box-shadow: 0 4px 24px var(--fh-glow);
+}
+
+.hero-cta h4 {
+  margin-bottom: var(--fh-xs);
+}
+
+.hero-link a {
+  color: var(--fh-primary);
+  font-family: 'Fira Code', monospace;
+  font-size: 1em;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0;
+  margin-bottom: var(--fh-sm);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--fh-md);
+}
+
+.hero-buttons button,
+.hero-buttons .code-btn {
+  padding: var(--fh-md) var(--fh-lg);
+  font-size: 1em;
+  border: none;
+  border-radius: var(--fh-radius);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fh-xs);
+  transition: transform 0.2s ease;
+}
+
+.blue-btn {
+  background: var(--fh-primary);
+}
+.orange-btn {
+  background: var(--fh-accent);
+}
+.purple-btn {
+  background: var(--fh-tertiary);
+}
+
+.hero-buttons button:hover,
+.hero-buttons .code-btn:hover {
+  transform: translateY(-3px);
 }
 
 /* =========================
@@ -1264,6 +1409,141 @@ label.fh-ui-button {
     box-shadow: 0 0 0 0 rgba(255, 138, 0, 0);
     background: var(--fh-primary);
   }
+}
+
+/* Hero section code snippet buttons */
+.code-snippet {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: var(--fh-radius);
+  padding: var(--fh-md);
+  max-width: 600px;
+  margin: var(--fh-lg) auto;
+  position: relative;
+}
+
+.code-snippet h4 {
+  margin: 0 0 var(--fh-sm);
+}
+
+.code-snippet pre {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--fh-radius);
+  padding: var(--fh-sm);
+  overflow-x: auto;
+  margin: 0 0 var(--fh-sm);
+  font-family: monospace;
+}
+
+.code-buttons {
+  display: flex;
+  gap: var(--fh-sm);
+  margin-top: var(--fh-sm);
+}
+
+.code-buttons button,
+.code-buttons .code-btn {
+  background: var(--fh-primary);
+  color: #fff;
+  border: none;
+  padding: var(--fh-xs) var(--fh-sm);
+  border-radius: var(--fh-radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--fh-xs);
+  font-size: 0.9em;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.code-buttons button:hover,
+.code-buttons .code-btn:hover {
+  background: var(--fh-secondary);
+  transform: translateY(-2px);
+}
+
+.code-snippet .inline-code {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  padding: var(--fh-sm);
+  border-radius: var(--fh-radius);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.95em;
+  overflow-x: auto;
+  border: 1px solid #444;
+}
+
+.code-snippet .inline-code.light {
+  background-color: #f6f8fa;
+  color: #24292e;
+  border-color: #e1e4e8;
+}
+
+.copy-btn, .prompt-btn, .code-btn {
+  background: var(--fh-primary);
+  color: white;
+  border: none;
+  border-radius: var(--fh-radius);
+  padding: var(--fh-xs) var(--fh-sm);
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fh-xs);
+  text-decoration: none;
+}
+
+.copy-btn {
+  background: var(--fh-primary);
+}
+
+.prompt-btn {
+  background: var(--fh-accent);
+}
+
+.code-btn {
+  background: var(--fh-secondary);
+}
+
+.copy-btn:hover, .prompt-btn:hover, .code-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.copy-btn.copied {
+  background: var(--fh-success, #28a745);
+}
+
+.code-buttons i,
+.demo-controls i {
+  animation: icon-bounce 2s ease-in-out infinite;
+}
+
+@keyframes icon-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.fh-ui-tooltip {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  animation: fadeInOut 2s forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 /* =========================
@@ -1603,8 +1883,7 @@ label.fh-ui-button {
    ========================= */
 .fh-ui-snap-container {
   height: 100vh;
-  overflow-y: auto; /* Changed from scroll to auto */
-  overflow-x: hidden; /* Prevent horizontal scrollbar */
+  overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   display: flex;
@@ -1613,17 +1892,18 @@ label.fh-ui-button {
 }
 
 .fh-ui-snap-section {
-  min-height: 100vh;
   scroll-snap-align: start;
+  min-height: 100vh; /* Fallback for browsers that don't support dvh */
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: var(--fh-xl) var(--fh-lg);
-  position: relative;
+  align-items: center;
+  position: relative; /* For positioning child elements like dividers */
 }
 
-.fh-ui-snap-section + .fh-ui-snap-section {
-  border-top: 1px solid var(--fh-glass-border);
+#footer.fh-ui-snap-section {
+  justify-content: space-between; /* This will push the .see-it-in-action-wrapper towards the top/middle and .actual-footer-content to the bottom */
 }
 
 /* Animation for scroll-snap sections */
@@ -1952,227 +2232,6 @@ label.fh-ui-button {
     transform: translate(-50%, -50%) scale(1.5);
     opacity: 0;
   }
-}
-
-/* =========================
-   23. CSS-Only Functionality 
-   ========================= */
-
-/* Copy button CSS-only feedback */
-.copy-btn {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  user-select: none;
-}
-
-.copy-btn::before {
-  content: "Copied!";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--fh-accent);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-}
-
-.copy-btn:active::before {
-  opacity: 1;
-  animation: copy-feedback 1.5s forwards;
-}
-
-@keyframes copy-feedback {
-  0% { opacity: 1; }
-  70% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-/* CSS-only popup/dialog using :target pseudo-class */
-.fh-ui-popup:target,
-.fh-ui-dialog:target {
-  display: flex;
-  animation: fh-fade-in 0.4s;
-}
-
-.fh-ui-popup:target .fh-ui-popup-content,
-.fh-ui-dialog:target .fh-ui-dialog-content {
-  animation: fh-slide-up 0.5s;
-}
-
-/* Overlay close button (works with :target) */
-.fh-ui-close-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: transparent;
-  z-index: -1;
-}
-
-/* CSS-only loader using :target */
-#fh-ui-loader-overlay:target {
-  display: flex;
-  animation: fh-fade-in 0.4s, fh-fade-out 2s 1.5s forwards;
-}
-
-@keyframes fh-fade-out {
-  0% { opacity: 1; }
-  100% { opacity: 0; visibility: hidden; }
-}
-
-/* CSS-only toast using :target */
-.fh-ui-toast:target {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-  pointer-events: auto;
-  animation: show-toast 2.5s forwards;
-}
-
-@keyframes show-toast {
-  0% { opacity: 0; transform: translateX(-50%) translateY(40px); }
-  15% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  85% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  100% { opacity: 0; transform: translateX(-50%) translateY(40px); }
-}
-
-/* CSS-only animations for auto-hiding components */
-@keyframes loader-auto-hide {
-  0% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; visibility: hidden; }
-}
-
-@keyframes toast-auto-hide {
-  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  80% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  100% { opacity: 0; transform: translateX(-50%) translateY(40px); }
-}
-
-/* Make overlays stay visible until explicitly closed */
-.fh-ui-close-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: transparent;
-  z-index: -1;
-}
-
-/* CSS-only scroll spy for sidebar navigation */
-.fh-ui-components-sidebar a {
-  position: relative;
-  padding-left: var(--fh-lg);
-  transition: color 0.3s;
-}
-
-.fh-ui-components-sidebar a::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--fh-text-tertiary);
-  transition: background 0.3s, transform 0.3s;
-}
-
-/* When a section is the target, highlight its sidebar link */
-.fh-ui-components-sidebar a.active {
-  color: var(--fh-primary);
-  font-weight: 600;
-}
-
-.fh-ui-components-sidebar a.active::before {
-  background: var(--fh-primary);
-  transform: translateY(-50%) scale(1.5);
-}
-
-/* Reset checkboxes when navigating to a different section */
-:target ~ .fh-ui-popup-checkbox:checked,
-:target ~ .fh-ui-dialog-checkbox:checked,
-:target ~ .fh-ui-toast-checkbox:checked,
-:target ~ .fh-ui-loader-checkbox:checked {
-  /* This won't actually uncheck them but at least we can hide the related elements */
-  pointer-events: none;
-}
-
-:target ~ .fh-ui-popup-checkbox:checked + .fh-ui-popup,
-:target ~ .fh-ui-dialog-checkbox:checked + .fh-ui-dialog,
-:target ~ .fh-ui-loader-checkbox:checked + #fh-ui-loader-overlay {
-  display: none;
-}
-
-:target ~ .fh-ui-toast-checkbox:checked + .fh-ui-toast {
-  opacity: 0;
-  transform: translateX(-50%) translateY(40px);
-}
-
-/* Improve accessibility by making checkboxes focusable */
-.fh-ui-popup-checkbox:focus + label,
-.fh-ui-dialog-checkbox:focus + label,
-.fh-ui-toast-checkbox:focus + label,
-.fh-ui-loader-checkbox:focus + label {
-  outline: 2px solid var(--fh-primary);
-  outline-offset: 2px;
-}
-
-/* Allow keyboard users to interact with the UI */
-.fh-ui-button:focus,
-.copy-btn:focus,
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid var(--fh-primary);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px var(--fh-glow);
-}
-
-/* CSS-only dark mode toggle */
-.theme-toggle-checkbox {
-  display: none;
-}
-
-.theme-toggle-label {
-  position: fixed;
-  top: 60px; /* Moved down to avoid overlapping with the menu */
-  right: 15px;
-  width: 45px;
-  height: 22px;
-  background: var(--fh-glass-bg);
-  border-radius: 999px;
-  cursor: pointer;
-  z-index: 3000;
-  box-shadow: 0 2px 12px var(--fh-shadow);
-  border: 1px solid var(--fh-glass-border);
-  transition: all 0.3s;
-}
-
-.theme-toggle-label::after {
-  content: "🌙";
-  position: absolute;
-  left: 5px;
-  top: 3px;
-  font-size: 14px;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Added bouncy effect */
-}
-
-/* Theme toggle using JavaScript instead of CSS sibling selectors */
-.theme-toggle-checkbox:checked ~ .theme-toggle-label::after {
-  content: "☀️";
-  transform: translateX(22px);
 }
 
 /* =========================
@@ -3055,6 +3114,13 @@ textarea:focus-visible {
 
 /* Footer styles */
 .fh-ui-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes actual-footer-content to the bottom */
+  align-items: center; /* Centers content horizontally */
+  min-height: 100vh; /* Ensure it takes full viewport height */
+  padding-top: 5rem; /* Add some padding at the top */
+  padding-bottom: 2rem; /* Add some padding at the bottom */
   background: var(--fh-glass-bg);
   backdrop-filter: blur(var(--fh-glass-blur));
   -webkit-backdrop-filter: blur(var(--fh-glass-blur));
@@ -3062,6 +3128,17 @@ textarea:focus-visible {
   margin-top: var(--fh-xxl);
   border-top: 1px solid var(--fh-glass-border);
   margin-top: auto; 
+}
+
+.see-it-in-action-wrapper {
+  text-align: center;
+  margin-bottom: auto; /* Pushes itself up, helping to center it when combined with footer's space-between */
+  padding: 2rem;
+  width: 100%;
+}
+
+.actual-footer-content {
+  width: 100%;
 }
 
 .footer-content {
@@ -3853,4 +3930,300 @@ textarea:focus-visible {
   100% {
     background-position: 0 0;
   }
+}
+
+
+
+/* =========================
+   23. CSS-Only Functionality 
+   ========================= */
+
+/* Copy button CSS-only feedback */
+.copy-btn {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.copy-btn::before {
+  content: "Copied!";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--fh-accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.copy-btn:active::before {
+  opacity: 1;
+  animation: copy-feedback 1.5s forwards;
+}
+
+@keyframes copy-feedback {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Make overlays stay visible until explicitly closed */
+.fh-ui-close-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: -1;
+}
+
+
+/* CSS-only popup/dialog using :target pseudo-class */
+.fh-ui-popup:target,
+.fh-ui-dialog:target {
+  display: flex;
+  animation: fh-fade-in 0.4s;
+}
+
+.fh-ui-popup:target .fh-ui-popup-content,
+.fh-ui-dialog:target .fh-ui-dialog-content {
+  animation: fh-slide-up 0.5s;
+}
+
+/* Overlay close button (works with :target) */
+.fh-ui-close-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: -1;
+}
+
+/* CSS-only loader using :target */
+#fh-ui-loader-overlay:target {
+  display: flex;
+  animation: fh-fade-in 0.4s, fh-fade-out 2s 1.5s forwards;
+}
+
+@keyframes fh-fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+/* CSS-only toast using :target */
+.fh-ui-toast:target {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+  animation: show-toast 2.5s forwards;
+}
+
+@keyframes show-toast {
+  0% { opacity: 0; transform: translateX(-50%) translateY(40px); }
+  15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(40px); }
+}
+
+/* CSS-only animations for auto-hiding components */
+@keyframes loader-auto-hide {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes toast-auto-hide {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(40px); }
+}
+
+/* Make overlays stay visible until explicitly closed */
+.fh-ui-close-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: -1;
+}
+/* CSS-only scroll spy for sidebar navigation */
+.fh-ui-components-sidebar a {
+  position: relative;
+  padding-left: var(--fh-lg);
+  transition: color 0.3s;
+}
+
+.fh-ui-components-sidebar a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--fh-text-tertiary);
+  transition: background 0.3s, transform 0.3s;
+}
+
+/* When a section is the target, highlight its sidebar link */
+.fh-ui-components-sidebar a.active {
+  color: var(--fh-primary);
+  font-weight: 600;
+}
+
+.fh-ui-components-sidebar a.active::before {
+  background: var(--fh-primary);
+  transform: translateY(-50%) scale(1.5);
+}
+
+/* Reset checkboxes when navigating to a different section */
+:target ~ .fh-ui-popup-checkbox:checked,
+:target ~ .fh-ui-dialog-checkbox:checked,
+:target ~ .fh-ui-toast-checkbox:checked,
+:target ~ .fh-ui-loader-checkbox:checked {
+  /* This won't actually uncheck them but at least we can hide the related elements */
+  pointer-events: none;
+}
+
+:target ~ .fh-ui-popup-checkbox:checked + .fh-ui-popup,
+:target ~ .fh-ui-dialog-checkbox:checked + .fh-ui-dialog,
+:target ~ .fh-ui-loader-checkbox:checked + #fh-ui-loader-overlay {
+  display: none;
+}
+
+:target ~ .fh-ui-toast-checkbox:checked + .fh-ui-toast {
+  opacity: 0;
+  transform: translateX(-50%) translateY(40px);
+}
+
+/* Improve accessibility by making checkboxes focusable */
+.fh-ui-popup-checkbox:focus + label,
+.fh-ui-dialog-checkbox:focus + label,
+.fh-ui-toast-checkbox:focus + label,
+.fh-ui-loader-checkbox:focus + label {
+  outline: 2px solid var(--fh-primary);
+  outline-offset: 2px;
+}
+
+/* Allow keyboard users to interact with the UI */
+.fh-ui-button:focus,
+.copy-btn:focus,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--fh-primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--fh-glow);
+}
+
+/* CSS-only dark mode toggle */
+.theme-toggle-checkbox {
+  display: none;
+}
+
+.theme-toggle-label {
+  position: fixed;
+  top: 60px; /* Moved down to avoid overlapping with the menu */
+  right: 15px;
+  width: 45px;
+  height: 22px;
+  background: var(--fh-glass-bg);
+  border-radius: 999px;
+  cursor: pointer;
+  z-index: 3000;
+  box-shadow: 0 2px 12px var(--fh-shadow);
+  border: 1px solid var(--fh-glass-border);
+  transition: all 0.3s;
+}
+
+.theme-toggle-label::after {
+  content: "🌙";
+  position: absolute;
+  left: 5px;
+  top: 3px;
+  font-size: 14px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Added bouncy effect */
+}
+
+/* Theme toggle using JavaScript instead of CSS sibling selectors */
+.theme-toggle-checkbox:checked ~ .theme-toggle-label::after {
+  content: "☀️";
+  transform: translateX(22px);
+}
+
+/* CSS-only popup/dialog using :target pseudo-class */
+.fh-ui-popup:target,
+.fh-ui-dialog:target {
+  display: flex;
+  animation: fh-fade-in 0.4s;
+}
+
+.fh-ui-popup:target .fh-ui-popup-content,
+.fh-ui-dialog:target .fh-ui-dialog-content {
+  animation: fh-slide-up 0.5s;
+}
+
+/* Overlay close button (works with :target) */
+.fh-ui-close-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: -1;
+}
+
+/* CSS-only loader using :target */
+#fh-ui-loader-overlay:target {
+  display: flex;
+  animation: fh-fade-in 0.4s, fh-fade-out 2s 1.5s forwards;
+}
+
+@keyframes fh-fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+/* CSS-only toast using :target */
+.fh-ui-toast:target {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+  animation: show-toast 2.5s forwards;
+}
+
+@keyframes show-toast {
+  0% { opacity: 0; transform: translateX(-50%) translateY(40px); }
+  15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(40px); }
+}
+
+/* CSS-only animations for auto-hiding components */
+@keyframes loader-auto-hide {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes toast-auto-hide {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(40px); }
 }

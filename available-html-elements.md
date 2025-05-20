@@ -87,6 +87,24 @@ This document lists all the HTML elements and classes that can be used with Fath
 - `.fh-ui-dropdown-right` - Right-aligned dropdown
 - `.fh-ui-dropdown-up` - Upward-opening dropdown
 
+## CSS-Only Interactive Components
+- `.fh-ui-css-accordion` - Pure CSS accordion container
+- `.fh-ui-css-accordion-item` - Individual accordion item
+- `.fh-ui-css-accordion-checkbox` - Hidden checkbox for accordion state
+- `.fh-ui-css-accordion-header` - Accordion header/label
+- `.fh-ui-css-accordion-content` - Accordion content area
+- `.fh-ui-css-tabs` - Pure CSS tabs container
+- `.fh-ui-css-tab-input` - Hidden radio inputs for tab selection
+- `.fh-ui-css-tabs-labels` - Container for tab labels
+- `.fh-ui-css-tab-label` - Individual tab label
+- `.fh-ui-css-tab-content` - Tab content panel
+- `.fh-ui-css-dropdown` - Pure CSS dropdown container
+- `.fh-ui-css-dropdown-checkbox` - Hidden checkbox for dropdown state
+- `.fh-ui-css-dropdown-toggle` - Dropdown toggle button
+- `.fh-ui-css-dropdown-menu` - Dropdown menu container
+- `.fh-ui-css-dropdown-item` - Dropdown menu item
+- `.fh-ui-css-dropdown-divider` - Divider for dropdown menu
+
 ## Feedback Components
 - `.fh-ui-alert` - Alert component
 - `.fh-ui-alert-success` - Success alert
@@ -123,6 +141,14 @@ This document lists all the HTML elements and classes that can be used with Fath
 - `.fh-ui-toast-checkbox` - Checkbox for toast state
 - `.fh-ui-close-overlay` - Overlay close button
 
+## Layout Patterns
+- `.fh-ui-two-columns` - Two-column grid layout
+- `.fh-ui-column-content` - Content column with vertical centering
+- `.fh-ui-alt-bg-section` - Section with alternate background
+- `.fh-ui-section-divider` - Decorative section divider
+- `.fh-ui-section-divider.diagonal` - Diagonal section divider variant
+- `.fh-ui-wave-divider` - Wave-shaped section divider
+
 ## Visual Elements
 - `.fh-ui-divider` - Divider line
 - `.fh-ui-divider-text` - Text within divider
@@ -146,4 +172,4 @@ This document lists all the HTML elements and classes that can be used with Fath
    - High contrast modes supported with CSS variables
 
 4. **Javascript Integration**
-   - Some components (tabs, accordion, dropdown) require the `components.js` file 
+   - Some components (tabs, accordion, dropdown) require the `components.js` file

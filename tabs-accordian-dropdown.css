@@ -1,0 +1,348 @@
+/* CSS for Tabs, Accordion, and Dropdown components */
+
+/* =========================
+   Tabs
+   ========================= */
+.fh-ui-css-tabs {
+    position: relative;
+    background: var(--fh-glass-bg);
+    padding: var(--fh-md);
+    border-radius: var(--fh-radius);
+    box-shadow: 0 4px 15px var(--fh-shadow);
+    backdrop-filter: blur(var(--fh-glass-blur));
+    overflow: hidden;
+}
+
+.fh-ui-css-tab-input {
+    display: none; /* Hide radio buttons */
+}
+
+.fh-ui-css-tab-label {
+    display: inline-block;
+    padding: var(--fh-sm) var(--fh-md);
+    margin-right: var(--fh-xs);
+    cursor: pointer;
+    border-radius: calc(var(--fh-radius) * 0.5) calc(var(--fh-radius) * 0.5) 0 0;
+    background: rgba(255,255,255,0.05);
+    color: var(--fh-text-secondary);
+    transition: background 0.3s, color 0.3s;
+    position: relative;
+    bottom: -1px; /* Align with content border */
+    border: 1px solid transparent;
+    border-bottom: 1px solid var(--fh-glass-border);
+}
+
+.fh-ui-css-tab-label:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--fh-text);
+}
+
+.fh-ui-css-tab-input:checked + .fh-ui-css-tab-label {
+    background: var(--fh-glass-bg); /* Match content background */
+    color: var(--fh-primary);
+    border-color: var(--fh-glass-border);
+    border-bottom-color: transparent; /* Creates the "connected tab" look */
+    font-weight: 600;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+.fh-ui-css-tab-content {
+    display: none;
+    padding: var(--fh-md);
+    border: 1px solid var(--fh-glass-border);
+    border-top: none; /* Remove top border as label handles it */
+    border-radius: 0 0 var(--fh-radius) var(--fh-radius);
+    animation: fh-fade-in 0.5s ease-out;
+}
+
+.fh-ui-css-tab-input:checked + .fh-ui-css-tab-label + .fh-ui-css-tab-content {
+    display: block;
+}
+
+/* Tabs styling */
+.fh-ui-tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.fh-ui-tab-nav {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+
+.fh-ui-tab-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.fh-ui-tab-button.active {
+  border-bottom-color: #007bff;
+  font-weight: bold;
+}
+
+.fh-ui-tab-content {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.fh-ui-tab-pane {
+  display: none;
+}
+
+.fh-ui-tab-pane.active {
+  display: block;
+}
+
+/* =========================
+   Accordion
+   ========================= */
+.fh-ui-css-accordion {
+    border-radius: var(--fh-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 15px var(--fh-shadow);
+}
+
+.fh-ui-css-accordion-item {
+    background: var(--fh-glass-bg);
+    border-bottom: 1px solid var(--fh-glass-border);
+    backdrop-filter: blur(var(--fh-glass-blur));
+}
+
+.fh-ui-css-accordion-item:last-child {
+    border-bottom: none;
+}
+
+.fh-ui-css-accordion-checkbox {
+    display: none; /* Hide checkboxes */
+}
+
+.fh-ui-css-accordion-header {
+    display: block;
+    padding: var(--fh-md);
+    cursor: pointer;
+    color: var(--fh-text-secondary);
+    transition: background 0.3s, color 0.3s;
+    position: relative;
+    font-weight: 500;
+}
+
+.fh-ui-css-accordion-header:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--fh-text);
+}
+
+.fh-ui-css-accordion-header::after {
+    content: '\f078'; /* FontAwesome chevron-down */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: var(--fh-md);
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.3s ease;
+    color: var(--fh-text-tertiary);
+}
+
+.fh-ui-css-accordion-checkbox:checked + .fh-ui-css-accordion-header {
+    background: rgba(var(--fh-primary-rgb, 33, 158, 255), 0.1); /* Use RGB for opacity */
+    color: var(--fh-primary);
+    font-weight: 600;
+}
+
+.fh-ui-css-accordion-checkbox:checked + .fh-ui-css-accordion-header::after {
+    transform: translateY(-50%) rotate(180deg);
+    color: var(--fh-primary);
+}
+
+.fh-ui-css-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 var(--fh-md);
+    transition: max-height 0.4s cubic-bezier(0.23, 1, 0.32, 1), padding 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    background: rgba(0,0,0,0.1); /* Slightly different background for content */
+}
+
+.fh-ui-css-accordion-checkbox:checked ~ .fh-ui-css-accordion-content {
+    max-height: 500px; /* Adjust as needed for content height */
+    padding: var(--fh-md);
+    border-top: 1px solid var(--fh-glass-border);
+}
+
+.fh-ui-css-accordion-content p {
+    margin: 0;
+    line-height: 1.6;
+    color: var(--fh-text-secondary);
+}
+
+/* Accordion styling */
+.fh-ui-accordion .fh-ui-accordion-item {
+  border: 1px solid #ccc;
+  margin-bottom: -1px; /* Prevents double borders */
+}
+
+.fh-ui-accordion .fh-ui-accordion-header {
+  background-color: #f7f7f7;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fh-ui-accordion .fh-ui-accordion-header:hover {
+  background-color: #eee;
+}
+
+.fh-ui-accordion .fh-ui-accordion-content {
+  padding: 15px;
+  border-top: 1px solid #ccc;
+  display: none; /* Hidden by default */
+}
+
+.fh-ui-accordion .fh-ui-accordion-item.active .fh-ui-accordion-content {
+  display: block;
+}
+
+.fh-ui-accordion .fh-ui-accordion-header::after {
+  content: '+'; /* Plus sign for collapsed state */
+  font-size: 1.2em;
+}
+
+.fh-ui-accordion .fh-ui-accordion-item.active .fh-ui-accordion-header::after {
+  content: '-'; /* Minus sign for expanded state */
+}
+
+/* =========================
+   Dropdown
+   ========================= */
+.fh-ui-css-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.fh-ui-css-dropdown-checkbox {
+    display: none; /* Hide checkbox */
+}
+
+.fh-ui-css-dropdown-toggle {
+    background: var(--fh-button-bg, var(--fh-primary)); /* Use button bg or primary */
+    color: var(--fh-button-text, #fff);
+    padding: var(--fh-sm) var(--fh-md);
+    border-radius: var(--fh-radius);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--fh-xs);
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 8px var(--fh-shadow);
+    border: 1px solid transparent; /* For consistency */
+}
+
+.fh-ui-css-dropdown-toggle:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 4px 12px var(--fh-glow);
+}
+
+.fh-ui-css-dropdown-toggle i {
+    margin-right: var(--fh-xs);
+}
+
+.fh-ui-css-dropdown-menu {
+    position: absolute;
+    top: calc(100% + var(--fh-xs)); /* Position below the toggle */
+    left: 0;
+    background: var(--fh-glass-bg);
+    border: 1px solid var(--fh-glass-border);
+    border-radius: var(--fh-radius);
+    box-shadow: 0 8px 20px var(--fh-shadow);
+    backdrop-filter: blur(var(--fh-glass-blur));
+    z-index: 100;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    padding: var(--fh-xs) 0; /* Padding for items */
+}
+
+.fh-ui-css-dropdown-checkbox:checked ~ .fh-ui-css-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.fh-ui-css-dropdown-item {
+    display: block;
+    padding: var(--fh-sm) var(--fh-md);
+    color: var(--fh-text-secondary);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+.fh-ui-css-dropdown-item:hover {
+    background: rgba(var(--fh-primary-rgb, 33, 158, 255), 0.15);
+    color: var(--fh-primary);
+}
+
+.fh-ui-css-dropdown-divider {
+    height: 1px;
+    background: var(--fh-glass-border);
+    margin: var(--fh-xs) 0;
+}
+
+/* Dropdown styling */
+.fh-ui-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.fh-ui-dropdown-toggle {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.fh-ui-dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 4px;
+  padding: 5px 0;
+}
+
+.fh-ui-dropdown-menu a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.fh-ui-dropdown-menu a:hover {
+  background-color: #f1f1f1;
+}
+
+.fh-ui-dropdown.active .fh-ui-dropdown-menu {
+  display: block;
+}
+
+/* Add fh-primary-rgb to :root if not already defined in fathead-ui.css */
+/* :root { --fh-primary-rgb: 33, 158, 255; } */
+
+/* Animation for fade-in (used by tabs) */
+@keyframes fh-fade-in {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

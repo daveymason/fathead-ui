@@ -21,6 +21,29 @@
 - ✅ Fixed copy button functionality with minimal JavaScript
 - ✅ Added proper tooltips for copy buttons with visual feedback
 
+- ✅ Removed components.js and converted all interactive components to CSS-only:
+  - Created CSS-only tabs using hidden radio inputs
+  - Created CSS-only accordion using hidden checkboxes
+  - Created CSS-only dropdowns using hidden checkboxes
+  - Updated all documentation and examples to use pure CSS alternatives
+
+- ✅ Added new section dividers and layout patterns:
+  - Created standard section divider with centered dot
+  - Added diagonal section divider variant 
+  - Created wave-shaped section divider using SVG
+  - Added two-column layout pattern with responsive behavior
+  - Created alternate background section for visual variety
+
+- ✅ Enhanced responsive design for 1080p screens:
+  - Added media queries to adjust scaling on smaller screens
+  - Fixed section heights to prevent overflow on 1080p displays
+  - Improved proportions and spacing on different screen sizes
+
+- ✅ Added FAQ section to index page with CSS-only accordion
+  - Created section with four common questions
+  - Used the new CSS-only accordion component
+  - Added proper styling and animations
+
 - ✅ Implemented CSS scroll snap:
   - Added `scroll-snap-type: y mandatory` to container
   - Applied `scroll-snap-align: start` to each section

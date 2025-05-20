@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fathead UI – Documentation</title>
   <link rel="stylesheet" href="./fathead-ui.css" />
+      <link rel="stylesheet" href="./tabs-accordian-dropdown.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
@@ -300,8 +301,35 @@
             </div>
           </div>
           
+          <h4 style="margin-top: var(--fh-xl);"><i class="fas fa-magic"></i> CSS-Only Tabs</h4>
+          <p>Pure CSS tabs without JavaScript using the hidden radio input technique:</p>
+          
+          <div class="fh-ui-css-tabs">
+            <input type="radio" id="css-tab1" class="fh-ui-css-tab-input" name="css-tabs" checked>
+            <label for="css-tab1" class="fh-ui-css-tab-label">First Tab</label>
+            <div class="fh-ui-css-tab-content">
+              <h5>CSS-Only Tab Content 1</h5>
+              <p>This tab functionality works entirely without JavaScript using the CSS :checked selector. Perfect for lightweight implementations.</p>
+            </div>
+            
+            <input type="radio" id="css-tab2" class="fh-ui-css-tab-input" name="css-tabs">
+            <label for="css-tab2" class="fh-ui-css-tab-label">Second Tab</label>
+            <div class="fh-ui-css-tab-content">
+              <h5>CSS-Only Tab Content 2</h5>
+              <p>CSS-only tabs eliminate the need for JavaScript, improving performance and reducing dependencies while maintaining all functionality.</p>
+            </div>
+            
+            <input type="radio" id="css-tab3" class="fh-ui-css-tab-input" name="css-tabs">
+            <label for="css-tab3" class="fh-ui-css-tab-label">Third Tab</label>
+            <div class="fh-ui-css-tab-content">
+              <h5>CSS-Only Tab Content 3</h5>
+              <p>Using hidden radio inputs ensures only one tab can be active at a time, maintaining proper tab behavior.</p>
+            </div>
+          </div>
+
+          <h4 style="margin-top: var(--fh-xl);"><i class="fas fa-chevron-down"></i> Accordion</h4>
+          
           <div style="margin: var(--fh-lg) 0;">
-            <h4><i class="fas fa-chevron-down"></i> Accordion</h4>
             <div class="fh-ui-accordion">
               <div class="fh-ui-accordion-item">
                 <div class="fh-ui-accordion-header">First Item</div>
@@ -322,6 +350,41 @@
                   <p>This is the content of the third accordion item.</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        
+        <h4 style="margin-top: var(--fh-xl);"><i class="fas fa-magic"></i> CSS-Only Accordion</h4>
+        <p>Pure CSS accordion without JavaScript using the hidden checkbox technique:</p>
+        
+        <div class="fh-ui-css-accordion">
+          <div class="fh-ui-css-accordion-item">
+            <input type="checkbox" id="css-accordion-1" class="fh-ui-css-accordion-checkbox" checked>
+            <label for="css-accordion-1" class="fh-ui-css-accordion-header">
+              First Accordion Item (Open)
+            </label>
+            <div class="fh-ui-css-accordion-content">
+              <p>This is a CSS-only accordion that uses hidden checkboxes and labels to control visibility. No JavaScript required!</p>
+            </div>
+          </div>
+          
+          <div class="fh-ui-css-accordion-item">
+            <input type="checkbox" id="css-accordion-2" class="fh-ui-css-accordion-checkbox">
+            <label for="css-accordion-2" class="fh-ui-css-accordion-header">
+              Second Accordion Item
+            </label>
+            <div class="fh-ui-css-accordion-content">
+              <p>This accordion implementation is lightweight and works on all browsers that support CSS transitions and the :checked pseudo-class.</p>
+            </div>
+          </div>
+          
+          <div class="fh-ui-css-accordion-item">
+            <input type="checkbox" id="css-accordion-3" class="fh-ui-css-accordion-checkbox">
+            <label for="css-accordion-3" class="fh-ui-css-accordion-header">
+              Third Accordion Item
+            </label>
+            <div class="fh-ui-css-accordion-content">
+              <p>Multiple accordion items can be open simultaneously with this implementation, providing flexible content exploration.</p>
             </div>
           </div>
         </div>
@@ -360,7 +423,24 @@
                 </div>
               </div>
               
-              <p class="code-snippet" style="margin-top: var(--fh-md); font-size: 0.9em;"><code>Requires components.js for interactions</code></p>
+              <h4 style="margin-top: var(--fh-lg);"><i class="fas fa-magic"></i> CSS-Only Dropdown</h4>
+              <p>Pure CSS dropdown without JavaScript:</p>
+              
+              <div class="fh-ui-css-dropdown">
+                <input type="checkbox" id="css-dropdown" class="fh-ui-css-dropdown-checkbox">
+                <label for="css-dropdown" class="fh-ui-css-dropdown-toggle">
+                  <i class="fas fa-cog"></i> CSS-Only Menu
+                </label>
+                <div class="fh-ui-css-dropdown-menu">
+                  <a href="#" class="fh-ui-css-dropdown-item">Settings</a>
+                  <a href="#" class="fh-ui-css-dropdown-item">Account</a>
+                  <div class="fh-ui-css-dropdown-divider"></div>
+                  <a href="#" class="fh-ui-css-dropdown-item">Help</a>
+                  <a href="#" class="fh-ui-css-dropdown-item">Log Out</a>
+                </div>
+              </div>
+              
+              <p style="margin-top: var(--fh-md); font-size: 0.9em; color: var(--fh-text-secondary);">Click on dropdowns to toggle them</p>
             </div>
             
             <!-- Pagination Examples -->
@@ -540,6 +620,66 @@
             </div>
           </div>
           
+          <div class="fh-ui-divider with-text" style="margin: var(--fh-lg) 0;">
+            <span class="fh-ui-divider-text">Section Dividers</span>
+          </div>
+          
+          <p>Elegant section dividers to break up your content with visual flair:</p>
+          
+          <h5 style="margin-top: var(--fh-md);"><i class="fas fa-puzzle-piece"></i> Standard Divider</h5>
+          <div class="fh-ui-section-divider"></div>
+          <code style="display: block; margin: var(--fh-sm) 0;">&lt;div class="fh-ui-section-divider"&gt;&lt;/div&gt;</code>
+          
+          <h5 style="margin-top: var(--fh-md);"><i class="fas fa-puzzle-piece"></i> Diagonal Divider</h5>
+          <div class="fh-ui-section-divider diagonal"></div>
+          <code style="display: block; margin: var(--fh-sm) 0;">&lt;div class="fh-ui-section-divider diagonal"&gt;&lt;/div&gt;</code>
+          
+          <h5 style="margin-top: var(--fh-md);"><i class="fas fa-puzzle-piece"></i> Wave Divider</h5>
+          <div class="fh-ui-wave-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+              <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+              <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+              <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+            </svg>
+          </div>
+          <code style="display: block; margin: var(--fh-sm) 0;">&lt;div class="fh-ui-wave-divider"&gt;
+  &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"&gt;
+    &lt;path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"&gt;&lt;/path&gt;
+    &lt;path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"&gt;&lt;/path&gt;
+    &lt;path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"&gt;&lt;/path&gt;
+  &lt;/svg&gt;
+&lt;/div&gt;</code>
+          
+          <h5 style="margin-top: var(--fh-md);"><i class="fas fa-puzzle-piece"></i> Alternate Background Section</h5>
+          <div class="fh-ui-alt-bg-section" style="padding: var(--fh-md); margin: var(--fh-md) 0;">
+            <p>Content in an alternate background section</p>
+          </div>
+          <code style="display: block; margin: var(--fh-sm) 0;">&lt;div class="fh-ui-alt-bg-section"&gt;
+  &lt;p&gt;Content in an alternate background section&lt;/p&gt;
+&lt;/div&gt;</code>
+          
+          <h5 style="margin-top: var(--fh-md);"><i class="fas fa-puzzle-piece"></i> Two-Column Layout</h5>
+          <div class="fh-ui-two-columns" style="margin: var(--fh-md) 0;">
+            <div class="fh-ui-column-content">
+              <h4>First Column</h4>
+              <p>Content in the first column with vertical centering.</p>
+            </div>
+            <div class="fh-ui-column-content">
+              <h4>Second Column</h4>
+              <p>Content in the second column with vertical centering.</p>
+            </div>
+          </div>
+          <code style="display: block; margin: var(--fh-sm) 0;">&lt;div class="fh-ui-two-columns"&gt;
+  &lt;div class="fh-ui-column-content"&gt;
+    &lt;h4&gt;First Column&lt;/h4&gt;
+    &lt;p&gt;Content in the first column with vertical centering.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="fh-ui-column-content"&gt;
+    &lt;h4&gt;Second Column&lt;/h4&gt;
+    &lt;p&gt;Content in the second column with vertical centering.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+
           <div class="fh-ui-divider with-text" style="margin: var(--fh-lg) 0;">
             <span class="fh-ui-divider-text">More Utilities</span>
           </div>
