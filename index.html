@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./fathead-ui.css" />
     <link rel="stylesheet" href="./tabs-accordian-dropdown.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="./hero-cta.css" />
 </head>
 <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
 <body class="fh-ui" data-theme="light">
@@ -31,88 +32,246 @@
     </div>
 
     <section id="hero" class="hero-section fh-ui-snap-section">
-      <h1>Fathead-UI</h1> 
-      <h4>A futuristic, CSS-first framework. </h4>
-      <p>For building modern web interfaces</p>  
+      <h1 class="fh-ui-main-title">Fathead-UI</h1> 
+      <h4 class="fh-ui-subtitle">A futuristic, CSS-first framework. </h4>
+      <p class="fh-ui-description">Your Blueprint for Next-Gen Web Experiences</p>  
       <div class="hero-cta">
-        <h4>Add to your project:</h4>
+        <h4 class="fh-ui-section-subtitle">Add to your project:</h4>
         <div class="code-snippet-box">
-          <pre><code>&lt;link rel="stylesheet" href="https://daveymason.github.io/fathead-ui/fathead-ui.css"&gt;</code></pre>
-          <button class="copy-button"><i class="fa-solid fa-copy"></i> Copy</button>
+          <pre><code id="copy-text-npm">&lt;link rel="stylesheet" href="https://daveymason.github.io/fathead-ui/fathead-ui.css"&gt;</code></pre>
+          <button class="copy-button" data-clipboard-target="#copy-text-npm"><i class="fa-solid fa-copy"></i> Copy</button>
         </div>
         <div class="hero-cta-buttons">
-          <button class="prompt-btn orange-btn"><i class="fa-solid fa-magic"></i> Prompt</button>
-          <a href="https://github.com/daveymason/fathead-ui" target="_blank" class="code-btn purple-btn"><i class="fa-brands fa-github"></i> Code</a>
+          <!-- <button id="prompt-btn" class="fh-ui-button hero-action-button orange-btn"><i class="fa-solid fa-magic"></i> Prompt</button> -->
+          <a href="https://github.com/daveymason/fathead-ui" target="_blank" class="fh-ui-button hero-action-button purple-btn"><i class="fa-brands fa-github"></i> Code</a>
         </div>
       </div>
       <script>
       // Copy button functionality
-      const copyButtons = document.querySelectorAll('.copy-button'); // Updated selector
+      const copyButtons = document.querySelectorAll('.copy-button');
       
       copyButtons.forEach(button => {
         button.addEventListener('click', async function() {
-          // Get the text from the link within the same code-snippet-box
-          const snippetBox = this.closest('.code-snippet-box');
-          const linkElement = snippetBox.querySelector('a');
+          const targetSelector = this.dataset.clipboardTarget;
+          const textElement = document.querySelector(targetSelector);
           
-          if (!linkElement) {
-            console.error('No link element found to copy from');
+          if (!textElement) {
+            console.error('No element found to copy from with selector:', targetSelector);
+            this.innerHTML = '<i class="fa-solid fa-times"></i> Error';
+            setTimeout(() => { this.innerHTML = '<i class="fa-solid fa-copy"></i> Copy'; }, 2000);
             return;
           }
           
-          const textToCopy = linkElement.href;
+          const textToCopy = textElement.textContent || textElement.innerText;
           
           try {
-            // Use modern Clipboard API if available
-            if (navigator.clipboard) {
-              await navigator.clipboard.writeText(textToCopy);
-            } else {
-              // Fallback to older method
-              const textarea = document.createElement('textarea');
-              textarea.value = textToCopy;
-              textarea.setAttribute('readonly', '');
-              textarea.style.position = 'absolute';
-              textarea.style.left = '-9999px';
-              document.body.appendChild(textarea);
-              textarea.select();
-              document.execCommand('copy');
-              document.body.removeChild(textarea);
-            }
-              // Visual feedback through CSS
-            button.classList.add('copied'); // You'll need to define .copied style for the button
+            await navigator.clipboard.writeText(textToCopy);
             
-            // Show a tooltip or change button text
-            const originalText = button.innerHTML;
-            button.innerHTML = 'Copied!';
+            this.classList.add('copied');
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
             
-            // Remove the feedback after a delay
             setTimeout(() => {
-              button.classList.remove('copied');
-              button.innerHTML = originalText;
+              this.classList.remove('copied');
+              this.innerHTML = '<i class="fa-solid fa-copy"></i> Copy';
             }, 2000);
           } catch (err) {
             console.error('Failed to copy: ', err);
+            this.innerHTML = '<i class="fa-solid fa-times"></i> Failed';
+            setTimeout(() => { this.innerHTML = '<i class="fa-solid fa-copy"></i> Copy'; }, 2000);
           }
         });
       });
 
       // Prompt button functionality
-      // Ensure the prompt button has an ID if you are using getElementById
-      const promptButton = document.querySelector('.prompt-btn'); // Or use ID: document.getElementById('prompt-btn-id');
+      const promptButton = document.getElementById('prompt-btn');
       if (promptButton) {
         promptButton.addEventListener('click', async function() {
-          const llmPrompt = `Please generate an index.html file that includes a <link> tag referencing https://daveymason.github.io/fathead-ui/fathead-ui.css. Then create a new CSS file containing a color scheme derived mathematically using the golden ratio.`;
+          const llmPrompt = `Please generate an index.html file that includes a <link> tag referencing https://daveymason.github.io/fathead-ui/fathead-ui.css. Okay, Admin, I understand. You want a prompt that, when given to an LLM or code generator, will produce an HTML file that includes the fathead-ui.css link AND a comprehensive list of its classes.
+
+Here is that prompt:
+
+Generate a complete, modern, and responsive \`index.html\` file.
+
+1.  **Include the Fathead-UI stylesheet:** Add the following \`<link>\` tag in the \`<head>\` section to utilize the Fathead-UI framework:
+    \`<link rel="stylesheet" href="https://daveymason.github.io/fathead-ui/fathead-ui.css">\`
+
+2.  **Display a Fathead-UI Class Reference:** In the \`<body>\` of the HTML, create sections to clearly list and categorize a selection of the available Fathead-UI classes. Organize them logically under headings like "Layout Components", "Navigation Components", "Cards and Containers", etc.
+
+Here is the list of Fathead-UI classes to include:
+
+**Layout Components**
+- .fh-ui-container
+- .fh-ui-grid
+- .fh-ui-header
+- .fh-ui-footer
+- .fh-ui-snap-container
+- .fh-ui-snap-section
+- .fh-ui-snap-dots
+
+**Navigation Components**
+- .fh-ui-navbar
+- .fh-ui-navigation
+- .fh-ui-navigation-item
+- .fh-ui-navigation-icon
+- .fh-ui-components-sidebar
+- .fh-ui-components-layout
+- .fh-ui-breadcrumbs
+- .fh-ui-breadcrumb-item
+
+**Cards and Containers**
+- .fh-ui-card
+- .fh-ui-info-card
+- .fh-ui-info-card-icon
+- .fh-ui-info-card-title
+- .fh-ui-info-card-text
+- .fh-ui-info-card-content
+
+**Tables**
+- .fh-ui-table
+- .fh-ui-table-striped
+- .fh-ui-table-compact
+- .fh-ui-table-responsive
+- .fh-ui-table-bordered
+- .fh-ui-table-hover
+
+**Form Components**
+- .fh-ui-form-group
+- .fh-ui-form-label
+- .fh-ui-form-floating
+- .fh-ui-form-help
+- .fh-ui-input
+- .fh-ui-textarea
+- .fh-ui-select
+- .fh-ui-checkbox
+- .fh-ui-checkbox-group
+- .fh-ui-checkbox-mark
+- .fh-ui-radio
+- .fh-ui-radio-group
+- .fh-ui-radio-mark
+- .fh-ui-switch
+- .fh-ui-switch-input
+- .fh-ui-switch-slider
+- .fh-ui-range
+- .fh-ui-range-container
+- .fh-ui-range-value
+- .fh-ui-input-combo
+- .fh-ui-input-combo-text
+- .fh-ui-input-group
+- .fh-ui-input-icon
+- .fh-ui-input-icon-left
+- .fh-ui-input-icon-right
+- .fh-ui-input-with-icon-left
+- .fh-ui-input-with-icon-right
+
+**Interactive Components**
+- .fh-ui-button
+- .fh-ui-tabs
+- .fh-ui-tabs-nav
+- .fh-ui-tab-item
+- .fh-ui-tabs-content
+- .fh-ui-tab-pane
+- .fh-ui-tabs-vertical
+- .fh-ui-accordion
+- .fh-ui-accordion-item
+- .fh-ui-accordion-header
+- .fh-ui-accordion-body
+- .fh-ui-accordion-bordered
+- .fh-ui-dropdown
+- .fh-ui-dropdown-toggle
+- .fh-ui-dropdown-menu
+- .fh-ui-dropdown-item
+- .fh-ui-dropdown-divider
+- .fh-ui-dropdown-right
+- .fh-ui-dropdown-up
+
+**CSS-Only Interactive Components**
+- .fh-ui-css-accordion
+- .fh-ui-css-accordion-item
+- .fh-ui-css-accordion-checkbox
+- .fh-ui-css-accordion-header
+- .fh-ui-css-accordion-content
+- .fh-ui-css-tabs
+- .fh-ui-css-tab-input
+- .fh-ui-css-tabs-labels
+- .fh-ui-css-tab-label
+- .fh-ui-css-tab-content
+- .fh-ui-css-dropdown
+- .fh-ui-css-dropdown-checkbox
+- .fh-ui-css-dropdown-toggle
+- .fh-ui-css-dropdown-menu
+- .fh-ui-css-dropdown-item
+- .fh-ui-css-dropdown-divider
+
+**Feedback Components**
+- .fh-ui-alert
+- .fh-ui-alert-success
+- .fh-ui-alert-warning
+- .fh-ui-alert-error
+- .fh-ui-alert-info
+- .fh-ui-alert-icon
+- .fh-ui-alert-title
+- .fh-ui-alert-content
+- .fh-ui-alert-text
+- .fh-ui-badge
+- .fh-ui-tooltip
+- .fh-ui-feedback
+- .fh-ui-progress
+- .fh-ui-progress-bar
+- .fh-ui-progress-sm
+- .fh-ui-progress-lg
+- .fh-ui-progress-bar-success
+- .fh-ui-progress-bar-warning
+- .fh-ui-progress-bar-error
+- .fh-ui-progress-labeled
+- .fh-ui-progress-label
+- .fh-ui-progress-striped
+- .fh-ui-progress-animated
+
+**Overlays & Modals**
+- .fh-ui-dialog
+- .fh-ui-dialog-content
+- .fh-ui-dialog-checkbox
+- .fh-ui-popup
+- .fh-ui-popup-content
+- .fh-ui-popup-checkbox
+- .fh-ui-toast
+- .fh-ui-toast-checkbox
+- .fh-ui-close-overlay
+
+**Layout Patterns**
+- .fh-ui-two-columns
+- .fh-ui-column-content
+- .fh-ui-alt-bg-section
+- .fh-ui-section-divider
+- .fh-ui-section-divider.diagonal
+- .fh-ui-wave-divider
+
+**Visual Elements**
+- .fh-ui-divider
+- .fh-ui-divider-text
+- .fh-ui-spinner
+- .fh-ui-spinner-sm
+- .fh-ui-spinner-lg
+- .fh-ui-holo-icon
+- .fh-ui-bg
+- .fh-ui-glass`;
+
           try {
             await navigator.clipboard.writeText(llmPrompt);
-            this.classList.add('copied'); // Define .copied style
+            this.classList.add('copied'); 
             const originalText = this.innerHTML;
-            this.innerHTML = 'Prompt Copied!';
+            this.innerHTML = '<i class="fa-solid fa-check"></i> Prompt Copied!';
             setTimeout(() => {
               this.classList.remove('copied');
               this.innerHTML = originalText;
             }, 2000);
           } catch (err) {
             console.error('Failed to copy prompt: ', err);
+            this.innerHTML = '<i class="fa-solid fa-times"></i> Failed';
+             setTimeout(() => {
+              this.innerHTML = '<i class="fa-solid fa-magic"></i> Prompt'; // Reset to original with icon
+            }, 2000);
           }
         });
       }
@@ -120,7 +279,7 @@
     </section>
 
     <section id="features" class="features-section fh-ui-snap-section">
-      <h2>Designed for the Modern Web</h2>
+      <h2 class="fh-ui-section-title">Designed for the Modern Web</h2>
       
       <div class="features-grid">      <div class="fh-ui-info-card primary entry-top-left">
         <i class="fa-solid fa-code fa-flip" style="--fa-animation-duration: 3s; --fa-flip-x: 1; --fa-flip-y: 0;"></i>
@@ -160,7 +319,7 @@
     </div>
     </section>
     <section id="colors" class="color-theory-section fh-ui-snap-section">
-      <h2>Color Theory & Mathematics</h2>
+      <h2 class="fh-ui-section-title">Color Theory & Mathematics</h2>
       <p>Our color system is based on precise mathematical relationships:</p>
       
       <div class="color-showcase">
@@ -206,15 +365,12 @@
       <div class="fh-ui-container">
         <div class="fh-ui-two-columns">
           <div class="fh-ui-column-content" style="padding: var(--fh-lg) 0; display: flex; flex-direction: column; gap: var(--fh-md);">
-            <h2>Built on Golden Ratio</h2>
-            <p>Every dimension in Fathead UI is calculated using the golden ratio (1.618), creating naturally pleasing proportions throughout the interface.</p>
-            <a href="documentation.html" class="fh-ui-button" style="align-self: flex-start; margin-top: var(--fh-sm);">Learn More</a>
+            <h2 class="fh-ui-section-title">Designed with Data</h2>
+            <p class="fh-ui-description">Every dimension in Fathead UI is calculated using the golden ratio (1.618), creating naturally pleasing proportions throughout the interface.</p>
           </div>
-          <div style="display: flex; align-items: center;">
-            <div class="fh-ui-card" style="padding: var(--fh-lg); border-radius: var(--fh-radius); box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-              <h3>Perfect Proportions</h3>
-              <p style="margin-top: var(--fh-md);">The golden ratio has been used throughout history in architecture, art, and design to create aesthetically pleasing compositions. We've applied this mathematical principle to every aspect of Fathead UI.</p>
-            </div>
+          <div class="fh-ui-card" style="padding: var(--fh-lg); border-radius: var(--fh-radius); box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+            <h3>Perfect Proportions</h3>
+            <p style="margin-top: var(--fh-md);">The golden ratio has been used throughout history in architecture, art, and design to create aesthetically pleasing compositions. We've applied this mathematical principle to every aspect of Fathead UI.</p>
           </div>
         </div>
       </div>
@@ -226,8 +382,8 @@
     <!-- FAQ Section with CSS-only Accordion -->
     <section id="faq" class="faq-section fh-ui-snap-section">
       <div class="fh-ui-container">
-        <h2>Frequently Asked Questions</h2>
-        <p>Everything you need to know about Fathead UI</p>
+        <h2 class="fh-ui-section-title">Frequently Asked Questions</h2>
+        <p class="fh-ui-description">Everything you need to know about Fathead UI</p>
         
         <div class="fh-ui-css-accordion">
           <div class="fh-ui-css-accordion-item">
@@ -295,7 +451,7 @@
     <!-- Footer now includes "See it in Action" and is a single snap section -->
     <footer id="footer" class="fh-ui-footer fh-ui-snap-section">
       <div class="see-it-in-action-wrapper">
-        <h2>See It In Action</h2>
+        <h2 class="fh-ui-section-title">See It In Action</h2>
         <div class="demo-controls">
           <label for="demo-toast-checkbox" class="fh-ui-button"><i class="fa-solid fa-bell fa-shake"></i> Show Toast</label>
           <label for="demo-dialog-checkbox" class="fh-ui-button"><i class="fa-solid fa-message fa-beat"></i> Open Dialog</label>
@@ -309,7 +465,7 @@
         </div>
       </div>
 
-      <div class="actual-footer-content">
+      <div class="actual-footer-content" style="margin-bottom: 3%">
         <div class="fh-ui-container">
           <div class="footer-content">
             <div class="footer-logo">

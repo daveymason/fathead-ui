@@ -744,6 +744,17 @@
     background-color: var(--fh-accent);
 }
 
+.copy-button.copied,
+#prompt-btn.copied {
+    background-color: #4CAF50 !important; /* Green for success, !important to override other button styles */
+    color: white !important;
+}
+
+.copy-button.copied i,
+#prompt-btn.copied i {
+    color: white !important;
+}
+
 /* =========================
    6. Buttons
    ========================= */
@@ -800,6 +811,78 @@ label.fh-ui-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+}
+
+/* =========================
+   Typography & Titles
+   ========================= */
+
+.fh-ui-main-title {
+    font-family: var(--fh-font-headings);
+    font-size: calc(var(--fh-xxl) * 1.5); /* Larger main title */
+    font-weight: 200; /* Lighter font weight for futuristic feel */
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, var(--fh-primary), var(--fh-secondary), var(--fh-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px var(--fh-glow);
+    margin-bottom: var(--fh-sm);
+    animation: fh-fade-in 0.8s ease-out;
+}
+
+.fh-ui-subtitle {
+    font-family: var(--fh-font-headings);
+    font-size: var(--fh-xl);
+    font-weight: 300;
+    color: var(--fh-text-secondary);
+    margin-bottom: var(--fh-xs);
+    animation: fh-fade-in 1s ease-out 0.2s both;
+}
+
+.fh-ui-description {
+    font-size: var(--fh-md);
+    font-weight: 300;
+    color: var(--fh-text-tertiary);
+    max-width: 600px;
+    margin: 0 auto var(--fh-lg) auto; /* Added bottom margin */
+    line-height: 1.6;
+    animation: fh-fade-in 1.2s ease-out 0.4s both;
+}
+
+.fh-ui-section-title {
+    font-family: var(--fh-font-headings);
+    font-size: var(--fh-xxl); /* Consistent size for all section titles */
+    font-weight: 300; /* Consistent weight */
+    letter-spacing: 1px;
+    color: var(--fh-text); /* Standard text color, can be overridden if needed */
+    text-align: center;
+    margin-bottom: var(--fh-lg); /* Space below title */
+    padding-top: var(--fh-lg); /* Space above title */
+    position: relative;
+    animation: fh-fade-in 0.8s ease-out;
+}
+
+/* Optional: Add a subtle underline or accent to section titles */
+.fh-ui-section-title::after {
+    content: '';
+    display: block;
+    width: 80px; /* Width of the underline */
+    height: 3px; /* Thickness of the underline */
+    background: var(--fh-primary); /* Use primary color */
+    margin: var(--fh-sm) auto 0; /* Centered below title */
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+/* Specific styling for titles in certain sections if needed */
+#colors .fh-ui-section-title,
+#features-highlight .fh-ui-section-title {
+    color: var(--fh-text); /* Example: Ensure default color or specify another */
+}
+
+#faq .fh-ui-section-title {
+    margin-bottom: var(--fh-md); /* Adjust spacing for FAQ if needed */
 }
 
 /* =========================
@@ -1181,8 +1264,6 @@ label.fh-ui-button {
     padding: var(--fh-sm) var(--fh-md);
     margin: var(--fh-sm) 0;
     display: inline-block; /* To keep it on one line */
-    float: left; /* To float the box */
-    clear: both; /* Ensure it doesn't interfere with other floated elements */
     box-shadow: 0 2px 5px var(--fh-shadow);
     backdrop-filter: blur(var(--fh-glass-blur));
     -webkit-backdrop-filter: blur(var(--fh-glass-blur));
@@ -3116,11 +3197,11 @@ label.fh-ui-button {
 .fh-ui-footer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Pushes actual-footer-content to the bottom */
-  align-items: center; /* Centers content horizontally */
-  min-height: 100vh; /* Ensure it takes full viewport height */
-  padding-top: 5rem; /* Add some padding at the top */
-  padding-bottom: 2rem; /* Add some padding at the bottom */
+  justify-content: space-between; 
+  align-items: center; 
+  min-height: 100vh; 
+  padding-top: 1rem; 
+  padding-bottom: 2rem; 
   background: var(--fh-glass-bg);
   backdrop-filter: blur(var(--fh-glass-blur));
   -webkit-backdrop-filter: blur(var(--fh-glass-blur));
@@ -3132,13 +3213,18 @@ label.fh-ui-button {
 
 .see-it-in-action-wrapper {
   text-align: center;
-  margin-bottom: auto; /* Pushes itself up, helping to center it when combined with footer's space-between */
-  padding: 2rem;
+  margin-bottom: var(--fh-xxl); 
+  padding: 1rem;
   width: 100%;
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
 }
 
 .actual-footer-content {
   width: 100%;
+  padding-top: 0; 
 }
 
 .footer-content {
@@ -4226,4 +4312,26 @@ textarea:focus-visible {
   0% { opacity: 1; transform: translateX(-50%) translateY(0); }
   80% { opacity: 1; transform: translateX(-50%) translateY(0); }
   100% { opacity: 0; transform: translateX(-50%) translateY(40px); }
+}
+
+/* =========================
+   Two Columns Layout
+   ========================= */
+.fh-ui-two-columns {
+  display: flex;
+  flex-direction: row; /* Default, but explicit */
+  gap: var(--fh-lg, 2rem); /* Adjust gap as needed */
+  align-items: start; /* Align items to the start of the cross axis */
+}
+
+.fh-ui-two-columns > * {
+  flex: 1; /* Each child takes equal width */
+  /* Add any other styling for the columns if needed */
+}
+
+/* Responsive adjustments: stack columns on smaller screens */
+@media (max-width: 768px) {
+  .fh-ui-two-columns {
+    flex-direction: column;
+  }
 }

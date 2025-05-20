@@ -1,0 +1,107 @@
+/* hero-cta.css */
+
+.hero-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    margin-top: var(--fh-lg);
+    padding: var(--fh-md);
+}
+
+.hero-cta .fh-ui-section-subtitle { /* Target the subtitle class used in index.html */
+    margin-bottom: var(--fh-sm);
+    font-size: var(--fh-lg); /* Or use a specific variable if defined for this context */
+    color: var(--fh-text-secondary);
+    text-align: center; /* Ensure it's centered if not already */
+}
+
+.code-snippet-box {
+    background: var(--fh-glass-bg);
+    border: 1px solid var(--fh-glass-border);
+    border-radius: var(--fh-radius);
+    padding: var(--fh-sm) var(--fh-md);
+    margin-bottom: var(--fh-md);
+    width: 100%;
+    max-width: 700px; /* Adjusted max-width */
+    box-shadow: 0 2px 5px var(--fh-shadow);
+    backdrop-filter: blur(var(--fh-glass-blur));
+    -webkit-backdrop-filter: blur(var(--fh-glass-blur));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.code-snippet-box pre {
+    margin: 0;
+    flex-grow: 1;
+    margin-right: var(--fh-sm);
+    overflow-x: auto; /* Allow horizontal scroll for long code lines */
+    white-space: pre; /* Preserve whitespace and line breaks in pre */
+}
+
+.code-snippet-box code {
+    color: var(--fh-primary); /* Style for the code text itself */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font for code */
+    font-size: var(--fh-md); /* Adjust size as needed */
+}
+
+.copy-button {
+    background-color: var(--fh-primary);
+    color: white;
+    border: none;
+    border-radius: var(--fh-radius);
+    padding: var(--fh-xs) var(--fh-sm);
+    cursor: pointer;
+    font-size: var(--fh-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--fh-xs);
+    transition: background-color 0.3s, transform 0.2s;
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.copy-button:hover {
+    background-color: var(--fh-accent);
+    transform: scale(1.05);
+}
+
+.hero-cta-buttons {
+    display: flex;
+    gap: var(--fh-md); /* Space between buttons */
+    margin-top: var(--fh-md);
+}
+
+.hero-action-button {
+    padding: var(--fh-md) var(--fh-xl); /* Larger padding for hero buttons */
+    font-size: var(--fh-lg); /* Larger font size */
+}
+
+.hero-action-button i {
+    margin-right: var(--fh-xs); /* Space between icon and text */
+}
+
+/* Specific style for the purple button to ensure text visibility in light mode */
+.hero-action-button.purple-btn {
+    color: var(--fh-button-text-color, white); /* Default to white, can be overridden by theme */
+}
+
+[data-theme="light"] .hero-action-button.purple-btn {
+    color: white; /* Ensure text is white in light mode */
+}
+
+/* Styles for .copied state (feedback on button click) */
+.copy-button.copied {
+    background-color: #28a745; /* Green for success */
+    color: white;
+}
+
+#prompt-btn.copied {
+    background-color: #28a745 !important; /* Ensure override if other styles conflict */
+    color: white !important;
+}
+
+.copy-button.copied i,
+#prompt-btn.copied i {
+    color: white !important; 
+}
+
