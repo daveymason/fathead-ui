@@ -18,7 +18,7 @@
     --fh-glow: rgba(33, 158, 255, 0.5);
     --fh-shadow: rgba(0,0,0,0.3);
     --fh-golden: 1.618;
-    --fh-radius: 12px;
+    --fh-radius: var(--fh-xs);
     --fh-transition: all 0.25s cubic-bezier(0.23,1,0.32,1);
 
     /* Golden ratio sizing */
@@ -38,6 +38,10 @@
     --fh-glass-blur: 20px;    /* Gaussian blur for glass surfaces */
     --fh-bg-blur: 10px;       /* Background blur intensity */
 
+    /* Input Borders */
+    --fh-input-border-dark: rgba(255, 255, 255, 0.5); /* More opaque for dark theme */
+    --fh-input-border-light: rgba(0, 0, 0, 0.4);    /* More opaque for light theme */
+
     /* Fonts */
     --fh-font-body: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     --fh-font-headings: var(--fh-font-body);
@@ -49,9 +53,17 @@
     --fh-text: #222222;
     --fh-text-secondary: rgba(30,30,30,0.75);
     --fh-glass-bg: rgba(255,255,255,0.7);
-    --fh-glass-border: rgba(0,0,0,0.1);
+    --fh-glass-border: rgba(0,0,0,0.1); /* General glass border, inputs will use specific vars */
     --fh-glow: rgba(195,49,125,0.2);
     --fh-shadow: rgba(0,0,0,0.15);
+}
+.fh-ui[data-theme="light"] .fh-ui-input,
+.fh-ui[data-theme="light"] .fh-ui-textarea,
+.fh-ui[data-theme="light"] .fh-ui-select {
+    border: 1px solid var(--fh-input-border-light);
+}
+.fh-ui[data-theme="light"] .fh-ui-input-combo-text {
+    border: 1px solid var(--fh-input-border-light);
 }
 
 /* =========================
@@ -75,7 +87,7 @@
     position: relative;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Prevent body scrolling */
+    overflow-x: hidden; /* Prevent horizontal body scrolling, allow vertical if needed */
 }
 
 /* =========================
@@ -118,7 +130,7 @@
 
 .fh-ui-header h1 {
     font-family: var(--fh-font-headings);
-    font-size: 2.5rem;
+    font-size: calc(var(--fh-xl) / 1.25);
     font-weight: 300;
     letter-spacing: 1px;
     background: linear-gradient(90deg, var(--fh-primary), var(--fh-secondary), var(--fh-accent));
@@ -217,7 +229,7 @@
     width: 100%;
     background: var(--fh-glass-bg);
     color: var(--fh-text);
-    border: 1px solid var(--fh-glass-border);
+    border: 1px solid var(--fh-input-border-dark);
     border-radius: var(--fh-radius);
     padding: calc(var(--fh-base) * 0.75) calc(var(--fh-base) * 0.75);
     font-size: var(--fh-base);
@@ -364,7 +376,7 @@
     padding: 0 var(--fh-sm);
     background: var(--fh-glass-bg);
     color: var(--fh-text-secondary);
-    border: 1px solid var(--fh-glass-border);
+    border: 1px solid var(--fh-input-border-dark);
     font-size: var(--fh-sm);
     backdrop-filter: blur(var(--fh-glass-blur));
     -webkit-backdrop-filter: blur(var(--fh-glass-blur));
@@ -1206,7 +1218,7 @@ label.fh-ui-button {
   z-index: 1000;
   box-shadow: 0 2px 16px var(--fh-shadow);
   border-bottom: 1px solid var(--fh-glass-border);
-  min-height: 72px;
+  min-height: calc(var(--fh-lg) * 2.3);
 }
 .fh-ui-navbar .logo {
   font-size: var(--fh-xl);
@@ -1711,7 +1723,7 @@ label.fh-ui-button {
 .fh-ui-components-layout {
   display: flex;
   min-height: 100vh;
-  padding-left: 260px; /* Match sidebar width */
+  padding-left: calc(var(--fh-xxl) * 3.2); /* Match sidebar width */
   width: 100%;
   position: relative;
   overflow: hidden; /* Remove overflow to prevent extra scrollbar */
@@ -1721,17 +1733,17 @@ label.fh-ui-button {
 .fh-ui-components-layout main {
   flex: 1;
   overflow-y: auto; /* Enable scrolling only on the main content */
-  height: calc(100vh - 72px); /* Match navbar height */
+  height: calc(100vh - (var(--fh-lg) * 2.3)); /* Match navbar height */
   padding: var(--fh-lg);
   scroll-behavior: smooth;
 }
 
 .fh-ui-components-sidebar {
   position: fixed;
-  top: 72px; /* Match navbar height */
+  top: calc(var(--fh-lg) * 2.3); /* Match navbar height */
   left: 0;
-  width: 260px;
-  height: calc(100vh - 72px);
+  width: calc(var(--fh-xxl) * 3.2);
+  height: calc(100vh - (var(--fh-lg) * 2.3));
   overflow-y: auto;
   background: var(--fh-glass-bg);
   border-right: 1px solid var(--fh-glass-border);
@@ -1914,7 +1926,7 @@ label.fh-ui-button {
   .fh-ui-components-layout { flex-direction: column; }
   .fh-ui-components-layout main {
     height: auto;
-    min-height: calc(100vh - 72px - 220px); /* Navbar height + approx sidebar height on mobile */
+    min-height: calc(100vh - (var(--fh-lg) * 2.3) - 220px); /* Navbar height + approx sidebar height on mobile */
   }
   .fh-ui-component-section { min-height: 80vh; padding: var(--fh-xl) var(--fh-md); }
 }
@@ -1953,7 +1965,7 @@ label.fh-ui-button {
   padding: var(--fh-xl);
   margin: var(--fh-md);
   min-width: 320px;
-  max-width: calc(90vw - var(--fh-xl) * 2);
+  max-width: 90vw;
   position: relative;
   transition: transform 0.3s, box-shadow 0.3s;
   transform-origin: center center;
@@ -2252,8 +2264,8 @@ label.fh-ui-button {
 }
 
 .fh-ui-snap-dots .dot {
-  width: 12px;
-  height: 12px;
+  width: var(--fh-xs);
+  height: var(--fh-xs);
   border-radius: 50%;
   background: var(--fh-glass-border);
   transition: var(--fh-transition);
@@ -2274,8 +2286,8 @@ label.fh-ui-button {
 .fh-ui-snap-dots .dot::after {
   content: '';
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: calc(var(--fh-xs) * 2);
+  height: calc(var(--fh-xs) * 2);
   border-radius: 50%;
   border: 2px solid transparent;
   top: 50%;
@@ -3392,6 +3404,11 @@ label.fh-ui-button {
   .footer-links {
     align-items: center;
   }
+
+  .fh-ui-popup-content,
+  .fh-ui-dialog-content {
+      padding: var(--fh-lg); /* Was var(--fh-xl) */
+  }
 }
 
 /* Float animation for code snippet */
@@ -4226,8 +4243,8 @@ textarea:focus-visible {
   position: fixed;
   top: 60px; /* Moved down to avoid overlapping with the menu */
   right: 15px;
-  width: 45px;
-  height: 22px;
+  width: calc(var(--fh-lg) * 1.45);
+  height: calc(var(--fh-base) * 1.15);
   background: var(--fh-glass-bg);
   border-radius: 999px;
   cursor: pointer;
@@ -4240,16 +4257,16 @@ textarea:focus-visible {
 .theme-toggle-label::after {
   content: "🌙";
   position: absolute;
-  left: 5px;
-  top: 3px;
-  font-size: 14px;
+  left: calc(var(--fh-xs) / 2.37);
+  top: calc(var(--fh-xs) / 3.95);
+  font-size: calc(var(--fh-base) * 0.73);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Added bouncy effect */
 }
 
 /* Theme toggle using JavaScript instead of CSS sibling selectors */
 .theme-toggle-checkbox:checked ~ .theme-toggle-label::after {
   content: "☀️";
-  transform: translateX(22px);
+  transform: translateX(calc(var(--fh-base) * 1.15));
 }
 
 /* CSS-only popup/dialog using :target pseudo-class */

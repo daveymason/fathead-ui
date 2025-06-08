@@ -172,4 +172,4 @@ This document lists all the HTML elements and classes that can be used with Fath
    - High contrast modes supported with CSS variables
 
 4. **Javascript Integration**
-   - Some components (tabs, accordion, dropdown) require the `components.js` file
+   - Some components (tabs, accordion, dropdown without the `.fh-ui-css-` prefix) are designed to work with a `components.js` file. Note: This file was not found in the current repository package. Pure CSS alternatives are available.

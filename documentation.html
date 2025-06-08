@@ -94,6 +94,14 @@
             </div>
             <div class="fh-ui-form-help">Click to see how Fathead UI adapts to different themes</div>
           </div>
+
+          <div class="fh-ui-alert fh-ui-alert-warning" style="margin-top: var(--fh-lg);">
+            <div class="fh-ui-alert-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="fh-ui-alert-content">
+              <h4 class="fh-ui-alert-title">Note on JavaScript Components</h4>
+              <p class="fh-ui-alert-text">This documentation references components that may rely on a <code>components.js</code> file for full interactivity (e.g., standard tabs, accordions, dropdowns). This file was not found in the current package. Pure CSS alternatives for many of these components are available and demonstrated (e.g., using classes like <code>.fh-ui-css-tabs</code>). If you intend to use the JavaScript-dependent versions, please ensure <code>components.js</code> is correctly sourced.</p>
+            </div>
+          </div>
         </div>
       </section>
       
@@ -304,24 +312,24 @@
           <h4 style="margin-top: var(--fh-xl);"><i class="fas fa-magic"></i> CSS-Only Tabs</h4>
           <p>Pure CSS tabs without JavaScript using the hidden radio input technique:</p>
           
-          <div class="fh-ui-css-tabs">
-            <input type="radio" id="css-tab1" class="fh-ui-css-tab-input" name="css-tabs" checked>
-            <label for="css-tab1" class="fh-ui-css-tab-label">First Tab</label>
-            <div class="fh-ui-css-tab-content">
+          <div class="fh-ui-css-tabs" role="tablist" aria-label="CSS-Only Example Tabs">
+            <input type="radio" id="css-doc-tab1" class="fh-ui-css-tab-input" name="css-doc-tabs" checked>
+            <label for="css-doc-tab1" class="fh-ui-css-tab-label" role="tab" id="css-doc-tab1-label" aria-selected="true" aria-controls="css-doc-tab1-content">First Tab</label>
+            <div class="fh-ui-css-tab-content" role="tabpanel" id="css-doc-tab1-content" aria-labelledby="css-doc-tab1-label">
               <h5>CSS-Only Tab Content 1</h5>
               <p>This tab functionality works entirely without JavaScript using the CSS :checked selector. Perfect for lightweight implementations.</p>
             </div>
             
-            <input type="radio" id="css-tab2" class="fh-ui-css-tab-input" name="css-tabs">
-            <label for="css-tab2" class="fh-ui-css-tab-label">Second Tab</label>
-            <div class="fh-ui-css-tab-content">
+            <input type="radio" id="css-doc-tab2" class="fh-ui-css-tab-input" name="css-doc-tabs">
+            <label for="css-doc-tab2" class="fh-ui-css-tab-label" role="tab" id="css-doc-tab2-label" aria-selected="false" aria-controls="css-doc-tab2-content">Second Tab</label>
+            <div class="fh-ui-css-tab-content" role="tabpanel" id="css-doc-tab2-content" aria-labelledby="css-doc-tab2-label">
               <h5>CSS-Only Tab Content 2</h5>
               <p>CSS-only tabs eliminate the need for JavaScript, improving performance and reducing dependencies while maintaining all functionality.</p>
             </div>
             
-            <input type="radio" id="css-tab3" class="fh-ui-css-tab-input" name="css-tabs">
-            <label for="css-tab3" class="fh-ui-css-tab-label">Third Tab</label>
-            <div class="fh-ui-css-tab-content">
+            <input type="radio" id="css-doc-tab3" class="fh-ui-css-tab-input" name="css-doc-tabs">
+            <label for="css-doc-tab3" class="fh-ui-css-tab-label" role="tab" id="css-doc-tab3-label" aria-selected="false" aria-controls="css-doc-tab3-content">Third Tab</label>
+            <div class="fh-ui-css-tab-content" role="tabpanel" id="css-doc-tab3-content" aria-labelledby="css-doc-tab3-label">
               <h5>CSS-Only Tab Content 3</h5>
               <p>Using hidden radio inputs ensures only one tab can be active at a time, maintaining proper tab behavior.</p>
             </div>
@@ -359,31 +367,31 @@
         
         <div class="fh-ui-css-accordion">
           <div class="fh-ui-css-accordion-item">
-            <input type="checkbox" id="css-accordion-1" class="fh-ui-css-accordion-checkbox" checked>
-            <label for="css-accordion-1" class="fh-ui-css-accordion-header">
+            <input type="checkbox" id="css-doc-accordion-1" class="fh-ui-css-accordion-checkbox" checked>
+            <label for="css-doc-accordion-1" class="fh-ui-css-accordion-header" id="css-doc-accordion-1-label" aria-expanded="true" aria-controls="css-doc-accordion-1-content">
               First Accordion Item (Open)
             </label>
-            <div class="fh-ui-css-accordion-content">
+            <div class="fh-ui-css-accordion-content" role="region" id="css-doc-accordion-1-content" aria-labelledby="css-doc-accordion-1-label">
               <p>This is a CSS-only accordion that uses hidden checkboxes and labels to control visibility. No JavaScript required!</p>
             </div>
           </div>
           
           <div class="fh-ui-css-accordion-item">
-            <input type="checkbox" id="css-accordion-2" class="fh-ui-css-accordion-checkbox">
-            <label for="css-accordion-2" class="fh-ui-css-accordion-header">
+            <input type="checkbox" id="css-doc-accordion-2" class="fh-ui-css-accordion-checkbox">
+            <label for="css-doc-accordion-2" class="fh-ui-css-accordion-header" id="css-doc-accordion-2-label" aria-expanded="false" aria-controls="css-doc-accordion-2-content">
               Second Accordion Item
             </label>
-            <div class="fh-ui-css-accordion-content">
+            <div class="fh-ui-css-accordion-content" role="region" id="css-doc-accordion-2-content" aria-labelledby="css-doc-accordion-2-label">
               <p>This accordion implementation is lightweight and works on all browsers that support CSS transitions and the :checked pseudo-class.</p>
             </div>
           </div>
           
           <div class="fh-ui-css-accordion-item">
-            <input type="checkbox" id="css-accordion-3" class="fh-ui-css-accordion-checkbox">
-            <label for="css-accordion-3" class="fh-ui-css-accordion-header">
+            <input type="checkbox" id="css-doc-accordion-3" class="fh-ui-css-accordion-checkbox">
+            <label for="css-doc-accordion-3" class="fh-ui-css-accordion-header" id="css-doc-accordion-3-label" aria-expanded="false" aria-controls="css-doc-accordion-3-content">
               Third Accordion Item
             </label>
-            <div class="fh-ui-css-accordion-content">
+            <div class="fh-ui-css-accordion-content" role="region" id="css-doc-accordion-3-content" aria-labelledby="css-doc-accordion-3-label">
               <p>Multiple accordion items can be open simultaneously with this implementation, providing flexible content exploration.</p>
             </div>
           </div>
@@ -427,16 +435,16 @@
               <p>Pure CSS dropdown without JavaScript:</p>
               
               <div class="fh-ui-css-dropdown">
-                <input type="checkbox" id="css-dropdown" class="fh-ui-css-dropdown-checkbox">
-                <label for="css-dropdown" class="fh-ui-css-dropdown-toggle">
+                <input type="checkbox" id="css-doc-dropdown" class="fh-ui-css-dropdown-checkbox">
+                <label for="css-doc-dropdown" class="fh-ui-css-dropdown-toggle" id="css-doc-dropdown-label" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-cog"></i> CSS-Only Menu
                 </label>
-                <div class="fh-ui-css-dropdown-menu">
-                  <a href="#" class="fh-ui-css-dropdown-item">Settings</a>
-                  <a href="#" class="fh-ui-css-dropdown-item">Account</a>
-                  <div class="fh-ui-css-dropdown-divider"></div>
-                  <a href="#" class="fh-ui-css-dropdown-item">Help</a>
-                  <a href="#" class="fh-ui-css-dropdown-item">Log Out</a>
+                <div class="fh-ui-css-dropdown-menu" role="menu" aria-labelledby="css-doc-dropdown-label">
+                  <a href="#" class="fh-ui-css-dropdown-item" role="menuitem">Settings</a>
+                  <a href="#" class="fh-ui-css-dropdown-item" role="menuitem">Account</a>
+                  <div class="fh-ui-css-dropdown-divider" role="separator"></div>
+                  <a href="#" class="fh-ui-css-dropdown-item" role="menuitem">Help</a>
+                  <a href="#" class="fh-ui-css-dropdown-item" role="menuitem">Log Out</a>
                 </div>
               </div>
               
@@ -1279,6 +1287,7 @@
       
     });
   </script>
+<!-- Note: components.js was not found in the repository. The following script tag may result in a 404 error. -->
 <script src="./components.js"></script>
 <script>
   // Initialize all components on page load
