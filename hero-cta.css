@@ -6,6 +6,8 @@
     align-items: center; /* Center items horizontally */
     margin-top: var(--fh-lg);
     padding: var(--fh-md);
+    width: 100%;
+    max-width: 760px;
 }
 
 .hero-cta .fh-ui-section-subtitle { /* Target the subtitle class used in index.html */
@@ -34,6 +36,7 @@
 .code-snippet-box pre {
     margin: 0;
     flex-grow: 1;
+    min-width: 0; /* Let the flex item shrink so long code scrolls instead of overflowing */
     margin-right: var(--fh-sm);
     overflow-x: auto; /* Allow horizontal scroll for long code lines */
     white-space: pre; /* Preserve whitespace and line breaks in pre */

@@ -13,8 +13,10 @@
     overflow: hidden;
 }
 
-.fh-ui-css-tab-input {
-    display: none; /* Hide radio buttons */
+/* Hidden but focusable so keyboard users can switch tabs (rule in fathead-ui.css) */
+.fh-ui-css-tab-input:focus-visible + .fh-ui-css-tab-label {
+    outline: 2px solid var(--fh-primary);
+    outline-offset: 2px;
 }
 
 .fh-ui-css-tab-label {
@@ -33,7 +35,7 @@
 }
 
 .fh-ui-css-tab-label:hover {
-    background: rgba(255,255,255,0.1);
+    background: var(--fh-glass-hover, rgba(255,255,255,0.1));
     color: var(--fh-text);
 }
 
@@ -59,45 +61,6 @@
     display: block;
 }
 
-/* Tabs styling */
-.fh-ui-tabs {
-  display: flex;
-  flex-direction: column;
-}
-
-.fh-ui-tab-nav {
-  display: flex;
-  border-bottom: 1px solid #ccc;
-}
-
-.fh-ui-tab-button {
-  padding: 10px 20px;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.3s ease;
-}
-
-.fh-ui-tab-button.active {
-  border-bottom-color: #007bff;
-  font-weight: bold;
-}
-
-.fh-ui-tab-content {
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-top: none;
-}
-
-.fh-ui-tab-pane {
-  display: none;
-}
-
-.fh-ui-tab-pane.active {
-  display: block;
-}
-
 /* =========================
    Accordion
    ========================= */
@@ -117,8 +80,10 @@
     border-bottom: none;
 }
 
-.fh-ui-css-accordion-checkbox {
-    display: none; /* Hide checkboxes */
+/* Hidden but focusable (rule in fathead-ui.css) */
+.fh-ui-css-accordion-checkbox:focus-visible + .fh-ui-css-accordion-header {
+    outline: 2px solid var(--fh-primary);
+    outline-offset: -2px;
 }
 
 .fh-ui-css-accordion-header {
@@ -132,7 +97,7 @@
 }
 
 .fh-ui-css-accordion-header:hover {
-    background: rgba(255,255,255,0.1);
+    background: var(--fh-glass-hover, rgba(255,255,255,0.1));
     color: var(--fh-text);
 }
 
@@ -179,45 +144,6 @@
     color: var(--fh-text-secondary);
 }
 
-/* Accordion styling */
-.fh-ui-accordion .fh-ui-accordion-item {
-  border: 1px solid #ccc;
-  margin-bottom: -1px; /* Prevents double borders */
-}
-
-.fh-ui-accordion .fh-ui-accordion-header {
-  background-color: #f7f7f7;
-  padding: 10px 15px;
-  cursor: pointer;
-  border-bottom: 1px solid #ccc;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.fh-ui-accordion .fh-ui-accordion-header:hover {
-  background-color: #eee;
-}
-
-.fh-ui-accordion .fh-ui-accordion-content {
-  padding: 15px;
-  border-top: 1px solid #ccc;
-  display: none; /* Hidden by default */
-}
-
-.fh-ui-accordion .fh-ui-accordion-item.active .fh-ui-accordion-content {
-  display: block;
-}
-
-.fh-ui-accordion .fh-ui-accordion-header::after {
-  content: '+'; /* Plus sign for collapsed state */
-  font-size: 1.2em;
-}
-
-.fh-ui-accordion .fh-ui-accordion-item.active .fh-ui-accordion-header::after {
-  content: '-'; /* Minus sign for expanded state */
-}
-
 /* =========================
    Dropdown
    ========================= */
@@ -226,8 +152,10 @@
     display: inline-block;
 }
 
-.fh-ui-css-dropdown-checkbox {
-    display: none; /* Hide checkbox */
+/* Hidden but focusable (rule in fathead-ui.css) */
+.fh-ui-css-dropdown-checkbox:focus-visible + .fh-ui-css-dropdown-toggle {
+    outline: 2px solid var(--fh-primary);
+    outline-offset: 2px;
 }
 
 .fh-ui-css-dropdown-toggle {
@@ -296,50 +224,6 @@
     background: var(--fh-glass-border);
     margin: var(--fh-xs) 0;
 }
-
-/* Dropdown styling */
-.fh-ui-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.fh-ui-dropdown-toggle {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.fh-ui-dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  border-radius: 4px;
-  padding: 5px 0;
-}
-
-.fh-ui-dropdown-menu a {
-  color: black;
-  padding: 8px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.fh-ui-dropdown-menu a:hover {
-  background-color: #f1f1f1;
-}
-
-.fh-ui-dropdown.active .fh-ui-dropdown-menu {
-  display: block;
-}
-
-/* Add fh-primary-rgb to :root if not already defined in fathead-ui.css */
-/* :root { --fh-primary-rgb: 33, 158, 255; } */
 
 /* Animation for fade-in (used by tabs) */
 @keyframes fh-fade-in {

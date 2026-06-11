@@ -9,37 +9,53 @@
    ========================= */
 :root {
     --fh-primary: #219EFF;
+    --fh-primary-rgb: 33, 158, 255;
     --fh-secondary: #6A0DAD;
+    --fh-secondary-rgb: 106, 13, 173;
+    --fh-tertiary: var(--fh-secondary);
     --fh-accent: #FF8A00;
-    --fh-background: rgba(20, 20, 30, 0.85);
+    --fh-accent-rgb: 255, 138, 0;
+    --fh-success: #2EAD5C;
+    --fh-warning: #FF9800;
+    --fh-error: #E5484D;
+    --fh-info: var(--fh-primary);
+    --fh-background: #14141E;
     --fh-text: #fff;
+    --fh-text-primary: var(--fh-text);
     --fh-text-secondary: rgba(255,255,255,0.8);
     --fh-text-tertiary: rgba(255,255,255,0.6);
+    --fh-placeholder: rgba(255,255,255,0.4);
     --fh-glow: rgba(33, 158, 255, 0.5);
     --fh-shadow: rgba(0,0,0,0.3);
     --fh-golden: 1.618;
     --fh-radius: 12px;
     --fh-transition: all 0.25s cubic-bezier(0.23,1,0.32,1);
+    --fh-navbar-height: 72px;
+    --fh-sidebar-width: 260px;
 
-    /* Golden ratio sizing */
-    --fh-base: 1.2rem;
-    --fh-xs: calc(var(--fh-base) / var(--fh-golden));
-    --fh-sm: calc(var(--fh-xs) * var(--fh-golden));
-    --fh-md: var(--fh-base);
-    --fh-lg: calc(var(--fh-base) * var(--fh-golden));
-    --fh-xl: calc(var(--fh-lg) * var(--fh-golden));
-    --fh-xxl: calc(var(--fh-xl) * var(--fh-golden));
+    /* Golden ratio sizing — a true φ modular scale.
+       Each step is exactly the previous one multiplied by 1.618,
+       and the base scales fluidly with the viewport for mobile. */
+    --fh-base: clamp(1rem, 0.93rem + 0.35vw, 1.2rem);
+    --fh-xxs: calc(var(--fh-base) / var(--fh-golden) / var(--fh-golden) / var(--fh-golden)); /* base ÷ φ³ ≈ 0.236× */
+    --fh-xs: calc(var(--fh-base) / var(--fh-golden) / var(--fh-golden));                     /* base ÷ φ² ≈ 0.382× */
+    --fh-sm: calc(var(--fh-base) / var(--fh-golden));                                        /* base ÷ φ  ≈ 0.618× */
+    --fh-md: var(--fh-base);                                                                 /* base      = 1×     */
+    --fh-lg: calc(var(--fh-base) * var(--fh-golden));                                        /* base × φ  ≈ 1.618× */
+    --fh-xl: calc(var(--fh-base) * var(--fh-golden) * var(--fh-golden));                     /* base × φ² ≈ 2.618× */
+    --fh-xxl: calc(var(--fh-base) * var(--fh-golden) * var(--fh-golden) * var(--fh-golden)); /* base × φ³ ≈ 4.236× */
 
     /* Glassmorphism */
     --fh-glass-bg: rgba(20,20,30,0.7);
     --fh-glass-border: rgba(255,255,255,0.2);
+    --fh-glass-hover: rgba(255,255,255,0.08);
     --fh-glass-highlight: rgba(0,0,0,0.14);
     --fh-glass-shadow: rgba(255,255,255,0.05);
     --fh-glass-blur: 20px;    /* Gaussian blur for glass surfaces */
     --fh-bg-blur: 10px;       /* Background blur intensity */
 
     /* Fonts */
-    --fh-font-body: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    --fh-font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     --fh-font-headings: var(--fh-font-body);
 }
 
@@ -47,11 +63,36 @@
 .fh-ui[data-theme="light"] {
     --fh-background: #F0F2F5;
     --fh-text: #222222;
-    --fh-text-secondary: rgba(30,30,30,0.75);
+    --fh-text-secondary: rgba(30,30,30,0.78);
+    --fh-text-tertiary: rgba(30,30,30,0.6);
+    --fh-placeholder: rgba(30,30,30,0.45);
     --fh-glass-bg: rgba(255,255,255,0.7);
     --fh-glass-border: rgba(0,0,0,0.1);
-    --fh-glow: rgba(195,49,125,0.2);
-    --fh-shadow: rgba(0,0,0,0.15);
+    --fh-glass-hover: rgba(0,0,0,0.05);
+    --fh-glass-highlight: rgba(255,255,255,0.5);
+    --fh-glass-shadow: rgba(0,0,0,0.05);
+    --fh-glow: rgba(33, 158, 255, 0.25);
+    --fh-shadow: rgba(0,0,0,0.12);
+    color-scheme: light;
+}
+
+/* Respect the OS preference when no explicit theme is set */
+@media (prefers-color-scheme: light) {
+    .fh-ui:not([data-theme]) {
+        --fh-background: #F0F2F5;
+        --fh-text: #222222;
+        --fh-text-secondary: rgba(30,30,30,0.78);
+        --fh-text-tertiary: rgba(30,30,30,0.6);
+        --fh-placeholder: rgba(30,30,30,0.45);
+        --fh-glass-bg: rgba(255,255,255,0.7);
+        --fh-glass-border: rgba(0,0,0,0.1);
+        --fh-glass-hover: rgba(0,0,0,0.05);
+        --fh-glass-highlight: rgba(255,255,255,0.5);
+        --fh-glass-shadow: rgba(0,0,0,0.05);
+        --fh-glow: rgba(33, 158, 255, 0.25);
+        --fh-shadow: rgba(0,0,0,0.12);
+        color-scheme: light;
+    }
 }
 
 /* =========================
@@ -63,19 +104,53 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition: var(--fh-transition);
 }
 
 .fh-ui {
     font-family: var(--fh-font-body);
     color: var(--fh-text);
     background: var(--fh-background);
+    transition: background-color 0.4s ease, color 0.4s ease; /* Smooth theme switching */
+    accent-color: var(--fh-primary);
+    color-scheme: dark;
+    line-height: var(--fh-golden); /* φ line-height: optimal reading rhythm */
     min-height: 100vh;
+    min-height: 100dvh;
     width: 100%;
     position: relative;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Prevent body scrolling */
+    overflow-x: clip; /* Prevent sideways scroll without trapping vertical scrolling */
+}
+
+/* Balanced, hierarchy-friendly headings (cognitive chunking: short scannable lines) */
+.fh-ui h1, .fh-ui h2, .fh-ui h3, .fh-ui h4 {
+    line-height: 1.2;
+    text-wrap: balance;
+}
+.fh-ui p {
+    text-wrap: pretty;
+}
+
+/* Visually hidden but still focusable — used by all CSS-only control inputs
+   so keyboard and assistive-tech users can operate them */
+.fh-ui-loader-checkbox,
+.fh-ui-toast-checkbox,
+.fh-ui-dialog-checkbox,
+.fh-ui-popup-checkbox,
+.theme-toggle-checkbox,
+.fh-ui-css-tab-input,
+.fh-ui-css-accordion-checkbox,
+.fh-ui-css-dropdown-checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* =========================
@@ -155,7 +230,7 @@
     animation: fh-slide-up 0.5s cubic-bezier(0.23,1,0.32,1) both;
     transition: transform 0.3s, box-shadow 0.3s;
     backdrop-filter: blur(var(--fh-glass-blur));
-    font-size: var(--fh-lg);
+    font-size: var(--fh-md);
 }
 .fh-ui-card:hover {
     transform: translateY(-5px);
@@ -230,7 +305,7 @@
 
 .fh-ui-input::placeholder,
 .fh-ui-textarea::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--fh-placeholder);
     transition: opacity 0.2s ease;
 }
 
@@ -253,6 +328,11 @@
     background-position: right calc(var(--fh-base) * 0.5) center;
     background-size: calc(var(--fh-base) * 0.75);
     padding-right: calc(var(--fh-base) * 2);
+}
+
+/* Dark chevron for the select arrow on light backgrounds */
+.fh-ui[data-theme="light"] .fh-ui-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23222222' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 }
 
 /* Focus states with subtle animation */
@@ -759,21 +839,26 @@
    6. Buttons
    ========================= */
 .fh-ui-button {
-    background: linear-gradient(90deg, var(--fh-primary), var(--fh-accent));
+    background: var(--fh-primary);
     color: #fff;
     border: none;
     border-radius: var(--fh-radius);
-    padding: var(--fh-sm) var(--fh-xl);
+    padding: var(--fh-sm) var(--fh-lg);
     font-size: var(--fh-md);
-    font-weight: 700;
+    font-weight: 600;
+    font-family: inherit;
+    line-height: 1.4;
+    min-height: 44px; /* WCAG touch-target size */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--fh-xs);
     cursor: pointer;
     box-shadow: 0 2px 12px var(--fh-glow);
-    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
-    outline: none;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s, filter 0.2s;
     position: relative;
     z-index: 1;
     overflow: hidden;
-    background: #219EFF;
 }
 .fh-ui-button:hover {
     filter: brightness(1.1);
@@ -997,16 +1082,12 @@ label.fh-ui-button {
 #fh-ui-loader-overlay {
   display: none;
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
+  inset: 0;
   background: rgba(20,20,30,0.7);
   z-index: 2000;
   align-items: center;
   justify-content: center;
   animation: fh-fade-in 0.4s;
-}
-
-.fh-ui-loader-checkbox {
-  display: none;
 }
 
 .fh-ui-loader-checkbox:checked + #fh-ui-loader-overlay {
@@ -1017,7 +1098,7 @@ label.fh-ui-button {
 /* Toast Notification */
 .fh-ui-toast {
   position: fixed;
-  bottom: calc(var(--fh-xl) * 2.5);  /* Moved higher from original position */
+  bottom: var(--fh-xl);
   left: 50%;
   transform: translateX(-50%) translateY(40px);
   background: var(--fh-glass-bg);
@@ -1032,10 +1113,6 @@ label.fh-ui-button {
   transition: opacity 0.4s, transform 0.4s;
   z-index: 2100;
   border-left: 4px solid var(--fh-primary);
-}
-
-.fh-ui-toast-checkbox {
-  display: none;
 }
 
 .fh-ui-toast-checkbox:checked + .fh-ui-toast {
@@ -1068,17 +1145,13 @@ label.fh-ui-button {
 .fh-ui-dialog {
   display: none;
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
+  inset: 0;
   background: rgba(20,20,30,0.7);
   backdrop-filter: blur(3px);
   z-index: 2100;
   align-items: center;
   justify-content: center;
   animation: fh-fade-in 0.4s;
-}
-
-.fh-ui-dialog-checkbox {
-  display: none;
 }
 
 .fh-ui-dialog-checkbox:checked + .fh-ui-dialog {
@@ -1198,7 +1271,9 @@ label.fh-ui-button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: calc(var(--fh-base) * 0.75) var(--fh-xl);
+  flex-wrap: wrap;
+  gap: var(--fh-sm);
+  padding: calc(var(--fh-base) * 0.75) var(--fh-lg);
   background: var(--fh-glass-bg);
   backdrop-filter: blur(var(--fh-glass-blur));
   position: sticky;
@@ -1206,10 +1281,11 @@ label.fh-ui-button {
   z-index: 1000;
   box-shadow: 0 2px 16px var(--fh-shadow);
   border-bottom: 1px solid var(--fh-glass-border);
-  min-height: 72px;
+  min-height: var(--fh-navbar-height);
 }
 .fh-ui-navbar .logo {
-  font-size: var(--fh-xl);
+  font-size: var(--fh-lg);
+  line-height: 1.2;
   font-weight: 700;
   color: var(--fh-primary);
   text-decoration: none;
@@ -1231,6 +1307,7 @@ label.fh-ui-button {
   text-decoration: none;
   font-size: var(--fh-md);
   font-weight: 500;
+  line-height: 1.2;
   padding: var(--fh-xs) 0;
   transition: color 0.2s;
 }
@@ -1286,7 +1363,9 @@ label.fh-ui-button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-items: safe center;
   justify-content: center;
+  justify-content: safe center;
   text-align: center;
   min-height: 80vh;
   padding: var(--fh-xxl) var(--fh-lg) var(--fh-xl) var(--fh-lg);
@@ -1310,7 +1389,7 @@ label.fh-ui-button {
   animation: fh-fade-in 0.8s cubic-bezier(0.23,1,0.32,1);
 }
 .hero-section p {
-  font-size: var(--fh-xl);
+  font-size: clamp(1.25rem, 1rem + 1.8vw, var(--fh-xl)); /* Fluid: tagline-sized on desktop, readable on phones */
   font-weight: 400;
   color: var(--fh-text-secondary);
   margin-bottom: var(--fh-xl);
@@ -1607,26 +1686,6 @@ label.fh-ui-button {
   50% { transform: translateY(-3px); }
 }
 
-.fh-ui-tooltip {
-  position: absolute;
-  bottom: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  animation: fadeInOut 2s forwards;
-}
-
-@keyframes fadeInOut {
-  0% { opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
 /* =========================
    15. Floating Library Link
    ========================= */
@@ -1690,7 +1749,10 @@ label.fh-ui-button {
    14. Reduced Motion
    ========================= */
 @media (prefers-reduced-motion: reduce) {
-    * {
+    .fh-ui,
+    .fh-ui *,
+    .fh-ui *::before,
+    .fh-ui *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
@@ -1699,10 +1761,29 @@ label.fh-ui-button {
 }
 
 @media (max-width: 900px) {
-  .fh-ui-navbar { flex-direction: column; align-items: flex-start; padding: var(--fh-md) var(--fh-lg); }
-  .fh-ui-navbar .nav-links { gap: var(--fh-md); }
+  /* The navbar wraps to two rows on narrow screens; keep the height
+     variable in sync so dependent layouts stay exact */
+  .fh-ui { --fh-navbar-height: 104px; }
+  .fh-ui-navbar { padding: var(--fh-sm) var(--fh-md); justify-content: center; }
+  .fh-ui-navbar .nav-links { gap: var(--fh-md); flex-wrap: wrap; justify-content: center; }
   .hero-section { padding: var(--fh-xl) var(--fh-md); }
   .floating-link { right: var(--fh-lg); bottom: var(--fh-lg); }
+}
+
+@media (max-width: 768px) {
+  .floating-link { display: none; }
+  .fh-ui-toast {
+    width: calc(100vw - var(--fh-md) * 2);
+    max-width: 100%;
+    bottom: var(--fh-lg);
+    padding: var(--fh-md);
+  }
+  .fh-ui-dialog-content,
+  .fh-ui-popup-content {
+    min-width: 0;
+    width: calc(100vw - var(--fh-lg) * 2);
+    padding: var(--fh-lg);
+  }
 }
 
 /* =========================
@@ -1710,8 +1791,10 @@ label.fh-ui-button {
    ========================= */
 .fh-ui-components-layout {
   display: flex;
-  min-height: 100vh;
-  padding-left: 260px; /* Match sidebar width */
+  /* Navbar + layout = exactly one viewport, so the body itself never scrolls
+     and fragment navigation only scrolls the <main> column */
+  min-height: calc(100dvh - var(--fh-navbar-height));
+  padding-left: var(--fh-sidebar-width); /* Match sidebar width */
   width: 100%;
   position: relative;
   overflow: hidden; /* Remove overflow to prevent extra scrollbar */
@@ -1721,17 +1804,18 @@ label.fh-ui-button {
 .fh-ui-components-layout main {
   flex: 1;
   overflow-y: auto; /* Enable scrolling only on the main content */
-  height: calc(100vh - 72px); /* Match navbar height */
+  height: calc(100dvh - var(--fh-navbar-height)); /* Match navbar height */
   padding: var(--fh-lg);
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 .fh-ui-components-sidebar {
   position: fixed;
-  top: 72px; /* Match navbar height */
+  top: var(--fh-navbar-height); /* Match navbar height */
   left: 0;
-  width: 260px;
-  height: calc(100vh - 72px);
+  width: var(--fh-sidebar-width);
+  height: calc(100dvh - var(--fh-navbar-height));
   overflow-y: auto;
   background: var(--fh-glass-bg);
   border-right: 1px solid var(--fh-glass-border);
@@ -1746,14 +1830,14 @@ label.fh-ui-button {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--fh-lg);
+  gap: var(--fh-xs);
 }
 .fh-ui-components-sidebar a {
   color: var(--fh-text-secondary);
   text-decoration: none;
-  font-size: var(--fh-lg);
+  font-size: var(--fh-md);
   font-weight: 500;
-  padding: var(--fh-md) var(--fh-lg);
+  padding: var(--fh-sm) var(--fh-md);
   border-radius: var(--fh-radius);
   transition: background 0.2s, color 0.2s;
   display: block;
@@ -1766,21 +1850,18 @@ label.fh-ui-button {
 
 .fh-ui-component-section {
   scroll-snap-align: start;
-  min-height: 100vh;
+  min-height: calc(100dvh - var(--fh-navbar-height));
   display: flex;
   flex-direction: column;
   justify-content: center;
+  justify-content: safe center;
   align-items: center;
+  align-items: safe center;
   padding: var(--fh-xxl) var(--fh-xl);
-  animation: fh-fade-in 1s cubic-bezier(0.23,1,0.32,1);
   position: relative;
-  padding-top: var(--fh-xxl);
-  padding-bottom: var(--fh-xxl);
-  margin-bottom: var(--fh-xl);
+  margin-bottom: var(--fh-xxl);
   animation: fh-fade-in-permanent 1s cubic-bezier(0.23,1,0.32,1);
   border-bottom: 1px solid var(--fh-glass-border);
-  margin-bottom: var(--fh-xxl);
-  padding-bottom: var(--fh-xxl);
 }
 .fh-ui-component-section h2 {
   font-size: var(--fh-xxl);
@@ -1812,6 +1893,8 @@ label.fh-ui-button {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--fh-sm);
   min-height: 100px;
 }
 .fh-ui-component-code {
@@ -1923,9 +2006,7 @@ label.fh-ui-button {
 .fh-ui-popup {
   display: none;
   position: fixed;
-  top: 0; left: 0; 
-  width: 100vw; 
-  height: 100vh;
+  inset: 0;
   background: rgba(20,20,30,0.7);
   backdrop-filter: blur(5px);
   z-index: 2100;
@@ -1933,10 +2014,6 @@ label.fh-ui-button {
   justify-content: center;
   animation: fh-fade-in 0.4s;
   text-align: center;
-}
-
-.fh-ui-popup-checkbox {
-  display: none;
 }
 
 .fh-ui-popup-checkbox:checked + .fh-ui-popup {
@@ -1963,10 +2040,14 @@ label.fh-ui-button {
    16. Full-height Sections with Scroll Snap
    ========================= */
 .fh-ui-snap-container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  height: calc(100vh - var(--fh-navbar-height));  /* Fallback */
+  height: calc(100dvh - var(--fh-navbar-height)); /* Stable on mobile URL-bar show/hide */
+  overflow-y: auto;
+  /* proximity instead of mandatory: sections taller than the viewport
+     (common on phones) stay fully reachable instead of snapping away */
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
   display: flex;
   flex-direction: column;
   width: 100%; /* Ensure it takes full width */
@@ -1974,12 +2055,15 @@ label.fh-ui-button {
 
 .fh-ui-snap-section {
   scroll-snap-align: start;
-  min-height: 100vh; /* Fallback for browsers that don't support dvh */
-  min-height: 100dvh;
+  min-height: 100%; /* Fill the snap container exactly — no content cut off behind the navbar */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* "safe" keeps tall content reachable instead of overflowing out the top */
+  justify-content: safe center;
   align-items: center;
+  align-items: safe center;
+  padding: var(--fh-lg) var(--fh-md);
   position: relative; /* For positioning child elements like dividers */
 }
 
@@ -1987,19 +2071,14 @@ label.fh-ui-button {
   justify-content: space-between; /* This will push the .see-it-in-action-wrapper towards the top/middle and .actual-footer-content to the bottom */
 }
 
-/* Animation for scroll-snap sections */
+/* Animation for scroll-snap sections.
+   Sections are visible by default (no-JS safe); the entry animation only
+   plays when JS tags the section as active. */
 @media (prefers-reduced-motion: no-preference) {
-  .fh-ui-snap-section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease-out, transform 0.8s ease-out;
-  }
-  
   .fh-ui-snap-section.active-section {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fade-in-up 0.7s ease-out;
   }
-  
+
   /* Entry animations for elements within active sections */
   .fh-ui-snap-section.active-section h1,
   .fh-ui-snap-section.active-section h2 {
@@ -2294,21 +2373,6 @@ label.fh-ui-button {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
   }
-  50% {
-    transform: translate(-50%, -50%) scale(1.5);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
   100% {
     transform: translate(-50%, -50%) scale(1.5);
     opacity: 0;
@@ -2319,35 +2383,10 @@ label.fh-ui-button {
    24. Component Improvements and Fixes
    ========================= */
 
-/* Info Card with improved styling */
-.fh-ui-info-card {
+/* Info card child-element API (optional structured markup):
+   .fh-ui-info-card > .fh-ui-info-card-icon + .fh-ui-info-card-content */
+.fh-ui-info-card.with-icon {
   display: flex;
-  padding: var(--fh-lg);
-  margin: var(--fh-lg) 0;
-  background: var(--fh-glass-bg);
-  backdrop-filter: blur(var(--fh-glass-blur));
-  border-radius: var(--fh-radius);
-  box-shadow: 0 6px 24px var(--fh-shadow);
-  border-left: 4px solid var(--fh-primary);
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.fh-ui-info-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px var(--fh-shadow);
-}
-
-.fh-ui-info-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--fh-primary);
-  box-shadow: 0 0 15px var(--fh-glow);
 }
 
 .fh-ui-info-card-icon {
@@ -2493,40 +2532,7 @@ label.fh-ui-button {
   border-color: transparent;
 }
 
-/* Advanced Navigation styles */
-.fh-ui-navigation {
-  display: flex;
-  flex-direction: column;
-  background: var(--fh-glass-bg);
-  backdrop-filter: blur(var(--fh-glass-blur));
-  border-radius: var(--fh-radius);
-  overflow: hidden;
-  box-shadow: 0 4px 20px var(--fh-shadow);
-  width: 100%;
-}
-
-.fh-ui-navigation-item {
-  display: flex;
-  align-items: center;
-  padding: var(--fh-md);
-  color: var(--fh-text);
-  text-decoration: none;
-  position: relative;
-  transition: background-color 0.2s, color 0.2s;
-  border-left: 3px solid transparent;
-}
-
-.fh-ui-navigation-item:hover {
-  background: rgba(33, 150, 243, 0.1);
-  color: var(--fh-primary);
-}
-
-.fh-ui-navigation-item.active {
-  border-left: 3px solid var(--fh-primary);
-  background: rgba(33, 150, 243, 0.1);
-  color: var(--fh-primary);
-}
-
+/* Navigation icon (used inside .fh-ui-navigation-item) */
 .fh-ui-navigation-icon {
   margin-right: var(--fh-md);
   font-size: var(--fh-md);
@@ -2534,34 +2540,6 @@ label.fh-ui-button {
   align-items: center;
   justify-content: center;
   width: 24px;
-}
-
-/* Add spinner component */
-.fh-ui-spinner {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  border: 3px solid rgba(33, 150, 243, 0.3);
-  border-radius: 50%;
-  border-top-color: var(--fh-primary);
-  animation: fh-spin 1s linear infinite;
-}
-
-.fh-ui-spinner-sm {
-  width: 24px;
-  height: 24px;
-  border-width: 2px;
-}
-
-.fh-ui-spinner-lg {
-  width: 60px;
-  height: 60px;
-  border-width: 4px;
-}
-
-@keyframes fh-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 /* =========================
@@ -2602,21 +2580,27 @@ label.fh-ui-button {
   opacity: 0.7;
 }
 
-.fh-ui-spinner.sm {
+.fh-ui-spinner.sm,
+.fh-ui-spinner-sm {
   width: 24px;
   height: 24px;
 }
 .fh-ui-spinner.sm::before,
-.fh-ui-spinner.sm::after {
+.fh-ui-spinner.sm::after,
+.fh-ui-spinner-sm::before,
+.fh-ui-spinner-sm::after {
   border-width: 3px;
 }
 
-.fh-ui-spinner.lg {
+.fh-ui-spinner.lg,
+.fh-ui-spinner-lg {
   width: 48px;
   height: 48px;
 }
 .fh-ui-spinner.lg::before,
-.fh-ui-spinner.lg::after {
+.fh-ui-spinner.lg::after,
+.fh-ui-spinner-lg::before,
+.fh-ui-spinner-lg::after {
   border-width: 5px;
 }
 
@@ -2640,10 +2624,6 @@ label.fh-ui-button {
 }
 
 /* CSS-only loader overlay */
-.fh-ui-loader-checkbox {
-  display: none;
-}
-
 .fh-ui-loader-checkbox:checked + #fh-ui-loader-overlay {
   visibility: visible;
   opacity: 1;
@@ -2772,7 +2752,7 @@ label.fh-ui-button {
    Alert Component
    ========================= */
 .fh-ui-alert {
-  padding: var(--fh-lg);
+  padding: var(--fh-md) var(--fh-lg);
   border-radius: var(--fh-radius);
   margin-bottom: var(--fh-lg);
   position: relative;
@@ -2782,17 +2762,22 @@ label.fh-ui-button {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   transition: var(--fh-transition);
-  border-left: 4px solid var(--fh-primary);
-  background: rgba(33, 158, 255, 0.08);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.fh-ui-alert:before {
-  content: "";
-  display: block;
+/* Icon box only for the dot-variant API (.info/.success/.warning/.error);
+   the BEM-style variants (.fh-ui-alert-info, …) bring their own icon markup */
+.fh-ui-alert.info:before,
+.fh-ui-alert.success:before,
+.fh-ui-alert.warning:before,
+.fh-ui-alert.error:before {
+  display: flex;
+  position: static;
   width: 24px;
   height: 24px;
   flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -2814,7 +2799,7 @@ label.fh-ui-button {
 /* Alert variants */
 .fh-ui-alert.info {
   background: rgba(33, 158, 255, 0.08);
-  border-left-color: var(--fh-primary);
+  border-left: 4px solid var(--fh-primary);
 }
 
 .fh-ui-alert.info:before {
@@ -2832,7 +2817,7 @@ label.fh-ui-button {
 
 .fh-ui-alert.success {
   background: rgba(72, 199, 116, 0.08);
-  border-left-color: #48c774;
+  border-left: 4px solid #48c774;
 }
 
 .fh-ui-alert.success:before {
@@ -2848,7 +2833,7 @@ label.fh-ui-button {
 
 .fh-ui-alert.warning {
   background: rgba(255, 138, 0, 0.08);
-  border-left-color: var(--fh-accent);
+  border-left: 4px solid var(--fh-accent);
 }
 
 .fh-ui-alert.warning:before {
@@ -2864,7 +2849,7 @@ label.fh-ui-button {
 
 .fh-ui-alert.error {
   background: rgba(241, 70, 104, 0.08);
-  border-left-color: #f14668;
+  border-left: 4px solid #f14668;
 }
 
 .fh-ui-alert.error:before {
@@ -2884,8 +2869,9 @@ label.fh-ui-button {
    ========================= */
 .fh-ui-navigation {
   display: flex;
-  gap: var(--fh-sm);
-  padding: var(--fh-base);
+  flex-direction: column;
+  gap: var(--fh-xs);
+  padding: var(--fh-sm);
   background: var(--fh-glass-bg);
   backdrop-filter: blur(var(--fh-glass-blur));
   -webkit-backdrop-filter: blur(var(--fh-glass-blur));
@@ -2893,7 +2879,16 @@ label.fh-ui-button {
   margin-bottom: var(--fh-lg);
 }
 
+/* Horizontal pill bar variant */
+.fh-ui-navigation.horizontal {
+  flex-direction: row;
+  gap: var(--fh-sm);
+  padding: var(--fh-base);
+}
+
 .fh-ui-navigation-item {
+  display: flex;
+  align-items: center;
   padding: var(--fh-sm) var(--fh-base);
   color: var(--fh-text-secondary);
   text-decoration: none;
@@ -2905,7 +2900,7 @@ label.fh-ui-button {
 
 .fh-ui-navigation-item:hover {
   color: var(--fh-text);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--fh-glass-hover);
 }
 
 .fh-ui-navigation-item.active {
@@ -2959,6 +2954,7 @@ label.fh-ui-button {
 
 /* Tab-style navigation */
 .fh-ui-navigation.tabs {
+  flex-direction: row;
   border-bottom: 1px solid var(--fh-glass-border);
   padding-bottom: 0;
   background: transparent;
@@ -3197,18 +3193,14 @@ label.fh-ui-button {
 .fh-ui-footer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
-  align-items: center; 
-  min-height: 100vh; 
-  padding-top: 1rem; 
-  padding-bottom: 2rem; 
+  justify-content: space-between;
+  align-items: center;
   background: var(--fh-glass-bg);
   backdrop-filter: blur(var(--fh-glass-blur));
   -webkit-backdrop-filter: blur(var(--fh-glass-blur));
   padding: var(--fh-xl) var(--fh-lg) var(--fh-md);
-  margin-top: var(--fh-xxl);
   border-top: 1px solid var(--fh-glass-border);
-  margin-top: auto; 
+  margin-top: auto; /* Sticks to the bottom in a flex-column page */
 }
 
 .see-it-in-action-wrapper {
@@ -4084,17 +4076,6 @@ label.fh-ui-button {
   animation: fh-slide-up 0.5s;
 }
 
-/* Overlay close button (works with :target) */
-.fh-ui-close-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: transparent;
-  z-index: -1;
-}
-
 /* CSS-only loader using :target */
 #fh-ui-loader-overlay:target {
   display: flex;
@@ -4134,16 +4115,6 @@ label.fh-ui-button {
   100% { opacity: 0; transform: translateX(-50%) translateY(40px); }
 }
 
-/* Make overlays stay visible until explicitly closed */
-.fh-ui-close-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: transparent;
-  z-index: -1;
-}
 /* CSS-only scroll spy for sidebar navigation */
 .fh-ui-components-sidebar a {
   position: relative;
@@ -4218,16 +4189,12 @@ textarea:focus-visible {
 }
 
 /* CSS-only dark mode toggle */
-.theme-toggle-checkbox {
-  display: none;
-}
-
 .theme-toggle-label {
   position: fixed;
-  top: 60px; /* Moved down to avoid overlapping with the menu */
+  top: calc(var(--fh-navbar-height) + 12px); /* Below the navbar */
   right: 15px;
-  width: 45px;
-  height: 22px;
+  width: 56px;
+  height: 28px;
   background: var(--fh-glass-bg);
   border-radius: 999px;
   cursor: pointer;
@@ -4240,78 +4207,20 @@ textarea:focus-visible {
 .theme-toggle-label::after {
   content: "🌙";
   position: absolute;
-  left: 5px;
-  top: 3px;
-  font-size: 14px;
+  left: 6px;
+  top: 4px;
+  font-size: 16px;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Added bouncy effect */
 }
 
-/* Theme toggle using JavaScript instead of CSS sibling selectors */
+.theme-toggle-checkbox:focus-visible ~ .theme-toggle-label {
+  outline: 2px solid var(--fh-primary);
+  outline-offset: 2px;
+}
+
 .theme-toggle-checkbox:checked ~ .theme-toggle-label::after {
   content: "☀️";
-  transform: translateX(22px);
-}
-
-/* CSS-only popup/dialog using :target pseudo-class */
-.fh-ui-popup:target,
-.fh-ui-dialog:target {
-  display: flex;
-  animation: fh-fade-in 0.4s;
-}
-
-.fh-ui-popup:target .fh-ui-popup-content,
-.fh-ui-dialog:target .fh-ui-dialog-content {
-  animation: fh-slide-up 0.5s;
-}
-
-/* Overlay close button (works with :target) */
-.fh-ui-close-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: transparent;
-  z-index: -1;
-}
-
-/* CSS-only loader using :target */
-#fh-ui-loader-overlay:target {
-  display: flex;
-  animation: fh-fade-in 0.4s, fh-fade-out 2s 1.5s forwards;
-}
-
-@keyframes fh-fade-out {
-  0% { opacity: 1; }
-  100% { opacity: 0; visibility: hidden; }
-}
-
-/* CSS-only toast using :target */
-.fh-ui-toast:target {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-  pointer-events: auto;
-  animation: show-toast 2.5s forwards;
-}
-
-@keyframes show-toast {
-  0% { opacity: 0; transform: translateX(-50%) translateY(40px); }
-  15% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  85% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  100% { opacity: 0; transform: translateX(-50%) translateY(40px); }
-}
-
-/* CSS-only animations for auto-hiding components */
-@keyframes loader-auto-hide {
-  0% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; visibility: hidden; }
-}
-
-@keyframes toast-auto-hide {
-  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  80% { opacity: 1; transform: translateX(-50%) translateY(0); }
-  100% { opacity: 0; transform: translateX(-50%) translateY(40px); }
+  transform: translateX(26px);
 }
 
 /* =========================
@@ -4333,5 +4242,142 @@ textarea:focus-visible {
 @media (max-width: 768px) {
   .fh-ui-two-columns {
     flex-direction: column;
+  }
+}
+
+.fh-ui-column-content {
+  min-width: 0; /* Allow flex children to shrink below content size */
+}
+
+/* =========================
+   Section Dividers
+   ========================= */
+.fh-ui-section-divider {
+  position: relative;
+  height: 1px;
+  width: min(100%, 900px);
+  margin: var(--fh-xl) auto;
+  background: linear-gradient(to right, transparent, var(--fh-glass-border), transparent);
+}
+
+.fh-ui-section-divider::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--fh-primary);
+  box-shadow: 0 0 12px var(--fh-glow);
+}
+
+.fh-ui-section-divider.diagonal {
+  height: var(--fh-xl);
+  background: linear-gradient(to bottom right, transparent 49.5%, var(--fh-glass-border) 49.5%, var(--fh-glass-border) 50.5%, transparent 50.5%);
+}
+
+.fh-ui-section-divider.diagonal::after {
+  display: none;
+}
+
+/* Wave divider: wraps an inline SVG wave shape */
+.fh-ui-wave-divider {
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.fh-ui-wave-divider svg {
+  display: block;
+  width: 100%;
+  height: clamp(40px, 8vw, 110px);
+  fill: var(--fh-glass-bg);
+}
+
+/* Alternate background section for visual variety */
+.fh-ui-alt-bg-section {
+  background: linear-gradient(135deg, rgba(var(--fh-primary-rgb), 0.06), rgba(var(--fh-accent-rgb), 0.06));
+  border-block: 1px solid var(--fh-glass-border);
+}
+
+/* =========================
+   Light-theme refinements
+   ========================= */
+.fh-ui[data-theme="light"] .fh-ui-bg {
+  background: linear-gradient(135deg, #f5f7fa, #e8ecf3);
+}
+
+.fh-ui[data-theme="light"] .fh-ui-grid {
+  background-image:
+      linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+}
+
+.fh-ui[data-theme="light"] .code-snippet .inline-code {
+  background-color: #f6f8fa;
+  color: #24292e;
+  border-color: #e1e4e8;
+}
+
+.fh-ui[data-theme="light"] .code-snippet pre {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+   Modern CSS Enhancements
+   ========================= */
+
+/* Animate accordions to their natural height in browsers that support
+   interpolating to intrinsic sizes (no more max-height magic numbers) */
+@supports (interpolate-size: allow-keywords) {
+  .fh-ui {
+    interpolate-size: allow-keywords;
+  }
+  .fh-ui-accordion-body.active {
+    max-height: max-content;
+  }
+  .fh-ui-css-accordion-checkbox:checked ~ .fh-ui-css-accordion-content {
+    max-height: max-content;
+  }
+}
+
+/* Native <dialog> support: same glass styling, declarative open/close */
+dialog.fh-ui-dialog-native {
+  background: var(--fh-glass-bg);
+  color: var(--fh-text);
+  border: 1px solid var(--fh-glass-border);
+  border-left: 4px solid var(--fh-primary);
+  border-radius: var(--fh-radius);
+  backdrop-filter: blur(var(--fh-glass-blur));
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 15px var(--fh-glow);
+  padding: var(--fh-xl);
+  max-width: min(90vw, 600px);
+}
+
+dialog.fh-ui-dialog-native::backdrop {
+  background: rgba(20,20,30,0.7);
+  backdrop-filter: blur(3px);
+}
+
+/* Native popover support (e.g. <div popover class="fh-ui-toast">) */
+.fh-ui-toast:popover-open {
+  opacity: 1;
+  position: fixed;
+  inset: auto;
+  bottom: var(--fh-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+/* =========================
+   Mobile overrides (kept last so they win the cascade)
+   ========================= */
+@media (max-width: 768px) {
+  /* Side navigation dots compete with content and thumb reach on phones */
+  .fh-ui-snap-dots {
+    display: none;
   }
 }

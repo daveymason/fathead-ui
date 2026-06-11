@@ -2,17 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fathead UI – Home</title>
+    <title>Fathead UI – CSS-First UI Kit with Golden Ratio Design</title>
+    <meta name="description" content="Fathead UI is a CSS-first, drop-in UI kit built on golden-ratio spacing, cognitive psychology principles, glassmorphism, and light/dark themes. A lightweight Bootstrap alternative that pairs perfectly with HTMX." />
+    <meta name="theme-color" content="#219EFF" />
+    <meta property="og:title" content="Fathead UI – CSS-First UI Kit" />
+    <meta property="og:description" content="A futuristic, CSS-first framework with golden-ratio spacing, glassmorphism, and light/dark themes." />
+    <meta property="og:type" content="website" />
     <link rel="stylesheet" href="./fathead-ui.css" />
     <link rel="stylesheet" href="./tabs-accordian-dropdown.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="./hero-cta.css" />
 </head>
-<input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox">
 <body class="fh-ui" data-theme="light">
-  <label for="theme-toggle" class="theme-toggle-label" title="Toggle light/dark mode"></label>  <div class="fh-ui-navbar">
+  <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox" aria-label="Toggle light and dark mode">
+  <label for="theme-toggle" class="theme-toggle-label" title="Toggle light/dark mode"></label>
+  <div class="fh-ui-navbar">
     <a href="/" class="logo">Fathead UI</a>
     <div class="nav-links">
       <a href="/" class="nav-link active">Home</a>
