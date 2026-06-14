@@ -139,3 +139,70 @@ and not find, plus how to make the codebase efficient enough to ship as a librar
 3. **Tier 2/3** components in marketing → app order.
 4. **Modern-CSS migrations** (details/popover/has) as refactors with the CI suite
    already in place to catch regressions.
+
+================================================================================
+WORKING WITH FATHEADUI — difficulties + recommended upstream fixes  (Part 3D)
+================================================================================
+
+Context: FatheadUI is loaded from a CDN
+(https://daveymason.github.io/fathead-ui/fathead-ui.css) and drives ~everything
+visual. It's a CSS-first, no-build kit — which is great for this app's "no JS"
+ethos — but a few sharp edges cost real time. Notes below are written so the
+next person (or the FatheadUI author) can act on them.
+
+1) Tabs ship the LOOK but not the behaviour.
+   - `.fh-ui-tabs / -nav / -tab-item / -tab-pane` style tabs, and there's even a
+     `.fh-ui-css-tab-input` (a visually-hidden input, clearly intended for
+     CSS-only tabs) — but there are NO `:checked ~ ...` rules anywhere in the
+     stylesheet that actually switch panes. Pane visibility is keyed off an
+     `.active` class that only JS can add. So "CSS-only tabs" are advertised by
+     the class names but not actually wired.
+   - What we had to do: add our own radio-driven `:checked ~ .fh-ui-tabs-content
+     #pane { display:block }` rules in application.css (see "CSS-only tabs").
+   - Recommended fix: ship the `:checked` wiring for `.fh-ui-css-tab-input`
+     exactly like the dialog/accordion components already do (those DO have
+     `:checked +` rules). Then native CSS-only tabs would "just work".
+
+2) backdrop-filter blur is applied too broadly and breaks compositing.
+   - FatheadUI puts `backdrop-filter: blur(20px)` on cards, tables, inputs AND
+     every badge. A page with dozens of badges/tiles (our report) stacks many
+     blur layers; the browser compositor drops elements at random
+     ("scattered / disappearing cards"). We had to globally disable it
+     (`backdrop-filter: none !important` on `.fh-ui *`).
+   - Recommended fix: only blur a small number of top-level surfaces (cards,
+     dialogs), never badges/inline elements; or expose a `--fh-blur: 0` opt-out
+     token instead of forcing per-element overrides.
+
+3) One-shot entrance animations use `fill-mode: both` and can stick.
+   - `fh-slide-up` / `fh-fade-in` leave elements at opacity:0 / offset if the
+     animation is interrupted — which our meta-refresh polling does constantly.
+     We had to null out `animation` on titles/cards.
+   - Recommended fix: default entrance animations to `fill-mode: forwards` from a
+     visible base state, or gate them behind a `data-animate` opt-in so
+     auto-refreshing pages don't flicker/blank.
+
+4) Low-contrast defaults on the light theme.
+   - Table `th` text and tab-item text were washed out on `data-theme="light"`;
+     we had to re-assert contrast in app CSS.
+   - Recommended fix: bump default `--fh-text-secondary`/`th` contrast to meet
+     WCAG AA on the light theme out of the box.
+
+5) Component "contract" is undocumented — you reverse-engineer markup from CSS.
+   - There's no per-component HTML snippet, so the required element nesting
+     (e.g. dialog = hidden checkbox immediately followed by `.fh-ui-dialog`, or
+     the exact tab radio/nav/content sibling order) has to be inferred by reading
+     the selectors. Easy to get the sibling order subtly wrong.
+   - Recommended fix: publish a tiny copy-pasteable HTML example per component
+     (especially the CSS-only interactive ones), and note the sibling-order
+     requirement that the `~`/`+` selectors depend on.
+
+6) CDN-only delivery = no version pinning / offline build.
+   - Loading the latest CSS from a GitHub Pages URL means an upstream change can
+     silently restyle production, and there's no SRI hash or offline asset.
+   - Recommended fix: publish to npm / a versioned, hashed URL so apps can pin
+     (`fathead-ui@x.y.z`) and self-host through Propshaft.
+
+Net: FatheadUI got us a polished look fast and its CSS-only dialog/accordion
+patterns are genuinely nice. The main theme of the friction is "interactive
+components are styled but not fully wired, and effects are applied too broadly" —
+all fixable upstream without changing the no-build philosophy.
